@@ -11,6 +11,7 @@
 		19CC0F952996B10A008EC780 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC0F942996B10A008EC780 /* ContentView.swift */; };
 		19CC0F972996B10C008EC780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CC0F962996B10C008EC780 /* Assets.xcassets */; };
 		19CC0F9A2996B10C008EC780 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CC0F992996B10C008EC780 /* Preview Assets.xcassets */; };
+		19CC0FA12996B154008EC780 /* anima.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19CC0FA02996B154008EC780 /* anima.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		19CC0F942996B10A008EC780 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		19CC0F962996B10C008EC780 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19CC0F992996B10C008EC780 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		19CC0FA02996B154008EC780 /* anima.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = anima.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 				19CC0F922996B10A008EC780 /* Slider_PlayerApp.swift */,
 				19CC0F942996B10A008EC780 /* ContentView.swift */,
 				19CC0F962996B10C008EC780 /* Assets.xcassets */,
+				19CC0FA22996B1C6008EC780 /* Resources */,
 				19CC0F982996B10C008EC780 /* Preview Content */,
 			);
 			path = "Slider-Player";
@@ -65,6 +68,14 @@
 				19CC0F992996B10C008EC780 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		19CC0FA22996B1C6008EC780 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				19CC0FA02996B154008EC780 /* anima.mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +138,7 @@
 			files = (
 				19CC0F9A2996B10C008EC780 /* Preview Assets.xcassets in Resources */,
 				19CC0F972996B10C008EC780 /* Assets.xcassets in Resources */,
+				19CC0FA12996B154008EC780 /* anima.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
