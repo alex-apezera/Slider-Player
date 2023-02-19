@@ -12,6 +12,11 @@
 		19CC0F972996B10C008EC780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CC0F962996B10C008EC780 /* Assets.xcassets */; };
 		19CC0F9A2996B10C008EC780 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19CC0F992996B10C008EC780 /* Preview Assets.xcassets */; };
 		19CC0FA12996B154008EC780 /* anima.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19CC0FA02996B154008EC780 /* anima.mp3 */; };
+		19CC0FA8299D6892008EC780 /* MusicPartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC0FA7299D6892008EC780 /* MusicPartsView.swift */; };
+		19CC0FAA299D6D8B008EC780 /* bones.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19CC0FA9299D6D8B008EC780 /* bones.mp3 */; };
+		19CC0FAC299D6D96008EC780 /* tank.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 19CC0FAB299D6D96008EC780 /* tank.mp3 */; };
+		19CC0FAF29A00DD5008EC780 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC0FAE29A00DD5008EC780 /* PlayerViewModel.swift */; };
+		19CC0FB129A21E3E008EC780 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CC0FB029A21E3E008EC780 /* ActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +26,11 @@
 		19CC0F962996B10C008EC780 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19CC0F992996B10C008EC780 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		19CC0FA02996B154008EC780 /* anima.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = anima.mp3; sourceTree = "<group>"; };
+		19CC0FA7299D6892008EC780 /* MusicPartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPartsView.swift; sourceTree = "<group>"; };
+		19CC0FA9299D6D8B008EC780 /* bones.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bones.mp3; sourceTree = "<group>"; };
+		19CC0FAB299D6D96008EC780 /* tank.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tank.mp3; sourceTree = "<group>"; };
+		19CC0FAE29A00DD5008EC780 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		19CC0FB029A21E3E008EC780 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				19CC0F922996B10A008EC780 /* Slider_PlayerApp.swift */,
+				19CC0FA7299D6892008EC780 /* MusicPartsView.swift */,
 				19CC0F942996B10A008EC780 /* ContentView.swift */,
+				19CC0FB029A21E3E008EC780 /* ActivityView.swift */,
+				19CC0FAE29A00DD5008EC780 /* PlayerViewModel.swift */,
 				19CC0F962996B10C008EC780 /* Assets.xcassets */,
 				19CC0FA22996B1C6008EC780 /* Resources */,
 				19CC0F982996B10C008EC780 /* Preview Content */,
@@ -73,6 +86,8 @@
 		19CC0FA22996B1C6008EC780 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				19CC0FA9299D6D8B008EC780 /* bones.mp3 */,
+				19CC0FAB299D6D96008EC780 /* tank.mp3 */,
 				19CC0FA02996B154008EC780 /* anima.mp3 */,
 			);
 			path = Resources;
@@ -137,7 +152,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				19CC0F9A2996B10C008EC780 /* Preview Assets.xcassets in Resources */,
+				19CC0FAC299D6D96008EC780 /* tank.mp3 in Resources */,
 				19CC0F972996B10C008EC780 /* Assets.xcassets in Resources */,
+				19CC0FAA299D6D8B008EC780 /* bones.mp3 in Resources */,
 				19CC0FA12996B154008EC780 /* anima.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,7 +166,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19CC0FA8299D6892008EC780 /* MusicPartsView.swift in Sources */,
+				19CC0FAF29A00DD5008EC780 /* PlayerViewModel.swift in Sources */,
 				19CC0F952996B10A008EC780 /* ContentView.swift in Sources */,
+				19CC0FB129A21E3E008EC780 /* ActivityView.swift in Sources */,
 				19CC0F932996B10A008EC780 /* Slider_PlayerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

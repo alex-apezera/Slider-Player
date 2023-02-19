@@ -6,46 +6,17 @@
 //
 
 import SwiftUI
-import AVFoundation
-
-class PlayerViewModel: ObservableObject {
-    @Published public var maxDuration = 0.0
-    private var player: AVAudioPlayer?
-    
-    public func play() {
-        playSong(name: "anima")
-        player?.play()
-    }
-    
-    public func stop() {
-        player?.stop()
-    }
-    
-    public func setTime(value: Float) {
-        guard let time = TimeInterval(exactly: value) else {return}
-        player?.currentTime = time
-        player?.play()
-    }
-    
-    private func playSong(name: String) {
-        guard let audioPath = Bundle.main.path(forResource: name, ofType: "mp3") else { return }
-        do {
-            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
-            maxDuration = player?.duration ?? 0.0
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-}
 
 struct ContentView: View {
     @State private var progress: Float = 0
+    @State private var isPlaying: Bool = false
     @State private var isEditing: Bool = false
-    @ObservedObject var viewModel = PlayerViewModel()
-    
+    @ObservedObject private var viewModel = PlayerViewModel()
+    @State var isError = false
     
     var body: some View {
         VStack {
+            
             Image(systemName: "music.note")
                 .imageScale(.large)
                 .foregroundColor(.yellow)
@@ -53,16 +24,15 @@ struct ContentView: View {
             Text("Slider-Player")
                 .font(.system(size: 24, weight: .light, design: .default))
             Spacer()
-        
+            
             Slider(value: Binding(
-                get: {Double(self.progress)},
+                get: {Double(progress)},
                 set: { newValue in
-                    self.progress = Float(newValue)
-                    self.viewModel.setTime(value: Float(newValue))
+                   progress = Float(newValue)
+                   viewModel.setTime(value: progress)
                 }),
                    in: 0...viewModel.maxDuration
             ) {
-                
             } minimumValueLabel: {
                 Text("0")
             } maximumValueLabel: {
@@ -73,30 +43,42 @@ struct ContentView: View {
 //            progress = viewModel.player?.currentTime
             Text("\(Int(progress))")
                 .foregroundColor(isEditing ? .red : .blue)
-            
+        
+                        
             HStack{
-                Button("PLAY") {
-                    self.viewModel.play()
+                Button(isPlaying ? "PAUSE" : "PLAY") {
+                    isPlaying.toggle()
+                    if isPlaying { viewModel.play() }
+                    else if isPlaying && isEditing {
+                        viewModel.setTime(value: progress) }
+                    else { viewModel.stop() }
                 }
-                .frame(width: 100, height: 50)
+                .frame(width: 150, height: 50)
                 .font(.largeTitle)
                 .foregroundColor(.white)
                 .background(Color.orange)
-        
-                Button("STOP") {
-                    self.viewModel.stop()
+                
+                Button("Progress View") {
+                    isError.toggle()
                 }
-                .frame(width: 100, height: 50)
-                .font(.largeTitle)
+                .frame(width: 150, height: 50)
+                .font(.some(.headline))
                 .foregroundColor(.white)
-                .background(Color.orange)
-            } .padding(40)
-            
+                .background(Color.blue)
+                .alert(isPresented: $isError, content: {
+                    Alert(title: Text("Show ProgressView?"), primaryButton: .destructive(Text("Yes"), action: {
+                       
+                    }), secondaryButton: .cancel())
+                })
+            }
             Spacer()
-        
+//            ProgressView(value: progress)
+//            Spacer()
         }
         .padding()
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
