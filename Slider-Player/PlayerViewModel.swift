@@ -11,9 +11,10 @@ import AVFoundation
 class PlayerViewModel: ObservableObject {
     @Published public var maxDuration = 0.0
     private var player: AVAudioPlayer?
+//    public var musicWork = MusicPartsView().musicWorks[MusicPartsView().segmentIndex]
     
-    public func play() {
-        playSong(name: "anima")
+    public func play(name: String) {
+        playSong(name: name)
         player?.play()
     }
     

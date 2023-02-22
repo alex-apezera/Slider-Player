@@ -8,6 +8,7 @@
 import SwiftUI
 
 @main
+
 struct Slider_PlayerApp: App {
     var body: some Scene {
         WindowGroup {

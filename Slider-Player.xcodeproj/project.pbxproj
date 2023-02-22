@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		193AB72229A3637800187642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		19CC0F8F2996B10A008EC780 /* Slider-Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slider-Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19CC0F922996B10A008EC780 /* Slider_PlayerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider_PlayerApp.swift; sourceTree = "<group>"; };
 		19CC0F942996B10A008EC780 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +64,7 @@
 		19CC0F912996B10A008EC780 /* Slider-Player */ = {
 			isa = PBXGroup;
 			children = (
+				193AB72229A3637800187642 /* Info.plist */,
 				19CC0F922996B10A008EC780 /* Slider_PlayerApp.swift */,
 				19CC0FA7299D6892008EC780 /* MusicPartsView.swift */,
 				19CC0F942996B10A008EC780 /* ContentView.swift */,
@@ -302,7 +304,7 @@
 				DEVELOPMENT_TEAM = GXY9RNHAP8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "Slider-Player/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -331,7 +333,7 @@
 				DEVELOPMENT_TEAM = GXY9RNHAP8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "Slider-Player/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

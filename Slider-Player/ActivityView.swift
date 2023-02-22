@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+class ActivityViewCustomActivity: UIActivity {
+    
+}
+
 struct ActivityView: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = UIActivityViewController

@@ -8,17 +8,13 @@
 import SwiftUI
 
 struct MusicPartsView: View {
-    @State var segmentIndex: Int = 0
     @State var showGuidance05: Bool = false
-    @State var offSetX = 0
     
-    var musicWorks = ["anima", "tank", "bones"]
-    var imagesOfWork = ["Alisa", "Elya", "Egipt"]
+//    var musicWorks = ["anima", "tank", "bones"]
+//    var imagesOfWork = ["Alisa", "Elya", "Egipt"]
     
     var body: some View {
         VStack {
-            Text("Music works   ->   \(musicWorks[segmentIndex].localizedCapitalized)")
-                .font(Font.system(.title))
             
             Text(showGuidance05 == true ? "Showing Guidance" : "Not showing")
             
@@ -28,41 +24,12 @@ struct MusicPartsView: View {
                     self.showGuidance05.toggle()
                 }
             
-            Spacer()
+//            Spacer()
             
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.gray)
-                    .padding()
-                    .offset(x: CGFloat(offSetX))
-                Image(imagesOfWork[segmentIndex])
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 400, height: 400)
-                    .offset(x: CGFloat(offSetX))
-            }.animation(.default)
-
-            Picker(selection: Binding(get: {
-                self.segmentIndex
-            }, set: { newValue in
-                self.segmentIndex = newValue
-                self.offSetX = -500
-                self.moveBack()
-            }), label: Text("")) {
-                ForEach(0..<musicWorks.count,  id: \.self) {
-                    Text(self.musicWorks[$0]).tag($0)
-                }
-            }.pickerStyle(SegmentedPickerStyle())
-                .padding()
-            Spacer().frame(height: 10)
+            
         }
     }
     
-    private func moveBack() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-            self.offSetX = 0
-        })
-    }
 }
 
 struct MusicPartsView_Previews: PreviewProvider {
