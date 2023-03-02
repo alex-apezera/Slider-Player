@@ -11,7 +11,6 @@ struct ContentView: View {
     @State private var progress: Float = 0
     @State private var isPlaying: Bool = false
     @State private var isEditing: Bool = false
-    @State private var isError = false
     @State private var isSharePresented = false
     @State private var offSetX = 0
     @State private var segmentIndex: Int = 0
@@ -124,18 +123,12 @@ struct ContentView: View {
                     //MARK: - ActivityView Button
                     
                     Button("SHARE") {
-                        //              isError.toggle() // Alert property not working with .sheet
                         self.isSharePresented = true
                     }
                     .frame(width: 130, height: 40)
                     .font(.some(.title))
                     .foregroundColor(.white)
                     .background(Color.blue)
-                    //                .alert(isPresented: $isError, content: {
-                    //                    Alert(title: Text("Show Activity?"),
-                    //                          primaryButton: .destructive(Text("Yes")),
-                    //                          secondaryButton: .cancel())
-                    //                })
                     .sheet(isPresented: $isSharePresented) {
                         ActivityView(activityItems: ["message  test"])
                     }

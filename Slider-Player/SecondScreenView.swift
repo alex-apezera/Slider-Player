@@ -12,7 +12,8 @@ struct SecondScreenView: View {
     @State var showGuidance: Bool = false
     @EnvironmentObject var userObject: UserObject
     @State var selector: String?
- 
+    @State var text = ""
+    
     var body: some View {
         
         NavigationStack {
@@ -21,11 +22,10 @@ struct SecondScreenView: View {
                 Button("Go back") {
                     self.presentation.wrappedValue.dismiss()
                 }
-                                                
+                
                 Text(showGuidance == true ?
-                     "Current work: \(userObject.musicWorks[userObject.workIndex])" :
-                    "Show the current music work?")
-                .font(.title)
+                     "Hide the info" : "Show the current music work?")
+                .font(.headline)
                 
                 Image(systemName: "info.circle")
                     .font(.title)
@@ -33,22 +33,59 @@ struct SecondScreenView: View {
                     .onLongPressGesture(minimumDuration: 0.5) {
                         self.showGuidance.toggle()
                     }
+                
+                Text(showGuidance == true ?
+                     "Now we present the image of current work: \(userObject.musicWorks[userObject.workIndex]) work" : "")
+                .foregroundColor(.accentColor)
+                .background(.clear)
+                .font(.body)
+                .padding(20)
+                .multilineTextAlignment(.center)
+                
+                Image(showGuidance == true ?
+                      userObject.imagesOfWork[userObject.workIndex] : "")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100, height: 100)
+                
+                
+                TextField("Enter Login", text: $text)
+                    .modifier(TextFieldModifier())
+                TextField("Enter Password", text: $text) { isChanged in
+                    print(isChanged)
+                } onCommit: { print("onCommit") }
+                .modifier(TextFieldModifier())
+                
+                Button {
+                    
+                } label: {
+                    Text("Login")
+                }
+                .modifier(TextFieldModifier())
+                
                 Spacer()
                 
-                NavigationLink(destination: ContentView(), label: {
-                    Text("GO TO PLAYER")
-                        .font(.largeTitle.bold().uppercaseSmallCaps())
-                        .frame(width: 250, height: 40, alignment: .center)
+                NavigationLink(destination: MainTabView(), label: {
+                    Text("Go to MainTabView")
+                        .font(.title.bold().uppercaseSmallCaps())
+                        .frame(width: 350, height: 40, alignment: .center)
                 })
-                NavigationLink(destination: ContentView(), tag: "Act1", selection: $selector, label: {
-                    Text("Act1")
-                })
-                
             }
         }
     }
 }
 
+struct TextFieldModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .textFieldStyle(.roundedBorder)
+            .foregroundColor(.accentColor)
+            .font(.system(size: 24))
+            .keyboardType(.emailAddress)
+            .overlay(RoundedRectangle(cornerRadius: 8).stroke(.red))
+            .padding(.horizontal, 12)
+    }
+}
 
 struct FirstScreenView_Previews: PreviewProvider {
     static var previews: some View {
