@@ -13,6 +13,7 @@ struct SecondScreenView: View {
     @EnvironmentObject var userObject: UserObject
     @State var selector: String?
     @State var text = ""
+    @FocusState var nameIsFocused: Bool
     
     var body: some View {
         
@@ -50,18 +51,19 @@ struct SecondScreenView: View {
                 
                 
                 TextField("Enter Login", text: $text)
-                    .modifier(TextFieldModifier())
+                    .myTextModifier()
+                    .focused($nameIsFocused)
                 TextField("Enter Password", text: $text) { isChanged in
                     print(isChanged)
                 } onCommit: { print("onCommit") }
-                .modifier(TextFieldModifier())
+                .myTextModifier()
                 
                 Button {
-                    
+                    nameIsFocused = false
+//                    hideKeyboard()
                 } label: {
                     Text("Login")
                 }
-                .modifier(TextFieldModifier())
                 
                 Spacer()
                 
@@ -72,18 +74,6 @@ struct SecondScreenView: View {
                 })
             }
         }
-    }
-}
-
-struct TextFieldModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .textFieldStyle(.roundedBorder)
-            .foregroundColor(.accentColor)
-            .font(.system(size: 24))
-            .keyboardType(.emailAddress)
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(.red))
-            .padding(.horizontal, 12)
     }
 }
 
