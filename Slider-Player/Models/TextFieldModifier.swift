@@ -19,6 +19,22 @@ extension View {
     }
 }
 
+extension View {
+    func feedModifier() -> some View {
+        modifier(FeedCellModifier())
+    }
+}
+
+struct FeedCellModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaledToFill()
+            .frame(width: 20, height: 20)
+            .font(.system(size: 20))
+            .padding(4)
+    }
+}
+
 struct TextFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content

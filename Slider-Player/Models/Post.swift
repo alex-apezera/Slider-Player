@@ -7,4 +7,11 @@
 
 import SwiftUI
 
-
+struct Post {
+    let ownerUserName: String
+    let ownerImage: String
+    let image: String
+    let likes: Int
+    let caption: String
+    let timestamp: String
+}
