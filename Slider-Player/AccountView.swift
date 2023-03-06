@@ -11,18 +11,25 @@ struct AccountView: View {
     @Environment(\.presentationMode) var presentation
     @State var showGuidance: Bool = false
     @EnvironmentObject var userObject: UserObject
-    @State var selector: String?
     @State var text = ""
     @FocusState var nameIsFocused: Bool
+    
+    func nameOfMusicWork() -> String {
+        return userObject.workIndex >= 0 ? userObject.musicWorks[userObject.workIndex] : ""
+    }
+
+    func nameOfImageWork() -> String {
+        return userObject.workIndex >= 0 ? userObject.imagesOfWork[userObject.workIndex] : ""
+    }
     
     var body: some View {
         
         NavigationStack {
             VStack(spacing: 10) {
                 
-                Button("Go back") {
-                    self.presentation.wrappedValue.dismiss()
-                }
+//                Button("Go back") {
+//                    self.presentation.wrappedValue.dismiss()
+//                }
                 
                 Text(showGuidance == true ?
                      "Hide the info" : "Show the current music work?")
@@ -36,7 +43,7 @@ struct AccountView: View {
                     }
                 
                 Text(showGuidance == true ?
-                     "Now we present the image of current work: \(userObject.musicWorks[userObject.workIndex]) work" : "")
+                     "Now we present the image of current work: \(nameOfMusicWork()) work" : "")
                 .foregroundColor(.accentColor)
                 .background(.clear)
                 .font(.body)
@@ -44,7 +51,7 @@ struct AccountView: View {
                 .multilineTextAlignment(.center)
                 
                 Image(showGuidance == true ?
-                      userObject.imagesOfWork[userObject.workIndex] : "")
+                      nameOfImageWork() : "")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 100, height: 100)
@@ -56,22 +63,17 @@ struct AccountView: View {
                 TextField("Enter Password", text: $text) { isChanged in
                     print(isChanged)
                 } onCommit: { print("onCommit") }
-                .myTextModifier()
+                    .myTextModifier()
                 
                 Button {
                     nameIsFocused = false
-//                    hideKeyboard()
+                    //                    hideKeyboard()
                 } label: {
                     Text("Login")
                 }
                 
                 Spacer()
                 
-                NavigationLink(destination: MainTabView(), label: {
-                    Text("Go to MainTabView")
-                        .font(.title.bold().uppercaseSmallCaps())
-                        .frame(width: 350, height: 40, alignment: .center)
-                })
             }
         }
     }

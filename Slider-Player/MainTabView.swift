@@ -26,7 +26,7 @@ struct MainTabView: View {
                 }
                 .tag(1)
             
-            SentView()
+            FeedView()
                 .tabItem {
                     Label("Sent", systemImage: "tray.and.arrow.up.fill")
                 }

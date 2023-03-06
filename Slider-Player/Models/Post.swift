@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct Post {
+struct Post: Identifiable {
+    let id = UUID()
     let ownerUserName: String
     let ownerImage: String
-    let image: String
-    let likes: Int
     let caption: String
+    let likes: Int
+    let image: String
     let timestamp: String
 }

@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct FeedCell: View {
+    let post: Post
+    
     var body: some View {
         VStack(alignment: .leading) {
             // user info
             HStack {
-                Image("Alisa")
+                Image(post.ownerImage)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 36, height: 36)
                     .clipped()
                     .cornerRadius(18)
-                Text("Alisa").font(.system(size: 14, weight: .semibold))
+                Text(post.ownerUserName).font(.system(size: 14, weight: .semibold))
             }.padding([.leading, .bottom], 8)
             
             // post picture
-            Image("Egipt")
+            Image(post.image)
                 .resizable()
                 .scaledToFill()
                 .frame(maxWidth: UIScreen.main.bounds.size.width)
@@ -51,28 +53,22 @@ struct FeedCell: View {
             .foregroundColor(.black)
             
             // likes
-            Text("2 likes")
+            Text("\(post.likes) likes")
                 .font(.system(size: 14, weight: .semibold))
                 .padding(.leading, 8)
                 .padding(.bottom, 2)
             
             // caption
             HStack {
-                Text("Alisa and Elya.").font(.system(size: 14, weight: . semibold))
-                Text("In Egipt very good!").font(.system(size: 14))
+                Text(post.ownerUserName).font(.system(size: 14, weight: . semibold))
+                Text(post.caption).font(.system(size: 14))
             }
             .padding(.horizontal, 8)
             
             // time stamp
-            Text("2 month ago").font(.system(size: 14)).foregroundColor(.gray)
+            Text(post.timestamp).font(.system(size: 14)).foregroundColor(.gray)
                 .padding(.leading, 8)
                 .padding(.top, -2)
         }.padding()
-    }
-}
-
-struct FeedCell_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedCell()
     }
 }

@@ -15,9 +15,9 @@ struct PlayerView: View {
     @State private var offSetX = 0
     @State private var segmentIndex: Int = 0
     
-    @StateObject var userObject = UserObject()
+    @ObservedObject private var userObject = UserObject()
     
-    @ObservedObject private var viewModel = PlayerViewModel()
+    @ObservedObject private var playerModel = PlayerViewModel()
     
     
     private func moveBack() {
@@ -65,7 +65,7 @@ struct PlayerView: View {
                         if progress > 0 {
                             isPlaying = false
                             progress = 0
-                            viewModel.stop()
+                            playerModel.stop()
                         }
                     }), label: Text("")) {
                         ForEach(0..<userObject.musicWorks.count,  id: \.self) {
@@ -82,18 +82,18 @@ struct PlayerView: View {
                     set: { newValue in
                         print(newValue)
                         progress = Float(newValue)
-                        viewModel.setTime(value: progress)
+                        playerModel.setTime(value: progress)
                         if isPlaying {
-                            viewModel.stop()
+                            playerModel.stop()
                             //                        isPlaying.toggle()
                         }
                     }),
-                       in: 0...viewModel.maxDuration
+                       in: 0...playerModel.maxDuration
                 ) {
                 } minimumValueLabel: {
                     Text("0")
                 } maximumValueLabel: {
-                    Text(String(Int(viewModel.maxDuration)))
+                    Text(String(Int(playerModel.maxDuration)))
                 } onEditingChanged: { editing in
                     isEditing = editing
                 }
@@ -109,10 +109,10 @@ struct PlayerView: View {
                         if progress > 0 {
                             progress = 0
                             isPlaying = false
-                            viewModel.stop()
+                            playerModel.stop()
                         }
-                        if isPlaying { viewModel.play(name: userObject.musicWorks[segmentIndex])
-                        } else { viewModel.stop()
+                        if isPlaying { playerModel.play(name: userObject.musicWorks[segmentIndex])
+                        } else { playerModel.stop()
                         }
                     }
                     .frame(width: 130, height: 40)
