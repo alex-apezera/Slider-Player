@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PlayerView.swift
 //  Slider-Player
 //
 //  Created by Алексей Езерский on 10.02.2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PlayerView: View {
     @State private var progress: Float = 0
     @State private var isPlaying: Bool = false
     @State private var isEditing: Bool = false
@@ -40,9 +40,9 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    SecondScreenView()
+                    AccountView()
                 } label: {
-                    Text("Press here to next")
+                    Text("Press here to AccountView")
                 }
                 
                 //MARK: - Music View
@@ -142,6 +142,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        PlayerView()
     }
 }

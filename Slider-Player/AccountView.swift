@@ -1,5 +1,5 @@
 //
-//  SecondScreenView.swift
+//  AccountView.swift
 //  Slider-Player
 //
 //  Created by Алексей Езерский on 15.02.2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SecondScreenView: View {
+struct AccountView: View {
     @Environment(\.presentationMode) var presentation
     @State var showGuidance: Bool = false
     @EnvironmentObject var userObject: UserObject
@@ -79,6 +79,6 @@ struct SecondScreenView: View {
 
 struct FirstScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        SecondScreenView()
+        AccountView()
     }
 }

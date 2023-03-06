@@ -13,25 +13,31 @@ struct MainTabView: View {
     var body: some View {
         TabView(selection: $tabSelected) {
             
+            PlayerView()
+                .badge(3)
+                .tabItem {
+                    Label("Player", systemImage: "play.rectangle.on.rectangle.fill")}
+                .tag(0)
+            
             ReceivedView()
                 .badge(2)
                 .tabItem {
                     Label("Received", systemImage: "tray.and.arrow.down.fill")
                 }
-                .tag(0)
+                .tag(1)
             
-            Text("Sent")
+            SentView()
                 .tabItem {
                     Label("Sent", systemImage: "tray.and.arrow.up.fill")
                 }
-                .tag(1)
+                .tag(2)
             
-            Text("Account")
+            AccountView()
                 .badge("!")
                 .tabItem {
                     Label("Account", systemImage: "person.crop.circle.fill")
                 }
-                .tag(2)
+                .tag(3)
         }
         .font(.headline)
         .accentColor(.cyan)
