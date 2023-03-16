@@ -42,10 +42,10 @@ struct PlayerView: View {
                 NavigationLink {
                     AccountView()
                 } label: {
-                    Text("Press here to AccountView")
+                    Text("Press here to go Account view")
                 }
                 
-                //MARK: - Music View
+                //MARK: - Music View Picker
                 
                 Image(userObject.imagesOfWork[segmentIndex])
                     .resizable()

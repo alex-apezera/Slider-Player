@@ -12,26 +12,42 @@ struct ReceivedView: View {
 
     var body: some View {
         
-        ZStack {
-            
-            Color.gray.ignoresSafeArea(edges: .top)
-            
-            Button("RECEIVED") {
-                isError.toggle()
+        NavigationStack {
+        
+            ZStack {
+                
+                Color.gray.ignoresSafeArea(edges: .top)
+                
+                VStack {
+                    Button("RECEIVED") {
+                        isError.toggle()
+                    }
+                    .frame(width: 150, height: 40)
+                    .font(.some(.title))
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .alert(isPresented: $isError, content: {
+                        Alert(title: Text("Show Image?"),
+                              primaryButton: .destructive(
+                                Text("Yes"),
+                                action: {
+                                    print("Alert")
+                                }
+                              ),
+                              secondaryButton: .cancel())
+                    })
+                    
+                    NavigationLink {
+                        ImageFromURL()
+                    } label: {
+                        Text("Image")
+                    }
+                    .frame(width: 150, height: 40)
+                    .font(.some(.title))
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                }
             }
-            .frame(width: 150, height: 40)
-            .font(.some(.title))
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .alert(isPresented: $isError, content: {
-                Alert(title: Text("Show Image?"),
-                      primaryButton: .destructive(
-                        Text("Yes"),
-                        action: {
-                        }
-                      ),
-                      secondaryButton: .cancel())
-            })
         }
     }
 }
