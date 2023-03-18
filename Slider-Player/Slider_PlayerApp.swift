@@ -12,7 +12,7 @@ import SwiftUI
 struct Slider_PlayerApp: App {
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            Profile()
         }
     }
 }
