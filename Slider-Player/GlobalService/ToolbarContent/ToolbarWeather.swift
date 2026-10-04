@@ -28,7 +28,7 @@ struct ToolbarWeather {
                 .frame(maxWidth: 28)
                 
                 Button {
-                    weatherApiView.toggle() 
+                    weatherApiView.toggle()
                 } label: {
                     Image("weatherapi").resizable()
                 }
@@ -38,4 +38,5 @@ struct ToolbarWeather {
             }
         }
     }
+    
 }
