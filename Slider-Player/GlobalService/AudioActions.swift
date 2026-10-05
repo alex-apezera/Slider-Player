@@ -11,13 +11,18 @@ import AVKit
 //MARK: - Set session category
 
 func setSessionCategory(_ category: AVAudioSession.Category) {
-    do {
-        try AVAudioSession.sharedInstance().setCategory(category, mode: .default)
-        try AVAudioSession.sharedInstance().setActive(true)
-    } catch {
-        print(#function, error.localizedDescription)
+    DispatchQueue.global(qos: .userInitiated).async {
+        let session = AVAudioSession.sharedInstance()
+
+        do {
+            try session.setCategory(category, mode: .default)
+            try session.setActive(true)
+        } catch {
+            print(#function, error.localizedDescription)
+        }
     }
 }
+
 
 //MARK: - Play Audio
 
