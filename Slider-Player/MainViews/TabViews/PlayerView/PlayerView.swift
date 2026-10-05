@@ -7,6 +7,7 @@
 // Audioplayer example
 //
 import SwiftUI
+import Combine
 
 struct PlayerView: View {
     @State var progress: Float = 0

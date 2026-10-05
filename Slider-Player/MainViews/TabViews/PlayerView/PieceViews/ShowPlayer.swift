@@ -7,6 +7,7 @@
 // Player example with web picture
 
 import SwiftUI
+import Combine
 
 struct ShowPlayer: View {
 

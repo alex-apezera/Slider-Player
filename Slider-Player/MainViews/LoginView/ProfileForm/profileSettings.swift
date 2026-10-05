@@ -29,7 +29,7 @@ extension ProfileForm {
                 ForEach(userSettings.ringtones, id: \.self) { ringtone in
                     Text(ringtone)
                 }
-                .onChange(of: userSettings.ringtone) { ringtone in
+                .onChange(of: userSettings.ringtone) { _, ringtone in
                     playerModel.play(name: ringtone)
                 }
             }

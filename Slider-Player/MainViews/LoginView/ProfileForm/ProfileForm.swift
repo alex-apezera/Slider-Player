@@ -46,7 +46,7 @@ struct ProfileForm: View {
         }
         .font(.callout)
         .padding(10)
-        .onChange(of: isPasswordCorrect) { newValue in
+        .onChange(of: isPasswordCorrect) { _, newValue in
             withAnimation { start = newValue }
         }
     }

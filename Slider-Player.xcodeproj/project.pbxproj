@@ -2284,7 +2284,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs permission to save images to your library.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires to access your photo library to show image on profile and send via chat";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "Slider-Player reminder use";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Приложению нужен доступ к распознаванию речи для преобразования вашей речи в текст.\n";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -2336,7 +2336,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs permission to save images to your library.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires to access your photo library to show image on profile and send via chat";
 				INFOPLIST_KEY_NSRemindersUsageDescription = "Slider-Player reminder use";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Приложению нужен доступ к распознаванию речи для преобразования вашей речи в текст.\n";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
