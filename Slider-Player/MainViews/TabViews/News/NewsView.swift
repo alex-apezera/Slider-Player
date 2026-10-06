@@ -60,18 +60,14 @@ struct NewsView: View {
                 viewModel.fetchTopNews()
                 viewModel.fetchBottomNews()
             }
-            .onChange(of: viewModel.topNews.count) { newValue in
+            .onChange(of: viewModel.topNews.count) { _, newValue in
                 newsCount = newValue + viewModel.bottomNews.count
             }
-            .onChange(of: viewModel.bottomNews.count) { newValue in
+            .onChange(of: viewModel.bottomNews.count) { _, newValue in
                 newsCount = viewModel.topNews.count + newValue
             }
         }//VStack
         
         .navigationModifier(String.news)
     }
-}
-
-#Preview {
-    NewsView()
 }

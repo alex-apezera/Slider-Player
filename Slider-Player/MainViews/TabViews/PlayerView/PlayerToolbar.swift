@@ -14,9 +14,7 @@ extension PlayerView {
                 SearchView()
             } label: {
                 Image("music").resizable().scaledToFit()
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     .scaleEffect(0.65)
-                    .position(x: 105, y: 20)
                     .opacity(isPlaying ? 0.5 : 1)
             }
             .disabled(isPlaying)
