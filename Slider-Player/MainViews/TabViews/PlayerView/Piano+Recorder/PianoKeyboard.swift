@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVKit
+import Combine
 
 struct PianoKeyboard: View {
     @State var audios: [URL] = []

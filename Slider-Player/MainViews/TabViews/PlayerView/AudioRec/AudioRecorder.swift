@@ -40,7 +40,11 @@ struct AudioRecorder: View {
                         audioManager.startPlayer(at: track)
                         albumImageURL = manager.albumURL(from: track)
                         Task {
-                            try await GetAudioAssets(url: track, albumTitle: $albumTitle, composerName: $composerName, songName: $songName).takeData()
+                            do {
+                                try await GetAudioAssets(url: track, albumTitle: $albumTitle, composerName: $composerName, songName: $songName).takeData()
+                            } catch {
+                                print("GetAudioAssets fail", error)
+                            }
                         }
                     } label: {
                         Image(systemName: "speaker.square.fill").font(.title)

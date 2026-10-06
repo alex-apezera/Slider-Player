@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AudioView: View {
     @Binding var playing: Bool
