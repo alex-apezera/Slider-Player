@@ -47,7 +47,7 @@ struct SecondaryDetailsView: View {
                         }
                     }//ForEach - day
                 }
-                .onChange(of: hourlyForecast) { newValue in
+                .onChange(of: hourlyForecast) { _, newValue in
                     hourly = newValue
                 }
                 .lineLimit(1)

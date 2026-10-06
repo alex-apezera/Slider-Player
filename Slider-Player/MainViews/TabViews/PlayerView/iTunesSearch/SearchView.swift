@@ -85,7 +85,7 @@ struct SearchView: View {
             .task {
                 await loadData()
             }
-            .onChange(of: searchRequest) { _ in
+            .onChange(of: searchRequest) {
                 Task {
                     playContent = false
                     await loadData()

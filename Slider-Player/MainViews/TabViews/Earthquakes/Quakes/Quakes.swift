@@ -30,7 +30,7 @@ struct Quakes: View {
             }
             .onDelete(perform: deleteQuakes)
         }
-        .onChange(of: selection) { newValue in
+        .onChange(of: selection) { _, newValue in
             print(#function, selection)
         }
         .navigationModifier(title)

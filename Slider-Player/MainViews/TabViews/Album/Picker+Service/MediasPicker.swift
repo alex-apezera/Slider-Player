@@ -91,7 +91,7 @@ struct MediasPicker: View {
         .navigationModifier(String.imagesGallery)
         .navigationViewStyle(.stack)
         .toolbar {toolbarImagePicker()}/// Take data & edit Album
-        .onChange(of: selectedItems) { newItems in ///Get & store data from items
+        .onChange(of: selectedItems) { _, newItems in ///Get & store data from items
             getAndStoreMetaData(newItems)
         }
     }

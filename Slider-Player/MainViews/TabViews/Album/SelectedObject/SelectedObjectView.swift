@@ -43,7 +43,7 @@ struct SelectedObjectView: View {
                 }
             }
             .toolbar { selectedObjectTool(index, item: metaData) }
-            .onChange(of: metaDataModel.metaDataObject) { newData in
+            .onChange(of: metaDataModel.metaDataObject) { _, newData in
                 updateMetaDataObject(newData)
             }
             .navigationModifier(String.imageCell)

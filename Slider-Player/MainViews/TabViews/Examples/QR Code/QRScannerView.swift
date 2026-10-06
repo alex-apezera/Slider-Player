@@ -20,7 +20,7 @@ struct QRScannerView: View {
         ZStack(alignment: .bottom) {
             if webState == .awaitToScan {
                 QRScanner(result: $scanResult)
-                    .onChange(of: scanResult) { newValue in
+                    .onChange(of: scanResult) { _, newValue in
                         scanUrl = newValue
                         withAnimation {webState = .urlLoaded}
                     }
