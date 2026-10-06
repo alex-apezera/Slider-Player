@@ -12,16 +12,15 @@ import Foundation
 
 class WeatherService: ObservableObject {
     
-    /// This function fetches weather data for a given city using WeatherAPI.
-    ///
+    /// This function fetches weather data for a given city using WeatherAPI.com
     /// The completion handler returns a Result object containing either WeatherData on success or an Error on failure.
     func fetchWeatherData(for city: String, completion: @escaping (Swift.Result<WeatherData, Error>) -> Void) {
         
-        /// Uncomment the following line
-         let apiKey = "ce5be75439cb49ee849221924241010" /// Replace this string with your WeatherAPI API key. -> ce5be75439cb49ee849221924241010  or  -> 8834eb50b5614c00a17132916241110
+        /// Replace this string with my WeatherAPI API key  from  WeatherAPI.com.
+        let apiKey = "ce5be75439cb49ee849221924241010"
+        /// My API key -> ce5be75439cb49ee849221924241010  or  -> 8834eb50b5614c00a17132916241110
         
-        
-        /// Replace interpolated `christiansKey` with `apiKey`
+        /// URL string with `apiKey`
         let urlString = "https://api.weatherapi.com/v1/forecast.json?key=\(apiKey)&q=\(city)&days=5&aqi=no&alerts=no&lang=\(locale)"
 
         /// Create a URL object from the constructed URL string.
@@ -31,7 +30,7 @@ class WeatherService: ObservableObject {
             return
         }
         let session = URLSession.shared
-        /// Create a data task to fetch data from the WeatherAPI using the provided URL.
+        /// Create a data task to fetch data
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 // If there's an error during the network request,

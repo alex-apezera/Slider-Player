@@ -12,7 +12,7 @@ extension WeatherInfo {
     
     func fetchApiData(from coordinate: CLLocationCoordinate2D) {
         let decoder = JSONDecoder()
-//        let locale = languageRu ? "ru" : "en"
+        /// Replace this string with my  API key  from the provided by openweathermap.org.
         let apiKey = "f7ff49543a18b77a8d3cad485e00850a"
         let place = placeTitle.isEmpty ?  "lat=\(coordinate.latitude)&lon=\(coordinate.longitude)" : "q=\(placeTitle)"
 
