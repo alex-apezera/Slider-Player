@@ -59,3 +59,17 @@ struct BlinkViewModifier: ViewModifier {
             .onAppear { withAnimation { blink = true } }
     }
 }
+
+/// Возврат на предыдущий уровень
+struct NavigationDone: ViewModifier {
+    @Environment(\.presentationMode) private var presentationMode
+    func body(content: Content) -> some View {
+        content
+            .navigationBarItems(trailing: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "checkmark")
+            })
+    }
+}
+

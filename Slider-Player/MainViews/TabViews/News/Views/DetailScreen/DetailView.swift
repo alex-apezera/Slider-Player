@@ -21,7 +21,7 @@ struct DetailView: View {
                 MainText(article: article)
             }
             .ignoresSafeArea()
-            .navigationBarHidden(true)
+//            .navigationBarHidden(true)
             
             if !iPadDevice { BackButton() }
                         

@@ -33,4 +33,9 @@ extension View {
     var gradientModifier: some View {
         modifier(GradientEffect())
     }
+    /// Return on the back level
+    var done: some View {
+        modifier(NavigationDone())
+    }
+
 }
