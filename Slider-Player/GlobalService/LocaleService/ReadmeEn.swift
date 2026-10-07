@@ -8,13 +8,13 @@
 extension String {
     static let readmeEn = //English
 """
-This application is designed for educational purposes. Development begins in March 2023. Useful codes and techniques can be used to develop other applications. 
+This application is designed for educational purposes. Development begins in March 2023. Useful codes and techniques can be used to develop other applications. The project was developed without the use of AI.
 
 The Application uses codes borrowed from various sources, programmers' forums, textbooks. 
 
 The necessary changes have been made to the original codes to build a holistic Application. 
 
-Designed for iOS devices with versions above 16.6. There are some examples with codes above 17.0 and 18.0 versions. 
+Designed for iOS devices with versions above 17. There are some examples with codes above 18 versions. 
 
 Only a free standard framework library for XCode is used (Foundation, SwiftUI, PhotosUI, MapKit, CoreLocation, AVKit, AVFoundation, Speech, Media, MediaPlayer, CoreImage, SwiftData, Combine, WebKit etc. ). 
 
@@ -31,7 +31,7 @@ Title (initial) screen with selection:
     Profile and Application Settings. 
     Language selection (localization). 
     Entering the Main Menu of the Application. 
-    Login to the New Map application. They work in conjunction with objects from the "Album". Search, routeing, panoramic views, weather. ** 
+    Login to the New Map application. They work in conjunction with objects from the "Album". Search, routeing, panoramic views, weather. 
     Authorization with password. 
 
 Main menu: 
@@ -57,7 +57,7 @@ Earthquakes
 
 More (useful code examples) 
     Go to the start screen with settings. 
-    Weather* with location search (city, code, coordinates). ** 
+    Weather with location search (city, code, coordinates). ** 
     Current geolocation. 
     Map with search and route (available for all devices).
     Web content (from QR code).
@@ -72,7 +72,6 @@ More (useful code examples)
     Recipe management 
 
 * The functionality is also applied in all Maps with local time display. 
-** The menu item works only on 17.0+ devices. 
 *** With information about latitude, longitude, altitude.
 """
 }
