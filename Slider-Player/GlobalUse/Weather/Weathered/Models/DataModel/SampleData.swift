@@ -7,7 +7,6 @@
 
 import Foundation
 
-@available(iOS 17, *)
 struct SampleData {
     
     static let favoriteLocation = FavoritePlace(

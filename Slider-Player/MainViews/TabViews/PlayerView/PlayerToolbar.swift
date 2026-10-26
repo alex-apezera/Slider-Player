@@ -8,22 +8,11 @@
 import SwiftUI
 extension PlayerView {
     @ToolbarContentBuilder var playerToolbar: some ToolbarContent {
-        ToolbarItem(placement: .automatic) {
-//MARK: - iTunes list
-            NavigationLink {
-                SearchView()
-            } label: {
-                Image("music").resizable().scaledToFit()
-                    .scaleEffect(0.65)
-                    .opacity(isPlaying ? 0.5 : 1)
-            }
-            .disabled(isPlaying)
-        }
         
-        ToolbarItemGroup(placement: .bottomBar) {
-            HStack(spacing: 60) {
+        ToolbarItemGroup(placement: .automatic) {
+            HStack(spacing: 35) {
                 
-//MARK: - Music list + Player
+                //MARK: - Music list + Player
                 if iPadDevice {
                     NavigationLink {
                         MusicListView().environmentObject(AudioManager())
@@ -44,8 +33,8 @@ extension PlayerView {
                         }
                     }
                 }
-
-//MARK: - Audio list + recorder
+                
+                //MARK: - Audio list + recorder
                 NavigationLink {
                     AudioRecorder(audios: $audios)
                         .environmentObject(AudioManager())
@@ -54,17 +43,23 @@ extension PlayerView {
                 }
                 .disabled(isPlaying)
                 
-//MARK: - Music Keyboard + recorder
+                //MARK: - Music Keyboard + recorder
                 NavigationLink(destination: PianoKeyboard().environmentObject(AudioManager())) {
                     Image(systemName: "pianokeys")
                 }
-//MARK: - Speech recognizer
+                //MARK: - Speech recognizer
                 NavigationLink(destination: SpeechView()) {
                     Image(systemName: "person.wave.2")
                 }
+                
+                //MARK: - iTunes list
+                NavigationLink(destination: SearchView()) {
+                        Image(systemName: "music.pages.fill")
+                }
+                .foregroundStyle(.pink).opacity(0.8)
+                .disabled(isPlaying)
+                
             }
-            .padding(8)
-            .background(.thickMaterial)
             .clipShape(.capsule)
         }
     }

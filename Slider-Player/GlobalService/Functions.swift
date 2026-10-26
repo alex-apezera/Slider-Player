@@ -121,6 +121,7 @@ func loadImageFromDocumentDirectory(fileName: String) -> Image {
         return Image(systemName: "questionmark")
     }
 }
+
 func loadImageFromDocumentDirectory(url: URL) -> Image {
     var uiimage = UIImage(systemName: "questionmark.square")
     url.loadUIImage(&uiimage)
@@ -130,16 +131,20 @@ func loadImageFromDocumentDirectory(url: URL) -> Image {
         return Image(systemName: "questionmark")
     }
 }
-public func imageOnMap(url: URL) -> Image {
-    var image = Image(systemName: "questionmark")
+
+public func imageOnMap(url: URL) async -> Image {
     if url.isImage {
-        image = loadImageFromDocumentDirectory(url: url)
+        return loadImageFromDocumentDirectory(url: url) 
     } else if url.isVideo {
-        if let uiimage =  imageFromVideo(url: url, at: 0) {
-            image = Image(uiImage: uiimage)
+        do {
+            if let uiimage = try await imageFromVideo(url: url, at: 0) {
+                return Image(uiImage: uiimage)
+            }
+        } catch {
+            print(error)
         }
     }
-    return image
+    return Image(systemName: "questionmark")
 }
 
 

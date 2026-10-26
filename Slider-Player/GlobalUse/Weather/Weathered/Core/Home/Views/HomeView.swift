@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 import SwiftData
 
-@available(iOS 17.0, *)
 struct HomeView: View {
     @EnvironmentObject var weatherVM: WeatherViewModel
     @EnvironmentObject var locationVM: LocationViewModel

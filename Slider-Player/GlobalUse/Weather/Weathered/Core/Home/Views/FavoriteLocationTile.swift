@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 17, *)
 struct FavoriteLocationTile: View {
     @EnvironmentObject var viewModel: WeatherViewModel
     

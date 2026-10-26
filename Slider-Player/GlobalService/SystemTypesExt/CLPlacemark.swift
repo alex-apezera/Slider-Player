@@ -25,7 +25,6 @@ extension CLPlacemark {
     /// zip code, eg. 95014
     var zipCode: String? { postalCode }
     /// postal address formatted
-    @available(iOS 11.0, *)
     var postalAddressFormatted: String? {
         guard let postalAddress = postalAddress else { return nil }
         return CNPostalAddressFormatter().string(from: postalAddress)

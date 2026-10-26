@@ -57,7 +57,7 @@ struct CurrentLocation: View {
             }
         }
         .onAppear {getCurrentLocationData()}
-        .toolbar { ToolbarWeather(openWeatherView: $openWeatherView, weatherApiView: $weatherApiView).weatherButtons() }
+        .toolbar { ToolbarWeather(openWeatherView: $openWeatherView, weatherApiView: $weatherApiView).weatherButtons }
         .navigationModifier(String.currentLocation)
         .background(LinearGradient(colors:                                        lightsOn ? [.cyan.opacity(0.1), .blue.opacity(0.5)] : [.gray.opacity(0.1), .black.opacity(0.5)], startPoint: .top, endPoint: .bottom))
     }

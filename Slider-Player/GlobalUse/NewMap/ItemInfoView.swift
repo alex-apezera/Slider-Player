@@ -10,7 +10,6 @@
 import SwiftUI
 import MapKit
 
-@available(iOS 17.0, *)
 struct ItemInfoView: View {
     
     let selectedResult: MKMapItem
@@ -61,7 +60,7 @@ struct ItemInfoView: View {
                 getPlacemarkInfo(mapItem: selectedResult)
                 getLookAroundScene(mapItem: selectedResult)
             }
-            .onChange(of: selectedResult) { newValue in
+            .onChange(of: selectedResult) { _, newValue in
                 getPlacemarkInfo(mapItem: newValue)
                 getLookAroundScene(mapItem: newValue)
             }

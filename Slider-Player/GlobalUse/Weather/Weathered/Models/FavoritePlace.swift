@@ -9,7 +9,6 @@
 import SwiftUI
 import SwiftData
 
-@available(iOS 17, *)
 @Model
 final class FavoritePlace {
     var id: UUID

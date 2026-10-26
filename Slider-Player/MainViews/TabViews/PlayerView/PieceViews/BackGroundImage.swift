@@ -27,7 +27,3 @@ extension String {
     static let imageFromWeb =
     "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
 }
-
-#Preview {
-    BackGroundImage()
-}

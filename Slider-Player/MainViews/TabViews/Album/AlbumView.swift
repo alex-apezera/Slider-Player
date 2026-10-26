@@ -37,15 +37,16 @@ struct AlbumView: View {
             .onDelete(perform: deleteImageObjects)
             .onMove(perform: moveImageObjects)
         }
-        .navigationModifier(title)
         .background(.thinMaterial)
-        .toolbar {albumToolbar()}
+        .toolbar {albumToolbar}
         .environment(\.editMode, $editMode)
+//        .navigationModifier(title)
+        .id(title)
     }
     
 //MARK: - Show Image Object Row
     
-    func imageObjectRow(_ metaData: MetaData) -> some View {
+    private func imageObjectRow(_ metaData: MetaData) -> some View {
         HStack {
             SelectedFileView(size: 80, url: metaData.url)
             VStack(alignment: .leading, spacing: 4) {
@@ -56,7 +57,7 @@ struct AlbumView: View {
             }
             .font(.system(size: 12))
             .lineLimit(5)
-            .frame(height: 90)
+            .frame(height: 85)
         }
     }
 

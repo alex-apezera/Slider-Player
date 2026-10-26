@@ -10,7 +10,6 @@
 import SwiftUI
 import MapKit
 
-@available(iOS 17.0, *)
 struct PhotoStackView: View {
     @EnvironmentObject private var metaDataModel: MetaDataModel
     @Binding var selectedPhotoObject: MKMapItem?

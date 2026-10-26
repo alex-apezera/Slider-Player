@@ -7,7 +7,6 @@
 //MARK: - Favorite locations
 
 import SwiftUI
-@available(iOS 17.0, *)
 extension HomeView {
     var favoriteLocationsView: some View {
         VStack {

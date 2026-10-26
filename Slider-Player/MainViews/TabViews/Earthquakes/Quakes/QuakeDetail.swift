@@ -18,6 +18,7 @@ struct QuakeDetail: View {
     @State private var strength = 0.0
     
     var body: some View {
+        let toolbarWeather = ToolbarWeather(openWeatherView: $openWeatherView, weatherApiView: $weatherApiView)
         ZStack {
             VStack {
                 if let location = self.location {
@@ -29,17 +30,12 @@ struct QuakeDetail: View {
                     QuakeMagnitude(quake: quake)
                    
                     HStack {
-                        if #available (iOS 18.0, *) {
-                            //Show text shaking with quake magnitude
-                            Text(quake.place)
-                                .textRenderer(QuakeRenderer(moveAmount: strength))
-                                .onAppear {
-                                    withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {strength = quake.magnitude}
-                                }
-                        } else {
-                            //Plain text
-                            Text(quake.place)
-                        }
+                        //Show text shaking with quake magnitude
+                        Text(quake.place)
+                            .onAppear {
+                                withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {strength = quake.magnitude}
+                            }
+                            .textRenderer(QuakeRenderer(moveAmount: strength))
                     }.font(.title3).bold().foregroundStyle(.primary)
 
                     Text(quake.time.formatted(customDateStyle()))
@@ -76,7 +72,7 @@ struct QuakeDetail: View {
                 }
             }
         }
-        .toolbar { ToolbarWeather(openWeatherView: $openWeatherView, weatherApiView: $weatherApiView).weatherButtons() }
+        .toolbar { toolbarWeather.weatherButtons }
         .navigationBarTitle(String.quakePlace)
         .navigationBarTitleDisplayMode(.inline)
     }

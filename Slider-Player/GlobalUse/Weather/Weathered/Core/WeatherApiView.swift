@@ -27,10 +27,8 @@ struct WeatherApiView: View {
                 conditionsView
             } else {
                 if coordinates.isEmpty {
-                    if #available(iOS 17.0, *) {
-                        HomeView(viewingDetails: $viewingDetails, fontDesign: $fontDesign)
-                            .environmentObject(LocationViewModel())
-                    }
+                    HomeView(viewingDetails: $viewingDetails, fontDesign: $fontDesign)
+                        .environmentObject(LocationViewModel())
                 }
             }
         }

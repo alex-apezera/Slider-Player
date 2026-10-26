@@ -67,23 +67,14 @@ struct GesturedImage: View {
             }
     }
     var zoom: some Gesture {
-        if #available(iOS 17.0, *) {
-            return MagnifyGesture()
-                .onChanged { value in
-                    currentZoom = value.magnification - 1
-                }
-                .onEnded { value in
-                    totalZoom += currentZoom
-                    currentZoom = 0
-                }
-        } else {
-            return TapGesture()
-                .onEnded { _ in
-                    withAnimation {
-                        scale += 0.8
-                    }
-                }
-        }
+        return MagnifyGesture()
+            .onChanged { value in
+                currentZoom = value.magnification - 1
+            }
+            .onEnded { value in
+                totalZoom += currentZoom
+                currentZoom = 0
+            }
     }
     
     var body: some View {

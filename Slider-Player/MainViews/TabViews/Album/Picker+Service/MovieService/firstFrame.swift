@@ -8,20 +8,75 @@
 import SwiftUI
 
 // use this as to call image
-@ViewBuilder
-public func firstFrame(_ movie: URL, size: CGFloat) -> some View {
-    if let uiimage =  imageFromVideo(url: movie, at: 0) {
-        let image = Image(uiImage: uiimage)
-        image.resizable()
-            .frame(width: size, height: size)
-            .cornerRadius(8)
+//@ViewBuilder
+//public func firstFrame(_ movie: URL, size: CGFloat) -> some View {
+//    if let uiimage =  imageFromVideo(url: movie, at: 0) {
+//        let image = Image(uiImage: uiimage)
+//        image.resizable()
+//            .cornerRadius(8)
 //            .scaledToFill()
-            .shadow(radius: 3)
-            .overlay(alignment: .bottomLeading) {
-                let duration = getVideoDuration(from: movie)
-                if !duration.isEmpty {
-                    Text(duration).font(.caption2).background(.thinMaterial).foregroundStyle(.white).offset(x: 3, y: -3).underline(false)
-                }
+//            .frame(width: size, height: size)
+//            .overlay(alignment: .bottomLeading) {
+//                let duration = getVideoDuration(from: movie)
+//                if !duration.isEmpty {
+//                    Text(duration).font(.caption2).background(.thinMaterial).foregroundStyle(.white).offset(x: 3, y: -3).underline(false)
+//                }
+//            }
+//    }
+//}
+
+/// Use this as to call a first frame video.
+///
+/// Include separated small view for the duration stamp.
+public func firstFrame(_ size: CGFloat, _ movie: URL) -> some View {
+    FirstFrameView(size: size, movie: movie)
+}
+
+public struct FirstFrameView: View {
+    let size: CGFloat
+    let movie: URL
+
+    @State private var uiImage: UIImage?
+    @State private var duration: String = ""
+
+    public var body: some View {
+        Group {
+            if let uiImage {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: size, height: size)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay(alignment: .bottomLeading) {
+                        if !duration.isEmpty {
+                            Text(duration)
+                                .font(.caption2)
+                                .background(.thinMaterial)
+                                .foregroundStyle(.white)
+                                .offset(x: 3, y: -3)
+                                .underline(false)
+                        }
+                    }
+            } else {
+                // Placeholder while the image loads
+                Rectangle()
+                    .fill(Color.gray.opacity(0.3))
+                    .frame(width: size, height: size)
+                    .cornerRadius(8)
             }
+        }
+        .task {
+            do {
+                if let img = try await imageFromVideo(url: movie, at: 0) {
+                    uiImage = img
+                }
+                duration = try await getVideoDuration(from: movie)
+            } catch {
+                print("Ошибка извлечения первого кадра из видео",error)
+                uiImage = UIImage(systemName: "video.square.fill")
+            }
+        }
     }
 }
+

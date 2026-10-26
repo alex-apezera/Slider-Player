@@ -10,7 +10,6 @@
 import SwiftUI
 import MapKit
 
-@available(iOS 17.0, *)
 extension ItemInfoView {
     
     func getLookAroundScene(mapItem: MKMapItem) {
@@ -60,46 +59,19 @@ extension ItemInfoView {
     
     var sidebarInfo: some View {
         VStack {
-            Button {
-                showOpenWeatherInfo = true
-            } label: {
-                if iPadDevice {
-                    Image("openweathermap").resizable()
-                } else {
-                    Image(systemName: "thermometer.sun.fill")
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.red, .orange, .cyan)
-                }
+            WeatherButton(icon: "openweathermap") {
+                showOpenWeatherInfo.toggle()
             }
-            .scaledToFit()
-            .clipShape(RoundedRectangle(cornerRadius:5))
-            .frame(width: 26, height: 26)
+            WeatherButton(icon: "weatherapi") {
+                showWeatherInfo.toggle()
+            }
 
-            Button {
-                showWeatherInfo = true
-            } label: {
-                if iPadDevice {
-                    Image("weatherapi").resizable()
-                } else {
-                    Image(systemName: "cloud.sun.rain.fill")
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(.cyan, .orange, .indigo)
-                }
+            AnyButton(icon: "questionmark.app") {
+                showPlaceInfo.toggle()
             }
-            .scaledToFit()
-            .clipShape(RoundedRectangle(cornerRadius: 5))
-            .frame(width: 36, height: 28)
-
-            Button {
-                showPlaceInfo = true
-            } label: {
-                Image(systemName: "questionmark.app")
-            }
-            .padding(.top, 1)
-            .font(.system(size: 28))
+            .padding(.top,1)
+            .font(.title)
         }
-        .buttonStyle(.borderless)
-        .font(.title2)
     }
     
     var selectedLocationInfo: some View {

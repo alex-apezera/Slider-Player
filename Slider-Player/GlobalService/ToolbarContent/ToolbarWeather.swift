@@ -12,30 +12,18 @@ import SwiftUI
 struct ToolbarWeather {
     @Binding var openWeatherView: Bool
     @Binding var weatherApiView: Bool
-    @ToolbarContentBuilder func weatherButtons() -> some ToolbarContent {
+    @ToolbarContentBuilder
+    var weatherButtons: some ToolbarContent {
         
         ToolbarItemGroup(placement: .topBarTrailing) {
             
-            HStack(spacing: 20) {
-                
-                Button {
-                   openWeatherView.toggle()
-                } label: {
-                    Image("openweathermap").resizable()
-                }
-                .scaledToFit()
-                .clipShape(RoundedRectangle(cornerRadius: 5))
-                .frame(maxWidth: 28)
-                
-                Button {
-                    weatherApiView.toggle()
-                } label: {
-                    Image("weatherapi").resizable()
-                }
-                .scaledToFit()
-                .clipShape(RoundedRectangle(cornerRadius: 5))
-                .frame(maxWidth: 36)
+            WeatherButton(icon: "openweathermap") {
+                openWeatherView.toggle()
             }
+            WeatherButton(icon: "weatherapi") {
+                weatherApiView.toggle()
+            }
+
         }
     }
     

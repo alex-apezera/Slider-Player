@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-@available(iOS 17.0, *)
 extension HomeView {
     var toolBarView: some View {
         HStack(spacing: 0) {

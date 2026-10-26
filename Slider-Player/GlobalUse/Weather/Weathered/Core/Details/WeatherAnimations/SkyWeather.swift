@@ -97,9 +97,3 @@ struct SkyWeather: View {
         
     }
 }
-@available(iOS 17, *)
-#Preview {
-    SkyWeather(weatherData: SampleData.weather)
-        .preferredColorScheme(.dark)
-}
-

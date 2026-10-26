@@ -16,7 +16,7 @@ extension SelectedObjectView {
         metaDataModel.metaDataObject = retrieveMetaDataObject()
     }
     
-//MARK: - Get location from Photo object and fetch Meta data
+    /// Get location from Photo object and fetch Meta data
     func getLocationData(_ index: Int) {
         
         var latitude = metaDataModel.metaDataObject[index].latitude
@@ -40,7 +40,7 @@ extension SelectedObjectView {
         getInfo.convertCoordinateToInfo(location)
     }
     
-//MARK: - Show Title, Address, Date and Coordinate of Photo object
+    /// Show Title, Address, Date and Coordinate of Photo object
     func showMetaData(_ index: Int) -> some View {
         VStack(alignment:.center) {
             
@@ -69,8 +69,6 @@ extension SelectedObjectView {
             }
             .foregroundStyle(.tertiary).font(.footnote)
         }
-        
-//MARK: - Manage block
         .padding(5)
         .multilineTextAlignment(.center)
         .keyboardType(.emailAddress)
@@ -79,11 +77,11 @@ extension SelectedObjectView {
             latitudeText = String(metaDataModel.metaDataObject[index].latitude.formatted(.number.precision(.fractionLength(3))))
             longitudeText = String(metaDataModel.metaDataObject[index].longitude.formatted(.number.precision(.fractionLength(3))))
         }
-        .onChange(of: latitudeText) { newValue in
+        .onChange(of: latitudeText) { _, newValue in
             let degree = CLLocationDegrees(Double(newValue) ?? metaDataModel.metaDataObject[index].latitude)
             metaDataModel.metaDataObject[index].latitude = degree
         }
-        .onChange(of: longitudeText) { newValue in
+        .onChange(of: longitudeText) { _, newValue in
             let degree = CLLocationDegrees(Double(newValue) ?? metaDataModel.metaDataObject[index].longitude)
             metaDataModel.metaDataObject[index].longitude = degree
         }

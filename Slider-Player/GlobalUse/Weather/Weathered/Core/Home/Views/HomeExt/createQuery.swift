@@ -7,7 +7,6 @@
 
 import SwiftUI
 import MapKit
-@available(iOS 17.0, *)
 extension HomeView {
     
     func createQuery() {

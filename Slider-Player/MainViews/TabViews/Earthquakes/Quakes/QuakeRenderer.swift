@@ -9,7 +9,6 @@ import SwiftUI
 
 //MARK: - Text shake with amount
 
-@available(iOS 17.0, *)
 struct QuakeRenderer: TextRenderer {
     var moveAmount: Double
 

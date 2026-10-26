@@ -16,7 +16,7 @@ struct SelectedFileView: View {
         if url.isImage {
             SelectedImageView(size: size, url: url)
         } else {
-            firstFrame(url, size: size)
+            firstFrame(size, url)
         }
     }
 }

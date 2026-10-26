@@ -8,7 +8,6 @@
 import SwiftUI
 import MapKit
 
-@available(iOS 17.0, *)
 struct MapButtons: View {
     @Binding var position: MapCameraPosition
     @Binding var searchResults: [MKMapItem]

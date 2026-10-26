@@ -90,6 +90,8 @@ extension MapView {
         searchQuery = data.address
         destinationLocation = CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude)
         /// get photo object image
-        photoObjectImage = imageOnMap(url: data.url)
+        Task {
+            photoObjectImage = await imageOnMap(url: data.url)
+        }
     }
 }

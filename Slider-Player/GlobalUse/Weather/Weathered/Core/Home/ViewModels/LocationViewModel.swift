@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import MapKit
 
-@available(iOS 17.0, *)
 class LocationViewModel: ObservableObject {
     @Published var locationManager: LocationManager
     @Published var userLocationKnown: Bool

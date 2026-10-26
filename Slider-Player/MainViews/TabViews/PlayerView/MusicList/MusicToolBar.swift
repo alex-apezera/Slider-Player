@@ -51,15 +51,8 @@ extension MusicListView {
         }
  //MARK: - Bottom State String
         ToolbarItemGroup(placement: .bottomBar) {
-            RefreshButton {
-                manager.getMusicFiles()
-                completePieces()
-                lastUpdatedMusicFiles = Date().timeIntervalSince1970
-            }
-            Spacer()
-            ToolbarStatus(title: .pieces, isLoading: isLoading, lastUpdated: lastUpdatedMusicFiles, count: manager.pieces.count)
-            Spacer()
-                //MARK: - Copy music files to main directory
+            
+            // Copy music files to audiorec directory
             Button {
                 copyFile = true
                 copyMusicFiles(for: Array(selection))
@@ -68,15 +61,21 @@ extension MusicListView {
                 Image(systemName: "arrowshape.turn.up.right")
             }
             .disabled(isLoading || selection.isEmpty)
-            .padding(10)
-            //MARK: - Export music file
+
+            // Current status of List
+            Spacer()
+            ToolbarStatus(title: .pieces, isLoading: isLoading, lastUpdated: lastUpdatedMusicFiles, count: manager.pieces.count)
+            Spacer()
+
+            // Export music file
             if editMode == .inactive {
                 ShareLink(item: FileManager.musicFilesDir.appendingPathComponent(exportTrack(for: Array(selection)).lastPathComponent), subject: Text(String.exportTrack)) {
                     Image(systemName: "square.and.arrow.up")
                 }
                 .disabled(isLoading || selection.isEmpty || selection.count > 1)
             }
-            //MARK: - Delete selected files
+
+            // Delete selected files
             if editMode == .active {
                 DeleteButton {
                     withAnimation {

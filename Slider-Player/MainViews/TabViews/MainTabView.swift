@@ -52,7 +52,7 @@ struct MainTabView: View {
             }.tag(3)
             //MARK: - Useful content
             NavigationView {ExamplesView(backToLaunchView: $backToLaunchView)}
-                .badge(tabSelected)
+//                .badge(tabSelected)
                 .tabItem {
                     Label(String.more, systemImage: "ellipsis")
                 }.tag(4)

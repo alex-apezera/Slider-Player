@@ -26,26 +26,10 @@ struct ExamplesView: View {
                 Label(String.homePage, systemImage: "house")
                     .underline(false, color: .clear)
             }
-            
             //MARK: - Show Weather
-            if #available(iOS 17.0, *) {
-                if iPadDevice {
-                    NavigationLink(destination: WeatherApp()) {
-                        Label(String.weather, systemImage: "thermometer.variable.and.figure")
-                            .underline(false, color: .clear)
-                    }
-                    
-                } else {
-                    Button { withAnimation {
-                        showWeather.toggle() }
-                    } label: {
-                        Label(String.weather, systemImage: "thermometer.variable.and.figure")
-                            .underline(false, color: .clear)
-                    }
-                    .sheet(isPresented: $showWeather) {
-                        WeatherApp()
-                    }
-                }
+            NavigationLink(destination: WeatherApp()) {
+                Label(String.weather, systemImage: "thermometer.variable.and.figure")
+                    .underline(false, color: .clear)
             }
             //MARK: - Show Current location and Weather
             NavigationLink(destination: CurrentLocation()) {

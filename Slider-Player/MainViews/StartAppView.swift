@@ -25,7 +25,7 @@ struct StartAppView: View {
                 LaunchView(start: $startMainMenu, startNewMap: $startNewMap)
             }  else if startMainMenu {
                 MainTabView(backToLaunchView: $startMainMenu)
-            } else if startNewMap, #available(iOS 17.0, *) {
+            } else if startNewMap {
                 NewMapView(startNewMap: $startNewMap)
             }
         }

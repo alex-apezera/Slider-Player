@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-@available(iOS 17.0, *)
 struct WeatherApp: View {
     @State var viewingDetails: Bool = false
     @StateObject var weatherVM = WeatherViewModel()

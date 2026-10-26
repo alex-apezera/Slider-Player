@@ -122,7 +122,7 @@ struct PlayerView: View {
         }
 //MARK: - Manage block
         .background(.secondary.opacity(0.3))
-        .navigationModifier(String.player)
+        .navigationModifier("▶️"/*String.player*/)
         .toolbar {playerToolbar}
         .sheet(isPresented: $showPiece) {
             PieceInfo()

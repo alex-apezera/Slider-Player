@@ -9,7 +9,6 @@
 import SwiftUI
 import MapKit
 
-@available(iOS 17.0, *)
 struct NewMapView: View {
     @Binding var startNewMap: Bool
     
@@ -46,6 +45,8 @@ struct NewMapView: View {
     @State var selectedTapItem: MKMapItem?
     @State var route: MKRoute?
     @State var startPoint: MKMapItem?
+    
+    @State var image: Image = Image(systemName: "questionmark")
         
     let gradient = LinearGradient(colors: [.red, .green, .blue], startPoint: .leading, endPoint: .trailing)
     let stroke = StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round, dash: [4, 4])
@@ -56,7 +57,7 @@ struct NewMapView: View {
                 
 //MARK: - Parking Marker if exist startPoint
                 if let startPoint {
-                    let parkingPoint = startPoint.placemark.coordinate
+                    let parkingPoint = startPoint.location.coordinate
                     Marker(String.parking, systemImage: "car.fill", coordinate: parkingPoint)
                         .tint(.mint)
                         .mapOverlayLevel(level: .aboveLabels)
@@ -128,7 +129,16 @@ struct NewMapView: View {
                     startRoutePoint = false })
             }
             .onChange(of: startFromCL) { withAnimation {
-                startPoint = MKMapItem(placemark: MKPlacemark(coordinate: userPoint.currentCoordinate))
+// Было до 18 версии iOS
+//                startPoint = MKMapItem(placemark: MKPlacemark(coordinate: userPoint.currentCoordinate))
+
+                // New after v26 iOS
+                let location = CLLocation(
+                    latitude: userPoint.currentCoordinate.latitude,
+                    longitude: userPoint.currentCoordinate.longitude
+                )
+                startPoint = MKMapItem(location: location, address: nil)
+
                 getDirections() }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     startFromCL = false })

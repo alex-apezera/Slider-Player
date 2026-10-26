@@ -42,9 +42,6 @@ struct MediasPicker: View {
     
     @State private var flexibleColumns = Array(repeating: GridItem(.flexible()), count: initialColumns)
     
-//    private var columnsTitle: String {
-//        flexibleColumns.count > 1 ? "\(flexibleColumns.count) \(String.columns)" : "1 \(String.column)"
-//    }
     private var columnsTitle: String {
         let count = flexibleColumns.count
         switch count {

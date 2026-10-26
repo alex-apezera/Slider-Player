@@ -81,28 +81,26 @@ extension LaunchView {
             Spacer()
 
             //MARK: - New map
-            if #available(iOS 17.0, *) {
-                Button {
-                    color = Color.random()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {withAnimation {startNewMap = true}})
-                } label: {
-                    if iPadDevice {
-                        HStack {
-                            Image(systemName: "map")
-                            Text(String.newMap).padding(.trailing, 10)
-                            Image(systemName: "control").font(.footnote)
-                            Text("M")
-                        }
-                    } else {
+            Button {
+                color = Color.random()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {withAnimation {startNewMap = true}})
+            } label: {
+                if iPadDevice {
+                    HStack {
                         Image(systemName: "map")
+                        Text(String.newMap).padding(.trailing, 10)
+                        Image(systemName: "control").font(.footnote)
+                        Text("M")
                     }
+                } else {
+                    Image(systemName: "map")
                 }
-                .opacity(isPasswordCorrect ? 1.0 : 0.3)
-                .disabled(!isPasswordCorrect)
-                .keyboardShortcut("m", modifiers: [.control])
-                .buttonStyle(Hovering(hoverMessage: .newMap + .withSearchPlaces))
-                Spacer()
             }
+            .opacity(isPasswordCorrect ? 1.0 : 0.3)
+            .disabled(!isPasswordCorrect)
+            .keyboardShortcut("m", modifiers: [.control])
+            .buttonStyle(Hovering(hoverMessage: .newMap + .withSearchPlaces))
+            Spacer()
             
             //MARK: - Autorization
             Button {

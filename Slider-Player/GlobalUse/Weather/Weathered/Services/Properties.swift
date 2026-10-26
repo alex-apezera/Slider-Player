@@ -128,11 +128,7 @@ func windIcon(_ quantity: Double) -> some View {
     func rainIcon(_ quantity: Double) -> some View {
         HStack {
             if quantity >= 0.1 && quantity < 1 {
-                if #available(iOS 17.0, *) {
-                    Image(systemName: "drop.halffull")
-                } else {
-                    Image(systemName: "drop.circle")
-                }
+                Image(systemName: "drop.halffull")
             } else if quantity >= 1 && quantity < 2 {
                 Image(systemName: "cloud.rain")
             } else if quantity >= 2 && quantity < 3 {
@@ -203,29 +199,14 @@ func windIcon(_ quantity: Double) -> some View {
 func pressureIcon(_ quantity: Int) -> some View {
     HStack {
         if quantity > 1015 {
-            if #available(iOS 17.0, *) {
-                Image(systemName: "gauge.with.dots.needle.67percent")
-                    .foregroundStyle(.red, .blue)
-            } else {
-                Image(systemName: "arrow.down.right.and.arrow.up.left.circle")
-                    .foregroundStyle(.red, .blue)
-            }
+            Image(systemName: "gauge.with.dots.needle.67percent")
+                .foregroundStyle(.red, .blue)
         } else if quantity <= 1015 && quantity > 995 {
-            if #available(iOS 17.0, *) {
-                Image(systemName: "gauge.with.dots.needle.50percent")
-                    .foregroundStyle(.orange, .cyan)
-            } else {
-                Image(systemName: "arrow.down.right.and.arrow.up.left.circle")
-                    .foregroundStyle(.orange, .cyan)
-            }
+            Image(systemName: "gauge.with.dots.needle.50percent")
+                .foregroundStyle(.orange, .cyan)
         } else {
-            if #available(iOS 17.0, *) {
-                Image(systemName: "gauge.with.dots.needle.33percent")
-                    .foregroundStyle(.red, .mint)
-            } else {
-                Image(systemName: "arrow.up.left.and.arrow.down.right.circle")
-                    .foregroundStyle(.red, .mint)
-            }
+            Image(systemName: "gauge.with.dots.needle.33percent")
+                .foregroundStyle(.red, .mint)
         }
     }
     .symbolRenderingMode(.palette)

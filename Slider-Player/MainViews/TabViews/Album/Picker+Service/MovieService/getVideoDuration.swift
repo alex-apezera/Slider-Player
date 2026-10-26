@@ -8,11 +8,33 @@
 import AVFoundation
 
 // video duration stamp on firstFrame
-public func getVideoDuration(from path: URL) -> String {
+//public func getVideoDuration(from path: URL) -> String {
+//    let asset = AVURLAsset(url: path)
+//    
+//    let duration: CMTime =  asset.duration
+//  
+//    let totalSeconds = CMTimeGetSeconds(duration)
+//    let hours = Int(totalSeconds / 3600)
+//    let minutes = Int((totalSeconds.truncatingRemainder(dividingBy: 3600)) / 60)
+//    let seconds = Int(totalSeconds.truncatingRemainder(dividingBy: 60))
+//
+//    if hours > 0 {
+//        return String(format: "%i:%02i:%02i", hours, minutes, seconds)
+//    } else if !(minutes == 0 && seconds == 0) {
+//        return String(format: "%02i:%02i", minutes, seconds)
+//    } else {
+//        return ""
+//    }
+//}
+//
+//import AVFoundation
+
+/// Video duration stamp on  a firstFrame image.
+///
+public func getVideoDuration(from path: URL) async throws -> String {
     let asset = AVURLAsset(url: path)
-    
-    let duration: CMTime =  asset.duration
-  
+    let duration: CMTime = try await asset.load(.duration)
+
     let totalSeconds = CMTimeGetSeconds(duration)
     let hours = Int(totalSeconds / 3600)
     let minutes = Int((totalSeconds.truncatingRemainder(dividingBy: 3600)) / 60)
@@ -26,3 +48,4 @@ public func getVideoDuration(from path: URL) -> String {
         return ""
     }
 }
+

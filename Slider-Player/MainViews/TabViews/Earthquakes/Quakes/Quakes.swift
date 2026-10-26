@@ -18,8 +18,8 @@ struct Quakes: View {
     @State var selectMode: SelectMode = .inactive
     @State var isLoading = false
     @State var selection: Set<String> = []
-    @State private var error: QuakeError?
-    @State private var hasError = false
+    @State var error: QuakeError?
+    @State var hasError = false
     
     var body: some View {
         List(selection: $selection) {
@@ -33,8 +33,7 @@ struct Quakes: View {
         .onChange(of: selection) { _, newValue in
             print(#function, selection)
         }
-        .navigationModifier(title)
-        .toolbar {toolbarContent()}
+        .toolbar {toolbarContent}
         .environment(\.editMode, $editMode)
         .refreshable {
             await fetchQuakes()
@@ -45,37 +44,3 @@ struct Quakes: View {
     }
 }
 
-extension Quakes {
-    var title: String {
-        if selectMode.isActive || selection.isEmpty {
-            return .capQuakes
-        } else {
-            return "\(selection.count) \(String.selected)"
-        }
-    }
-    func deleteQuakes(at offsets: IndexSet) {
-        provider.deleteQuakes(atOffsets: offsets)
-    }
-    func deleteQuakes(for codes: Set<String>) {
-        var offsetsToDelete: IndexSet = []
-        for (index, element) in provider.quakes.enumerated() {
-            if codes.contains(element.code) {
-                offsetsToDelete.insert(index)
-            }
-        }
-        deleteQuakes(at: offsetsToDelete)
-        selection.removeAll()
-    }
-    func fetchQuakes() async {
-        do {
-            try await provider.fetchQuakes()
-            DispatchQueue.main.async {
-                quakesCount = provider.quakes.count
-                lastUpdated = Date().timeIntervalSince1970
-            }
-        } catch {
-            self.error = error as? QuakeError ?? .unexpectedError(error: error)
-            hasError = true
-        }
-    }
-}

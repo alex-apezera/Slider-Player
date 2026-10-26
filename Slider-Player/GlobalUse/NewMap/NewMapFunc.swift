@@ -10,7 +10,6 @@
 import MapKit
 import SwiftUI
 
-@available(iOS 17.0, *)
 extension NewMapView {
     
     func mapControlButtons() -> some View {
@@ -44,11 +43,14 @@ extension NewMapView {
                 .fill(.background)
             RoundedRectangle(cornerRadius: 8)
                 .stroke(.secondary, lineWidth: 2)
-            imageOnMap(url: mediaURLs[item])
-                .resizable()
+            image.resizable()
                 .cornerRadius(7)
                 .frame(width: 35, height: 35, alignment: .center)
                 .padding(2)
+        }
+        .task(id: item) {
+            let loaded = await imageOnMap(url: mediaURLs[item])
+            image = loaded
         }
     }
     
@@ -63,7 +65,7 @@ extension NewMapView {
                 .foregroundStyle(.secondary)
             TextField(String.enterDegrees, text: $spanText, axis: .horizontal)
         }
-        .onChange(of: spanText) { newValue in
+        .onChange(of: spanText) { _, newValue in
             let number = Double(newValue) ?? span
             let degree = CLLocationDegrees(number)
             span = degree
@@ -94,11 +96,27 @@ extension NewMapView {
         .background(.thinMaterial)
     }
     
+    // Deprecated version
+//    func getMarkerItem(reader: MapProxy, screenCoord: CGPoint) -> MKMapItem? {
+//        let pinLocation = reader.convert(screenCoord, from: .local)
+//        let placemark = MKPlacemark(coordinate: pinLocation ??  userPoint.currentCoordinate)
+//        newRegion = MKCoordinateRegion(center: pinLocation!, span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span))
+//        print(#function, newRegion!)
+//        return MKMapItem(placemark: placemark)
+//    }
+    
+    /// New placemark
     func getMarkerItem(reader: MapProxy, screenCoord: CGPoint) -> MKMapItem? {
-        let pinLocation = reader.convert(screenCoord, from: .local)
-        let placemark = MKPlacemark(coordinate: pinLocation ??  userPoint.currentCoordinate)
-        newRegion = MKCoordinateRegion(center: pinLocation!, span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span))
+        let coordinate = reader.convert(screenCoord, from: .local) ?? userPoint.currentCoordinate
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+
+        newRegion = MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)
+        )
         print(#function, newRegion!)
-        return MKMapItem(placemark: placemark)
+
+        return MKMapItem(location: location, address: nil)
     }
+
 }
