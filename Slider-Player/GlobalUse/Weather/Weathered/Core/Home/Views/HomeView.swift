@@ -115,12 +115,8 @@ struct HomeView: View {
                     }
                 }
             }
-            .onChange(of: searchText) { _ in
-                createQuery()
-            }
-            .onAppear {
-                updateMap()
-            }
+            .onChange(of: searchText) { createQuery() }
+            .onAppear { updateMap() }
         }
     }
 }

@@ -42,5 +42,3 @@ struct TapView: View {
         }
     }
 }
-
-#Preview {TapView()}

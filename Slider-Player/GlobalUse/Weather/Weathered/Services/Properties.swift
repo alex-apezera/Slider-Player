@@ -8,7 +8,7 @@
 import SwiftUI
 
 //MARK: - Item View
-@ViewBuilder func itemView(size: CGFloat, item: some View) -> some View {
+func itemView(size: CGFloat, item: some View) -> some View {
     Rectangle()
         .frame(width: size, height: 17)
         .foregroundStyle(.clear)
@@ -23,28 +23,28 @@ import SwiftUI
 
 
 //MARK: Rendering Icon of Metric
-    func iconRendering(_ value: Double, for metric: String) -> some View {
-        HStack {
-            switch metric {
-            case .feelsLike, .maxTemp, .minTemp, .temperature: tempIcon(for: value)
-            case .clouds: cloudinessIcon(Int(value))
-            case .pressure: pressureIcon(Int(value))
-            case .humidity: humidityIcon(Int(value))
-            case .visibility: visibilityIcon(Int(value))
-            case .uvIndex: uvIndexIcon(Int(value))
-            case .maxWind, .wind: windIcon(value)
-            case .sunrise: sunriseIcon()
-            case .sunset: sunsetIcon()
-            case .moonrise: moonriseIcon()
-            case .moonset: moonsetIcon()
-            case .totalPrecpt, .precipitation, .precipMm: rainIcon(value)
-            case .totalSnow, .snowCm: snowIcon(value)
-            case .rainChance: rainChanceIcon(value)
-            case .snowChance: snowChanceIcon(value)
-            default: windIcon(value)
-            }
+func iconRendering(_ value: Double, for metric: String) -> some View {
+    HStack {
+        switch metric {
+        case .feelsLike, .maxTemp, .minTemp, .temperature: tempIcon(for: value)
+        case .clouds: cloudinessIcon(Int(value))
+        case .pressure: pressureIcon(Int(value))
+        case .humidity: humidityIcon(Int(value))
+        case .visibility: visibilityIcon(Int(value))
+        case .uvIndex: uvIndexIcon(Int(value))
+        case .maxWind, .wind: windIcon(value)
+        case .sunrise: sunriseIcon()
+        case .sunset: sunsetIcon()
+        case .moonrise: moonriseIcon()
+        case .moonset: moonsetIcon()
+        case .totalPrecpt, .precipitation, .precipMm: rainIcon(value)
+        case .totalSnow, .snowCm: snowIcon(value)
+        case .rainChance: rainChanceIcon(value)
+        case .snowChance: snowChanceIcon(value)
+        default: windIcon(value)
         }
     }
+}
 //MARK: - Sunrise icon
 func sunriseIcon() -> some View {
     Image(systemName: "sunrise")

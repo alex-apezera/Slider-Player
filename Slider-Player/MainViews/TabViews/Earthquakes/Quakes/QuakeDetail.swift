@@ -73,7 +73,6 @@ struct QuakeDetail: View {
             }
         }
         .toolbar { toolbarWeather.weatherButtons }
-        .navigationBarTitle(String.quakePlace)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationModifier(String.quakePlace)
     }
 }

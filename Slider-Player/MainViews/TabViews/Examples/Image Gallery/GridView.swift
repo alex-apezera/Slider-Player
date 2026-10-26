@@ -81,8 +81,7 @@ struct GridView: View {
             }
         } ///NavigationStack
         .buttonStyle(.borderless)
-        .navigationBarTitle("Image Gallery")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationModifier("Image Gallery")
         .environmentObject(dataModel)
         .navigationViewStyle(.stack)
     }

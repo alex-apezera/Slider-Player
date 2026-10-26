@@ -45,5 +45,3 @@ struct SingleLine: View {
         }
     }
 }
-
-#Preview { SingleLine() }

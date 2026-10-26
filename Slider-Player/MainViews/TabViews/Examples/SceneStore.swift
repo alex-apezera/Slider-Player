@@ -32,8 +32,7 @@ struct SceneStore: View {
                     Text("Airplane Trips")
                 }.tag(Tab.airplaine)
         }
-        .navigationBarTitle("Scene Storage")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationModifier("Scene Storage")
     }
     
     // Has to be RawRepresentable to be saved into SceneStorage

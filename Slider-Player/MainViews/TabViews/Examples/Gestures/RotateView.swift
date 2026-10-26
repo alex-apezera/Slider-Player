@@ -43,5 +43,3 @@ struct RotateView: View {
         }
     }
 }
-
-#Preview {RotateView()}

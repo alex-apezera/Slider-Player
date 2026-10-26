@@ -142,7 +142,7 @@ extension String {
     static var capQuakes: Self {localeRu ? .ruQuakes : .enQuakes}
     
     //MARK: - Examples
-    static var webUrlExample = "https://www.apple.com"
+    static var webUrlExample = "https://www.google.com"
     static var weather: Self {localeRu ? "Погода" : "Weather"}
     static var currentLocation: Self {localeRu ? "Текущее место" : "Current location"}
     static var mapSearch: Self {localeRu ? "Поиск на карте" : "Map search"}
@@ -161,9 +161,9 @@ extension String {
     static var cancel: String {localeRu ? "Отмена" : "Cancel"}
     
     //MARK: - QR Code
-    static var webContent: Self {localeRu ? "WEB запрос" : "WEB content"}
+    static var webContent: Self {localeRu ? "Вэб запрос" : "Web request"}
     static var documentTitle: Self {localeRu ? "Заголовок документа" : "Document title"}
-    static var qrCodeGenerator: Self {localeRu ? "QR-код генератор" : "QR Code Generator"}
+    static var qrCodeGenerator: Self {localeRu ? "Вэб запрос + QR-код" : "Web request + QR Code"}
     static var qrCodeScanner: Self {localeRu ? "QR-код сканер" : "QR Code Scanner"}
     static var qrCodeNotRecognized: Self {localeRu ? "QR-код не распознан" : "QR Code not recognized"}
     static var enterUrl: Self {localeRu ? "Введите URL" : "Enter URL"}

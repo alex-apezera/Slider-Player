@@ -12,7 +12,7 @@ import SwiftUI
 struct QRCodeGeneratorView: View {
     @Binding var webUrl: String
     
-    @AppStorage("urlInput") var urlInput: String = ""
+    @AppStorage("urlInput") var urlInput: String = .webUrlExample
     @State private var qrCode: QRCode?
     
     private let qrCodeGenerator = QRCodeGenerator()
@@ -64,8 +64,7 @@ struct QRCodeGeneratorView: View {
             }
             .underline(false)
             .padding()
-            .navigationBarTitle(String.qrCodeGenerator)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationModifier(String.qrCodeGenerator)
         }
     }
     

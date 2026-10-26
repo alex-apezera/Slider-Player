@@ -42,5 +42,3 @@ struct DragView: View {
         }
     }
 }
-
-#Preview {DragView()}

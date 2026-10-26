@@ -15,7 +15,7 @@ struct ExamplesView: View {
     @StateObject var dataModel = DataModel()
     @State var showWeather = false
     @StateObject var weatherVM = WeatherViewModel()
-    @State var webUrl: String = .webUrlExample
+    @AppStorage("webUrl") var webUrl: String = .webUrlExample
 
     var body: some View {
         List {

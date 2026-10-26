@@ -20,7 +20,6 @@ struct WebContentView: View {
             VStack(spacing: 0) {
                 WebNavigationView(viewModel: viewModel)
                 WebView(type: .public, url: webUrl, viewModel: viewModel)
-//                WebView(type: .local, url: "local", viewModel: viewModel)
             }
             if isLoaderVisible {
                 LoaderView()
@@ -31,8 +30,4 @@ struct WebContentView: View {
         }
         .navigationModifier(webUrl)
     }
-}
-
-#Preview {
-    WebContentView(webUrl: .webUrlExample)
 }

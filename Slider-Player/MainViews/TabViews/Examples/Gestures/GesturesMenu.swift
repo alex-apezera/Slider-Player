@@ -52,5 +52,3 @@ struct GesturesMenu: View {
         .navigationModifier("Gesture experience")
     }
 }
-
-#Preview {GesturesMenu()}

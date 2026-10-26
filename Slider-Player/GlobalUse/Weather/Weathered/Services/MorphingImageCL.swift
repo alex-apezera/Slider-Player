@@ -83,7 +83,7 @@ public struct MorphingImageCL: View {
                 symbol(forSize: reader.size).tag(0)
                     
             }
-            .onChange(of: image) { _ in
+            .onChange(of: image) { 
                 currentTask?.cancel()
                 currentTask = Task {
                     let halfDuration = duration / 2

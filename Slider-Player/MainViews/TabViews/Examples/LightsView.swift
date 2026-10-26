@@ -53,7 +53,7 @@ struct LightView: View {
                 Spacer()                
             }
             .foregroundColor(foregroundColor)
-            .onChange(of: lightsOn) { value in
+            .onChange(of: lightsOn) { _, value in
                 withAnimation {
                     if value {
                         rotation += 360
@@ -64,7 +64,6 @@ struct LightView: View {
             }
         }
         .preferredColorScheme(lightsOn ? .light : .dark)
-        .navigationBarTitle(String.toggleLights)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationModifier(String.toggleLights)
     }
 }
