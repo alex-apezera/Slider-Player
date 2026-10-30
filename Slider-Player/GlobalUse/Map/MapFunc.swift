@@ -22,7 +22,7 @@ extension MapView {
         if directionsOn{
             isSearching = true
             direction.sourceLocation = regionDefault.center
-            direction.finalDestination = selectedResult.placemark.coordinate
+            direction.finalDestination = selectedResult.location.coordinate
         }
         isSearching = false
     }
@@ -34,7 +34,9 @@ extension MapView {
         searchedTime = 0
         if let location = locationManager.location {
             regionDefault = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            let currentLocation = MKMapItem(placemark: MKPlacemark(coordinate: location))
+            let placemark = CLLocation(latitude: location.latitude, longitude: location.longitude)
+//            let currentLocation = MKMapItem(placemark: MKPlacemark(coordinate: location))
+            let currentLocation = MKMapItem(location: placemark, address: nil)
             selectedResult =  currentLocation
         }
     }

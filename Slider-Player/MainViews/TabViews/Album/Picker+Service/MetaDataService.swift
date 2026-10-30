@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 import PhotosUI
 
 //MARK: - Get and store MetaDataobjects
@@ -35,18 +36,18 @@ extension MediasPicker {
                     let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
                     metaData.latitude = coordinate.latitude
                     metaData.longitude = coordinate.longitude
+
                     // Placemark
-                    location.placemark { placemark, error in
-                        guard let placemark else { print("\n", #function, error ?? "Placemark not defined"); return }
-                        // Title and Address of Place
-                        metaData.placeName = placemark.name ?? ""
-                        metaData.address = placemark.streetName ?? ""
-                        metaData.address += " \(placemark.streetNumber ?? "")"
-                        metaData.address += " \(placemark.city ?? "")"
-                        metaData.address += " \(placemark.neighborhood ?? "")"
-                        metaData.address += " \(placemark.state ?? "")"
-                        metaData.address += " \(placemark.zipCode ?? "")"
-                        metaData.address += " \(placemark.country ?? "")"
+                    guard let request = MKReverseGeocodingRequest(location: location) else { return }
+                    do {
+                        guard let mapItem = try await request.mapItems.first else { return }
+
+                        let addressRep = mapItem.address
+                        metaData.address = addressRep?.fullAddress ?? ""
+                        metaData.placeName = mapItem.name ?? ""
+                        print("🆕", #function, metaData.placeName, metaData.address)
+                    } catch {
+                        print("⭕️", #function,"Placemark not defined", error)
                     }
                 }
             }
@@ -61,15 +62,7 @@ extension MediasPicker {
             if let movie = try? await item.loadTransferable(type: Movie.self) {
                 metaData.url = movie.url
             }
- /* old scheme
-            metaData.url = documentDirectory.appendingPathComponent("\(metaData.id).jpeg")
-            // Get photos from Selected item and store to URL
-            if let data = try? await item.loadTransferable(type: Data.self) {
-                if let uiImage = UIImage(data: data) {
-                    await metaData.url.saveUIImage(uiImage)
-                }
-            }
-  */
+
             // Insert reseived or default MetaData to MetaDataObject Array
             withAnimation {
                 metaDataModel.metaDataObject.insert(metaData, at: 0)

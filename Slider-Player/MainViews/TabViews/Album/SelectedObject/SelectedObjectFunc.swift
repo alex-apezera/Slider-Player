@@ -37,7 +37,8 @@ extension SelectedObjectView {
             longitudeText = String(longitude)
         
         let getInfo = GetInfo(name: $metaDataModel.metaDataObject[index].placeName, address: $metaDataModel.metaDataObject[index].address)
-        getInfo.convertCoordinateToInfo(location)
+        Task { await getInfo.convertCoordinateToInfo(location) }
+        
     }
     
     /// Show Title, Address, Date and Coordinate of Photo object

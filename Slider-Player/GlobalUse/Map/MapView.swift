@@ -71,10 +71,10 @@ struct MapView: View {
                     weatherInfo(for: coordinate)
                 } else {
                     if selectedResult !== MKMapItem(){
-                        let coordinate = searchByCoordinates ? destinationLocation : selectedResult.placemark.coordinate
+                        let coordinate = searchByCoordinates ? destinationLocation : selectedResult.location.coordinate
                         weatherInfo(for: coordinate)
                     } else {
-                        let coordinate = searchByCoordinates ? destinationLocation : searchedResults.first?.placemark.coordinate
+                        let coordinate = searchByCoordinates ? destinationLocation : searchedResults.first?.location.coordinate
                         weatherInfo(for: coordinate ?? destinationLocation)
                     }
                 }
@@ -86,10 +86,10 @@ struct MapView: View {
                     WeatherApiView(coordinates: String(coordinate.latitude) + "," + String(coordinate.longitude), viewingDetails: $weatherApiView).environmentObject(WeatherViewModel())
                 } else {
                     if selectedResult !== MKMapItem(){
-                        let coordinate = searchByCoordinates ? destinationLocation : selectedResult.placemark.coordinate
+                        let coordinate = searchByCoordinates ? destinationLocation : selectedResult.location.coordinate
                         WeatherApiView(coordinates: String(coordinate.latitude) + "," + String(coordinate.longitude), viewingDetails: $weatherApiView).environmentObject(WeatherViewModel())
                     } else {
-                        let coordinate = searchByCoordinates ? destinationLocation : searchedResults.first?.placemark.coordinate
+                        let coordinate = searchByCoordinates ? destinationLocation : searchedResults.first?.location.coordinate
                         WeatherApiView(coordinates: String((coordinate ?? destinationLocation).latitude) + "," + String((coordinate ?? destinationLocation).longitude), viewingDetails: $weatherApiView).environmentObject(WeatherViewModel())
                     }
                 }

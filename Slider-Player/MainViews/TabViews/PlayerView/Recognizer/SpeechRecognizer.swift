@@ -160,12 +160,22 @@ extension SFSpeechRecognizer {
     }
 }
 
+// Старая версия
+//extension AVAudioSession {
+//    func hasPermissionToRecord() async -> Bool {
+//        await withCheckedContinuation { continuation in
+//            requestRecordPermission { authorized in
+//                continuation.resume(returning: authorized)
+//            }
+//        }
+//    }
+//}
+
+//import AVFoundation
+
 extension AVAudioSession {
     func hasPermissionToRecord() async -> Bool {
-        await withCheckedContinuation { continuation in
-            requestRecordPermission { authorized in
-                continuation.resume(returning: authorized)
-            }
-        }
+        await AVAudioApplication.requestRecordPermission()
     }
 }
+

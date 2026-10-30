@@ -144,7 +144,7 @@ extension String {
     //MARK: - Examples
     static var webUrlExample = "https://www.google.com"
     static var weather: Self {localeRu ? "Погода" : "Weather"}
-    static var currentLocation: Self {localeRu ? "Текущее место" : "Current location"}
+    static var currentLocation: Self {localeRu ? "Место" : "Place"}
     static var mapSearch: Self {localeRu ? "Поиск на карте" : "Map search"}
     static var toggleLights: Self {localeRu ? "Переключить день/ночь" : "Toggle light"}
     static var gestureExperience: Self {localeRu ? "Эксперименты с жестами" : "Gesture experience"}
@@ -208,6 +208,7 @@ extension String {
     
     //MARK: - Map
     static var location: Self {localeRu ? "Местоположение" : "Location"}
+    static var startRoute: Self {localeRu ? "Старт" : "Start"}
     static var unknownLocation: Self {localeRu ? "Неизвестное местоположение" : "Unknown location"}
     static var distance: Self {localeRu ? "Расстояние:" : "Distance:"}
     static var time: Self {localeRu ? "Время:" : "Time:"}

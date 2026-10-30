@@ -24,7 +24,7 @@ struct CurrentLocation: View {
         locationManager.requestLocation()
         let location = userPoint.currentLocation
         let getInfo = GetInfo(name: $name, address: $address)
-        getInfo.convertCoordinateToInfo(location)
+        Task { await getInfo.convertCoordinateToInfo(location) }
     }
     
     var body: some View {

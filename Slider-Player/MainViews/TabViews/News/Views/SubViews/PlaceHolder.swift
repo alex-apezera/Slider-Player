@@ -20,7 +20,3 @@ struct PlaceHolder: View {
         .cornerRadius(.articleCorner)
     }
 }
-
-#Preview {
-    PlaceHolder(frameHeight: SizeConstants.avatarHeight)
-}

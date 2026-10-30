@@ -35,22 +35,30 @@ struct MapModel: UIViewRepresentable {
         mapView.removeAnnotations(mapView.annotations)
         if !searchedResults.isEmpty {
             if selectedResult !== MKMapItem(){
-                let coordinates = searchByCoordinates ? destinationLocation : selectedResult.placemark.coordinate
+                let coordinates = searchByCoordinates ? destinationLocation : selectedResult.location.coordinate
                 let region = MKCoordinateRegion(center: coordinates, span: span)
+//                let customAnnotation = CustomAnnotation(
+//                    title: selectedResult.placemark.name,
+//                    locationName: selectedResult.placemark.title,
+//                    coordinate: coordinates)
                 let customAnnotation = CustomAnnotation(
-                    title: selectedResult.placemark.name,
-                    locationName: selectedResult.placemark.title,
+                    title: selectedResult.name,
+                    locationName: selectedResult.address?.fullAddress,
                     coordinate: coordinates)
                 mapView.addAnnotation(customAnnotation)
                 mapView.setRegion(region, animated: true)
             } else {
                 searchedResults.forEach {
                     result in
-                    let coordinates = searchByCoordinates ? destinationLocation : result.placemark.coordinate
+                    let coordinates = searchByCoordinates ? destinationLocation : result.location.coordinate
                     let region = MKCoordinateRegion(center: coordinates, span: span)
+//                    let customAnnotation = CustomAnnotation(
+//                        title: result.placemark.name,
+//                        locationName: result.placemark.title,
+//                        coordinate: coordinates)
                     let customAnnotation = CustomAnnotation(
-                        title: result.placemark.name,
-                        locationName: result.placemark.title,
+                        title: result.name,
+                        locationName: result.address?.fullAddress,
                         coordinate: coordinates)
                     mapView.addAnnotation(customAnnotation)
                     mapView.setRegion(region, animated: true)
@@ -66,11 +74,17 @@ struct MapModel: UIViewRepresentable {
         }
         if directionsOn {
             mapView.removeOverlays(mapView.overlays)
-            let sourceMapItem = MKMapItem(placemark: MKPlacemark(coordinate: direction.sourceLocation!))
-            let destinationMapItem = MKMapItem(placemark: MKPlacemark(coordinate: searchByCoordinates ? destinationLocation : direction.finalDestination!))
-            
+//            let sourceMapItem = MKMapItem(placemark: MKPlacemark(coordinate: direction.sourceLocation!))
+            let startLocation = direction.sourceLocation!
+            let sourceLocation = CLLocation(latitude: startLocation.latitude, longitude: startLocation.longitude)
+            let sourceMapItem = MKMapItem(location: sourceLocation, address: nil)
+            let finalDestination = direction.finalDestination!
+            let destination = CLLocation(latitude: finalDestination.latitude, longitude: finalDestination.longitude)
+//            let destinationMapItem = MKMapItem(placemark: MKPlacemark(coordinate: searchByCoordinates ? destinationLocation : direction.finalDestination!))
+            let destinationMapItem = MKMapItem(location: destination, address: nil)
+
             let customAnnotation = CustomAnnotation(
-                title: "",
+                title: .startRoute,
                 locationName: "",
                 coordinate: regionDefault.center)
             mapView.addAnnotation(customAnnotation)

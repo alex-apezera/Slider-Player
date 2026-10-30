@@ -16,16 +16,16 @@ extension MapView {
                     ForEach(searchedResults, id: \.self) { result in
                         
                         VStack(alignment: .center, spacing: 5) {
-                            Text(result.placemark.name ?? .unknownLocation)
+                            Text(result.name ?? .unknownLocation)
                                 .fontWeight(.bold)
                                 .font(.system(size: 18))
                                 .padding()
-                            Text(result.placemark.title ?? .unknownLocation)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .font(.system(size: 14))
-                                .lineLimit(3)
-                                .padding(.horizontal)
-                                .padding()
+//                            Text(result.placemark.title ?? .unknownLocation)
+//                                .fixedSize(horizontal: false, vertical: true)
+//                                .font(.system(size: 14))
+//                                .lineLimit(3)
+//                                .padding(.horizontal)
+//                                .padding()
                             HStack {
                                 Spacer()
                                 Text("\(.distance) \(searchedDistance as String) \(.km),")

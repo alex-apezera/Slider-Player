@@ -23,7 +23,9 @@ struct NewMapView: View {
     @State var reverseRoute = false
     @State var startFromCL = false
     @State var hybridStyle = false
-    
+    @State var bigPhotos: [Int: Bool] = [:]
+//    @State var isBig = false
+
     @State var searchQuery = ""
     @State var query = ""
     @State var locationAddress = ""
@@ -65,7 +67,17 @@ struct NewMapView: View {
 //MARK: - Photo Marker of object
                 ForEach(0..<mediaURLs.count, id: \.self) { index in
                     Annotation(String.photo, coordinate: photoObjectCoordinates[index]) {
-                        photoObjectAnnotation(item: index)
+                        PhotoAnnotation(
+                            item: index,
+                            url: mediaURLs[index],
+                            isBig: Binding(
+                                get: { bigPhotos[index] ?? false },
+                                set: { bigPhotos[index] = $0 }),
+                            onLongPress: {
+                                bigPhotos[index] = !(bigPhotos[index] ?? false)
+                                print("🅾️long press \(index)")
+                            }
+                        )
                     }
                     .mapOverlayLevel(level: .aboveLabels)
                     .annotationTitles(.hidden)

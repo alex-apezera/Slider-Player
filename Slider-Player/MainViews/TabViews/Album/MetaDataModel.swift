@@ -34,9 +34,9 @@ final class MetaDataModel: ObservableObject {
             for url in urls {
                 if let index = metaDataObject.firstIndex(where: {$0.url.lastPathComponent == url.lastPathComponent}) {
                     metaDataObject[index].url = url
-                    print("\n", #function, "INDEX: \(index), URL: \(url)")
+                    print("🅾️", #function, "INDEX: \(index), URL: \(url)")
                 } else {
-                    print("\n", #function, "NOT FOUND INDEX, URL: \(url)")
+                    print("⭕️", #function, "NOT FOUND INDEX, URL: \(url)")
                 }
             }
         }

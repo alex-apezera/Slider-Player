@@ -13,8 +13,12 @@ extension MusicListView {
         playing = true
         audioManager.startPlayer(at: track)
         Task {
-            try await GetAudioAssets(url: track, albumTitle: $albumTitle, composerName: $composerName, songName: $songName).takeData()
-            songName = songName.isEmpty ? track.lastPathComponent : songName
+            do {
+                try await GetAudioAssets(url: track, albumTitle: $albumTitle, composerName: $composerName, songName: $songName).takeData()
+                songName = songName.isEmpty ? track.lastPathComponent : songName
+            } catch {
+                print("Error GetAudioAssets:", error)
+            }
         }
     }
 }

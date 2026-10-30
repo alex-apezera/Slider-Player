@@ -24,7 +24,7 @@ struct GetAudioAssets {
         songName = ""
         
         // A local or remote asset to inspect.
-        let asset = AVAsset(url: url)
+        let asset = AVURLAsset(url: url)
         
         // Load the asset's metadata.
 //        let _ = try await asset.load(.metadata)

@@ -12,6 +12,7 @@ struct CurrentPlaceMap: View {
     let coordinate: CLLocationCoordinate2D
     private var place: CurrentPlace
     @State private var region = MKCoordinateRegion()
+    @State private var position: MapCameraPosition = .automatic
 
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
@@ -19,12 +20,28 @@ struct CurrentPlaceMap: View {
     }
 
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: [place]) { place in            MapMarker(coordinate: coordinate, tint: .red)
+
+        // Deprecate
+//        Map(coordinateRegion: $region, annotationItems: [place]) { place in            MapMarker(coordinate: coordinate, tint: .red)
+//        }
+//        .onAppear {
+//            withAnimation {
+//                region.center = coordinate
+//                region.span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+//            }
+//        }
+        
+        // Location marker
+        Map(position: $position) {
+            Marker(String.location, coordinate: place.coordinate)
+                .tint(.red)
         }
         .onAppear {
             withAnimation {
-                region.center = coordinate
-                region.span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+                position = .region(MKCoordinateRegion(
+                    center: place.coordinate,
+                    span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+                ))
             }
         }
     }

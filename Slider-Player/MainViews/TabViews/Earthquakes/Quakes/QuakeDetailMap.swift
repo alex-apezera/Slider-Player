@@ -10,6 +10,7 @@ struct QuakeDetailMap: View {
     let tintColor: Color
     private var place: QuakePlace
     @State private var region = MKCoordinateRegion()
+    @State private var position: MapCameraPosition = .automatic
 
     init(location: QuakeLocation, tintColor: Color) {
         self.location = location
@@ -18,14 +19,33 @@ struct QuakeDetailMap: View {
     }
 
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: [place]) { place in MapMarker(coordinate: place.location, tint: tintColor)
+        
+        // Deprecated
+//        Map(coordinateRegion: $region, annotationItems: [place]) { place in MapMarker(coordinate: place.location, tint: tintColor)
+//        }
+//        .onAppear {
+//            withAnimation {
+//                region.center = place.location
+//                region.span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+//            }
+//        }
+        
+        // Quake marker
+        Map(position: $position) {
+//            ForEach([place]) { place in
+                Marker(String.quakePlace, coordinate: place.location)
+                    .tint(tintColor)
+//            }
         }
         .onAppear {
             withAnimation {
-                region.center = place.location
-                region.span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+                position = .region(MKCoordinateRegion(
+                    center: place.location,
+                    span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+                ))
             }
         }
+
     }
 }
 

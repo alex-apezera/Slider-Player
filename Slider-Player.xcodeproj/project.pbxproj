@@ -286,6 +286,8 @@
 		19CE9BE6308FA4D600B78C0A /* ToolbarStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CE9BDC308FA4D600B78C0A /* ToolbarStatus.swift */; };
 		19CE9BE7308FA4D600B78C0A /* ToolbarWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CE9BDD308FA4D600B78C0A /* ToolbarWeather.swift */; };
 		19CE9BE8308FA4D600B78C0A /* WeatherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CE9BDE308FA4D600B78C0A /* WeatherButton.swift */; };
+		19CE9BEA3093CCF800B78C0A /* PhotoAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CE9BE93093CCF800B78C0A /* PhotoAnnotation.swift */; };
+		19CE9BEC3094CAA700B78C0A /* TapableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CE9BEB3094CAA700B78C0A /* TapableImage.swift */; };
 		19D5E1E729D83DD100443629 /* MediasPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D5E1E629D83DD100443629 /* MediasPicker.swift */; };
 		19D82F102B31BBCB00178D3B /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D82F0F2B31BBCA00178D3B /* SpeechRecognizer.swift */; };
 		19D82F122B31BCE000178D3B /* SpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D82F112B31BCE000178D3B /* SpeechView.swift */; };
@@ -609,6 +611,8 @@
 		19CE9BDC308FA4D600B78C0A /* ToolbarStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarStatus.swift; sourceTree = "<group>"; };
 		19CE9BDD308FA4D600B78C0A /* ToolbarWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarWeather.swift; sourceTree = "<group>"; };
 		19CE9BDE308FA4D600B78C0A /* WeatherButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherButton.swift; sourceTree = "<group>"; };
+		19CE9BE93093CCF800B78C0A /* PhotoAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnnotation.swift; sourceTree = "<group>"; };
+		19CE9BEB3094CAA700B78C0A /* TapableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapableImage.swift; sourceTree = "<group>"; };
 		19D5E1E629D83DD100443629 /* MediasPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediasPicker.swift; sourceTree = "<group>"; };
 		19D82F0F2B31BBCA00178D3B /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		19D82F112B31BCE000178D3B /* SpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechView.swift; sourceTree = "<group>"; };
@@ -1157,6 +1161,8 @@
 			isa = PBXGroup;
 			children = (
 				199522352B6118CB00989CB3 /* NewMapView.swift */,
+				19CE9BEB3094CAA700B78C0A /* TapableImage.swift */,
+				19CE9BE93093CCF800B78C0A /* PhotoAnnotation.swift */,
 				1959B72B2B72753C007E92FD /* NewMapFunc.swift */,
 				199522372B61320900989CB3 /* MapButtons.swift */,
 				199522392B61964D00989CB3 /* ItemInfoView.swift */,
@@ -1731,6 +1737,7 @@
 				19C5E7772CF2066F00406E63 /* URL.swift in Sources */,
 				19FEB4562B192E7900F9DF6B /* Quake+Color.swift in Sources */,
 				19D82F102B31BBCB00178D3B /* SpeechRecognizer.swift in Sources */,
+				19CE9BEA3093CCF800B78C0A /* PhotoAnnotation.swift in Sources */,
 				198CC2D829FC58160014FFA1 /* GridView.swift in Sources */,
 				19E4319B2BDA681B00CDF913 /* MediasToolbar.swift in Sources */,
 				198CC33A29FF05D10014FFA1 /* ProfileModel.swift in Sources */,
@@ -1891,6 +1898,7 @@
 				1928EBCC2C99C9880082135D /* TextModifiers.swift in Sources */,
 				1928EBCD2C99C9880082135D /* Color-Interpolation.swift in Sources */,
 				1928EBCE2C99C9880082135D /* StarsView.swift in Sources */,
+				19CE9BEC3094CAA700B78C0A /* TapableImage.swift in Sources */,
 				19219DB02CB01284009E888F /* Localization.swift in Sources */,
 				1928EBCF2C99C9880082135D /* Storm.swift in Sources */,
 				196063D32CF37892002147DD /* QueryView.swift in Sources */,

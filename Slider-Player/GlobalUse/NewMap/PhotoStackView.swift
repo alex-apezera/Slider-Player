@@ -25,7 +25,10 @@ struct PhotoStackView: View {
                         let latitude = metaData.latitude
                         let longitude = metaData.longitude
                         photoObjectCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                        selectedPhotoObject = MKMapItem(placemark: MKPlacemark(coordinate: photoObjectCoordinate))
+//                        selectedPhotoObject = MKMapItem(placemark: MKPlacemark(coordinate: photoObjectCoordinate))
+                        let location = CLLocation(latitude:  photoObjectCoordinate.latitude, longitude: photoObjectCoordinate.longitude)
+                        selectedPhotoObject = MKMapItem(location: location, address: nil)
+                        
                         selectedPhotoObject?.name = metaData.placeName
                         locationAddress = metaData.address
                         mediaURL = metaData.url

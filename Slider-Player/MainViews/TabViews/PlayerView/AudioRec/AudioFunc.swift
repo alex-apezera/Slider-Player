@@ -13,7 +13,7 @@ extension AudioRecorder {
 
     func initSession() {
         setSessionCategory(.playback)
-        AVAudioSession.sharedInstance().requestRecordPermission { status in
+        /*AVAudioSession.sharedInstance()*/AVAudioApplication.requestRecordPermission { status in
             if !status{
                 // error msg...
                 alert.toggle()

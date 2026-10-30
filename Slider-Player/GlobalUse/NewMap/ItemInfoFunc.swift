@@ -20,16 +20,29 @@ extension ItemInfoView {
         }
     }
     
+//    func getPlacemarkInfo(mapItem: MKMapItem) {
+//        locationName = ""
+//        locationAddress = ""
+//        guard let latitude = mapItem.placemark.location?.coordinate.latitude else {return}
+//        guard let longitude = mapItem.placemark.location?.coordinate.longitude else {return}
+//        let location = CLLocation(latitude: latitude, longitude: longitude)
+//        let getInfo = GetInfo(name: $locationName, address: $locationAddress)
+//        getInfo.convertCoordinateToInfo(location)
+//        location2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//    }
+    
     func getPlacemarkInfo(mapItem: MKMapItem) {
         locationName = ""
         locationAddress = ""
-        guard let latitude = mapItem.placemark.location?.coordinate.latitude else {return}
-        guard let longitude = mapItem.placemark.location?.coordinate.longitude else {return}
-        let location = CLLocation(latitude: latitude, longitude: longitude)
+
+        guard let location = mapItem.location as CLLocation? else { return }
+        guard CLLocationCoordinate2DIsValid(location.coordinate) else { return }
+
         let getInfo = GetInfo(name: $locationName, address: $locationAddress)
-        getInfo.convertCoordinateToInfo(location)
-        location2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        Task { await getInfo.convertCoordinateToInfo(location) }
+        location2D = location.coordinate
     }
+
     
     var placeInfo: some View {
         VStack(spacing: 10) {
@@ -41,11 +54,11 @@ extension ItemInfoView {
             if selectedResult.phoneNumber != "" {
                 Text(selectedResult.phoneNumber ?? "")
             }
-            if selectedResult.placemark.title != "United States" {
-                if selectedResult.placemark.title != "Russia" {
-                    Text(selectedResult.placemark.title ?? "")
-                }
-            }
+//            if selectedResult.placemark.title != "United States" {
+//                if selectedResult.placemark.title != "Russia" {
+//                    Text(selectedResult.placemark.title ?? "")
+//                }
+//            }
             Text(verbatim: .addressFromMarkerLocation).foregroundStyle(.tertiary)
             Text(locationAddress)
             HStack {

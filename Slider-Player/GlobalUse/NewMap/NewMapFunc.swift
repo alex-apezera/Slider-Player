@@ -36,24 +36,7 @@ extension NewMapView {
             route = response?.routes.first
         }
     }
-    
-    func photoObjectAnnotation(item: Int) -> some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .fill(.background)
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(.secondary, lineWidth: 2)
-            image.resizable()
-                .cornerRadius(7)
-                .frame(width: 35, height: 35, alignment: .center)
-                .padding(2)
-        }
-        .task(id: item) {
-            let loaded = await imageOnMap(url: mediaURLs[item])
-            image = loaded
-        }
-    }
-    
+        
     func getQueryAndSpan() -> some View {
         HStack {
             Button {
@@ -95,16 +78,7 @@ extension NewMapView {
         }
         .background(.thinMaterial)
     }
-    
-    // Deprecated version
-//    func getMarkerItem(reader: MapProxy, screenCoord: CGPoint) -> MKMapItem? {
-//        let pinLocation = reader.convert(screenCoord, from: .local)
-//        let placemark = MKPlacemark(coordinate: pinLocation ??  userPoint.currentCoordinate)
-//        newRegion = MKCoordinateRegion(center: pinLocation!, span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span))
-//        print(#function, newRegion!)
-//        return MKMapItem(placemark: placemark)
-//    }
-    
+        
     /// New placemark
     func getMarkerItem(reader: MapProxy, screenCoord: CGPoint) -> MKMapItem? {
         let coordinate = reader.convert(screenCoord, from: .local) ?? userPoint.currentCoordinate
