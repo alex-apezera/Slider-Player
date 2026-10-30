@@ -40,7 +40,6 @@ struct AlbumView: View {
         .background(.thinMaterial)
         .toolbar {albumToolbar}
         .environment(\.editMode, $editMode)
-//        .navigationModifier(title)
         .navigationBarTitleDisplayMode(.inline)
         .id(title)
     }

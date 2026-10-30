@@ -24,7 +24,6 @@ struct NewMapView: View {
     @State var startFromCL = false
     @State var hybridStyle = false
     @State var bigPhotos: [Int: Bool] = [:]
-//    @State var isBig = false
 
     @State var searchQuery = ""
     @State var query = ""

@@ -14,18 +14,7 @@ struct PhotoAnnotation: View {
     var onLongPress: () -> Void = {}
 
     @State private var image: Image = Image(systemName: "photo")
-    @State private var uiImage: UIImage? = nil   // ← ошибка 1 решена
     
-    @GestureState private var pressing = false
-
-    var longPress: some Gesture {
-        LongPressGesture(minimumDuration: 0.4)
-            .updating($pressing) { value, state, _ in
-                state = value
-            }
-            .onEnded { _ in onLongPress() }
-    }
-
     private var side: CGFloat { isBig ? 100 : 35 }
     private var crossUp: CGFloat { isBig ? 70 : 0 }
 
@@ -33,16 +22,16 @@ struct PhotoAnnotation: View {
         ZStack {
             RoundedRectangle(cornerRadius: 5).fill(.background)
             RoundedRectangle(cornerRadius: 5).stroke(.secondary, lineWidth: 1)
-/*
-            // Dont work correctly
-            TappableImageView(
-                image: uiImage,
-                onTap: {
-                    withAnimation(.easeInOut(duration: 0.2)) { isBig.toggle() }
-                },
-                onLongPress: onLongPress
-            )
-*/
+            /*
+             // Dont work correctly
+             TappableImageView(
+             image: uiImage,
+             onTap: {
+             withAnimation(.easeInOut(duration: 0.2)) { isBig.toggle() }
+             },
+             onLongPress: onLongPress
+             )
+             */
             image.resizable()
                 .scaledToFill()
                 .frame(width: side, height: side)
@@ -54,12 +43,10 @@ struct PhotoAnnotation: View {
         .onTapGesture {
             withAnimation(.easeInOut(duration: 1.0)) {isBig.toggle()}
         }
-        .simultaneousGesture(longPress)
         .offset(x: crossUp, y: crossUp)
         .task { image = await imageOnMap(url: url) }
 //        .task(id: url) { uiImage = await loadUIImage(url: url) }
         .animation(.easeInOut(duration: 1.0), value: isBig)
-//        .id(isBig)
     }
 }
 /*
