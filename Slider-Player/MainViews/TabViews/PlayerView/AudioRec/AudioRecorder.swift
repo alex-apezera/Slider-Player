@@ -54,28 +54,31 @@ struct AudioRecorder: View {
                     if let documentDirectory {
                         EditFileName(track: track, directory: documentDirectory)
                     }
-                    
                     Spacer()
+                    
                     //MARK: - remove a track
                     Button { withAnimation { 
                         removeAudio(at: track) }
                     } label: {
                         Image(systemName: "trash")
                     }
+                    
                     //MARK: - export a track
                     ShareLink(item: track, subject: Text(String.exportTrack)) {
                         Image(systemName: "square.and.arrow.up")
                     }
                 }
             }///List
+            
 //MARK: - Midi Player View
             if playing {
                 AudioView(playing: $playing, albumImageURL: albumImageURL, albumTitle: albumTitle, composerName: composerName, songName: songName.isEmpty ? albumImageURL.deletingPathExtension().lastPathComponent : songName)
             }
         }///ZStack
+        
 //MARK: - Recorder + Manage Block
         .toolbar {recorderToolbar()}
-        .navigationModifier(String.audio + ": " + String(audiosCount))
+        .titleInline(String.audio + ": " + String(audiosCount))
         .onAppear {initSession()}
         .onDisappear {audioManager.stop()}
         .alert(isPresented: $alert) {

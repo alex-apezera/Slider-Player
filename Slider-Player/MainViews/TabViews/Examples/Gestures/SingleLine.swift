@@ -31,7 +31,7 @@ struct SingleLine: View {
             .contentShape(Rectangle())
         }
         .gesture(lineDrawingGesture)
-        .navigationModifier("Line Drawing")
+        .titleInline("Line Drawing")
         .overlay(alignment: .top) {
             Text("Touch and drag to make a line")
                 .padding()

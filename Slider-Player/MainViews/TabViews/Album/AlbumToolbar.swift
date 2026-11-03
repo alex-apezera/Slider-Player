@@ -39,22 +39,10 @@ extension AlbumView {
         
         // Call MediasPicker
         ToolbarItem(placement: .topBarTrailing) {
-            NavigationLink { MediasPicker(isLoading: $isLoading).environmentObject(metaDataModel)
-            } label: { Image(systemName: "rectangle.grid.3x2.fill") }
+            NavigationLink { MediasPicker().environmentObject(metaDataModel)
+            } label: { Image(systemName: "square.grid.3x2") }
         }
 
     }
 }
-
-//Snippet
-// Select Photo Object(s)
-//            if editMode == .active {
-//                SelectButton(mode: $selectMode) {
-//                    if selectMode.isActive {
-//                        selection = Set(metaDataModel.metaDataObject.map {$0.id})
-//                    } else {
-//                        selection = []
-//                    }
-//                }
-//            }
 

@@ -13,6 +13,8 @@ import PhotosUI
 
 extension MediasPicker {
 
+    /// Get MetaData asset from PhotoLibrary
+    @MainActor
     func getImagesWithData(from newItems: [PhotosPickerItem]) async throws {
         for item in newItems {
             
@@ -20,18 +22,16 @@ extension MediasPicker {
             let id = randomString(length: idLength)
             var metaData = MetaData(id: id, date: Date(), address: "", placeName: "", latitude: 0, longitude: 0, url: URL(fileURLWithPath: ""))
             
-            /// Get MetaData asset from PhotoLibrary
-            selectedItem = item
-            if let newItem = selectedItem, let localID = newItem.itemIdentifier {
+            if let localID = item.itemIdentifier {
                 let result = PHAsset.fetchAssets(withLocalIdentifiers: [localID], options: nil)
                 if let asset = result.firstObject {
                     print(#function, "GOT ASSET: " + asset.debugDescription)
                 }
-                /// Date of captuting photo
+                // Date of captuting photo
                 if let imageDate = result.firstObject?.creationDate {
                     metaData.date = imageDate
                 }
-                /// Get Coordinate if exist
+                // Get Coordinate if exist
                 if let coordinate  = result.firstObject?.location?.coordinate {
                     let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
                     metaData.latitude = coordinate.latitude
@@ -51,7 +51,7 @@ extension MediasPicker {
                     }
                 }
             }
-            /// URL for store Image & video
+            // URL for store Image & video
             guard let documentDirectory = documentDirectory else {return}
             copyFile = documentDirectory.appendingPathComponent("\(metaData.id)")
 
@@ -63,13 +63,14 @@ extension MediasPicker {
                 metaData.url = movie.url
             }
 
-            // Insert reseived or default MetaData to MetaDataObject Array
+            /// Insert reseived or default MetaData to MetaDataObject Array
             withAnimation {
                 metaDataModel.metaDataObject.insert(metaData, at: 0)
             }
         } /// end for item...
     }
-        
+     
+    /// Get and store MetaDataobjects
     func getAndStoreMetaData(_ items: [PhotosPickerItem]) {
         Task {
             do {

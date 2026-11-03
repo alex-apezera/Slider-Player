@@ -56,14 +56,14 @@ struct NewMapView: View {
         MapReader { reader in
             Map(position: $position, selection: $selectedResult) {
                 
-//MARK: - Parking Marker if exist startPoint
+                // Parking Marker if exist startPoint
                 if let startPoint {
                     let parkingPoint = startPoint.location.coordinate
                     Marker(String.parking, systemImage: "car.fill", coordinate: parkingPoint)
                         .tint(.mint)
                         .mapOverlayLevel(level: .aboveLabels)
                 }
-//MARK: - Photo Marker of object
+                // Photo Marker of object
                 ForEach(0..<mediaURLs.count, id: \.self) { index in
                     Annotation(String.photo, coordinate: photoObjectCoordinates[index]) {
                         PhotoAnnotation(
@@ -71,32 +71,28 @@ struct NewMapView: View {
                             url: mediaURLs[index],
                             isBig: Binding(
                                 get: { bigPhotos[index] ?? false },
-                                set: { bigPhotos[index] = $0 }),
-                            onLongPress: {
-                                bigPhotos[index] = !(bigPhotos[index] ?? false)
-                                print("🅾️long press \(index)")
-                            }
+                                set: { bigPhotos[index] = $0 })
                         )
                     }
                     .mapOverlayLevel(level: .aboveLabels)
                     .annotationTitles(.hidden)
                 }
                 
-//MARK: - Calculate direction of route
+                // Calculate direction of route
                 if let route {
                     MapPolyline(route)
                         .stroke(gradient, style: stroke)
                 }
-//MARK: - All Markers
+                // MARK: - All Markers
                 ForEach(searchResults, id: \.self) { result in
                     Marker(item: result)
                 }
                 .annotationTitles(.hidden)
                 
-//MARK: - User Current location
+                // User Current location
                 UserAnnotation()
             }
-//MARK: - Manage block
+            // Manage block
             .mapStyle(hybridStyle ? .hybrid(elevation: .realistic) : .standard(elevation: .realistic))
             .mapControls {
                 mapControlButtons()
@@ -115,52 +111,71 @@ struct NewMapView: View {
                 getDirections()
             }
             .onChange(of: selectedPhotoObject) {
-                withAnimation {
-                    if let selectedPhotoObject, let mediaURL {
-                        searchResults.append(selectedPhotoObject)
-                        mediaURLs.append(mediaURL)
-                        photoObjectCoordinates.append(photoObjectCoordinate)
-                    }
-                }
+                appendPhotoObject()
             }
             .onChange(of: selectedTapItem) {
-                if let selectedTapItem {
-                    withAnimation {searchResults.append(selectedTapItem)}
-                }
+                appendSelectedTap()
             }
             .onChange(of: reverseRoute) {
                 getDirections()
             }
             .onChange(of: startRoutePoint) {
-                if let selectedResult {
-                    startPoint = selectedResult
-                    getDirections()
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    startRoutePoint = false })
+                startRoute()
             }
-            .onChange(of: startFromCL) { withAnimation {
-// Было до 18 версии iOS
-//                startPoint = MKMapItem(placemark: MKPlacemark(coordinate: userPoint.currentCoordinate))
-
-                // New after v26 iOS
-                let location = CLLocation(
-                    latitude: userPoint.currentCoordinate.latitude,
-                    longitude: userPoint.currentCoordinate.longitude
-                )
-                startPoint = MKMapItem(location: location, address: nil)
-
-                getDirections() }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    startFromCL = false })
+            .onChange(of: startFromCL) {
+                getStartFromCL()
             }
             .onTapGesture { screenCoord in
-                if needGetMarker {
-                    selectedTapItem = getMarkerItem(reader: reader, screenCoord: screenCoord)
-                    needGetMarker = false
-                }
+                getMarker(screenCoord, reader)
             }
         }
-        .navigationModifier(String.newMap)
+        .titleInline(String.newMap)
     }
+}
+
+extension NewMapView {
+    
+    private func appendPhotoObject() {
+        withAnimation(.easeInOut(duration: 1)) {
+            if let selectedPhotoObject, let mediaURL {
+                searchResults.append(selectedPhotoObject)
+                mediaURLs.append(mediaURL)
+                photoObjectCoordinates.append(photoObjectCoordinate)
+            }
+        }
+    }
+    
+    private func appendSelectedTap() {
+        if let selectedTapItem {
+            withAnimation(.easeInOut(duration: 1)) {searchResults.append(selectedTapItem)}
+        }
+    }
+    
+    private func startRoute() {
+        if let selectedResult {
+            startPoint = selectedResult
+            getDirections()
+        }
+        withAnimation(.easeInOut(duration: 1)) { startRoutePoint = false }
+    }
+    
+    private func getStartFromCL() {
+        // New after v26 iOS
+        let location = CLLocation(
+            latitude: userPoint.currentCoordinate.latitude,
+            longitude: userPoint.currentCoordinate.longitude
+        )
+        startPoint = MKMapItem(location: location, address: nil)
+        getDirections()
+        withAnimation(.easeInOut(duration: 1)) {
+            startFromCL = false }
+    }
+    
+    private func getMarker(_ screenCoord: CGPoint, _ reader: MapProxy ) {
+        if needGetMarker {
+            selectedTapItem = getMarkerItem(reader: reader, screenCoord: screenCoord)
+            needGetMarker = false
+        }
+    }
+    
 }

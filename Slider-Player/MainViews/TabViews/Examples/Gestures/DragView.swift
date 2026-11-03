@@ -34,7 +34,7 @@ struct DragView: View {
             Text("Use one finger to drag the circle around")
                 .padding()
         }
-        .navigationModifier("Drag")
+        .titleInline("Drag")
         .toolbar {
             Button("Reset") {
                 offset = .zero

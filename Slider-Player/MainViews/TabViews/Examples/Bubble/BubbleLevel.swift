@@ -73,6 +73,6 @@ struct BubbleLevel: View {
                 Spacer()
             }
         }
-        .navigationModifier(String.bubbleLevelMeter)
+        .titleInline(String.bubbleLevelMeter)
     }
 }

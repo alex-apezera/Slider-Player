@@ -38,7 +38,7 @@ struct PlayerView: View {
         ScrollView {
             VStack {
                 
-//MARK: - Show Piece info
+                // Show Piece info
                 Button {
                     showPiece = true
                 } label: {
@@ -50,7 +50,7 @@ struct PlayerView: View {
                 }
                 .buttonStyle(Increasing())
                 
-//MARK: - Music View Picker
+                // Music View Picker
                 Picker(selection: Binding(
                     get: {pieceIndex},
                     set: { newValue in
@@ -71,13 +71,13 @@ struct PlayerView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .padding()
                 
-//MARK: - Playing time
+                // Playing time
                 Text("\(.piece): \(piece.pieceTitle[pieceIndex]). \(.progress): \(Int(progress)) \(.sec)")
                     .foregroundColor(isEditing ? .red : .blue)
                     .font(.system(size: 12, weight: .light, design: .default))
                     .onAppear { if progress < 0 { progress = 0 }}
                 
-//MARK: - Slider
+                // Slider
                 Slider(value: Binding(
                     get: {Double(progress)},
                     set: { newValue in
@@ -104,7 +104,7 @@ struct PlayerView: View {
                 maxDuration = playerModel.maxDuration
             }
             HStack {
-//MARK: - Button PLAY/PAUSE
+                // Button PLAY/PAUSE
                 Button {
                     isPlaying.toggle()
                     if isPlaying && progress == 0 {
@@ -120,9 +120,9 @@ struct PlayerView: View {
                 .buttonStyle(Hovering(hoverMessage: isPlaying ? .pauseButton : .playButton))
             }
         }
-//MARK: - Manage block
+        // Manage block
         .background(.secondary.opacity(0.3))
-        .navigationModifier("▶️"/*String.player*/)
+        .titleInline("▶️"/*String.player*/)
         .toolbar {playerToolbar}
         .sheet(isPresented: $showPiece) {
             PieceInfo()

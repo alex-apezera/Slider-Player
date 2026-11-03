@@ -38,6 +38,6 @@ struct WeatherApiView: View {
             print(#function, weatherVM.query)
         }
         .environmentObject(weatherVM)
-        .navigationModifier(String.weather)
+        .titleInline(String.weather)
     }
 }

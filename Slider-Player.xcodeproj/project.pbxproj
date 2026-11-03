@@ -216,6 +216,8 @@
 		19A792B42D7A327F00C3CCA1 /* DetaiFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A792B32D7A327F00C3CCA1 /* DetaiFileView.swift */; };
 		19A792B62D7A368D00C3CCA1 /* SelectedFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A792B52D7A368D00C3CCA1 /* SelectedFileView.swift */; };
 		19A792BA2D7DCF5600C3CCA1 /* TransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A792B92D7DCF5600C3CCA1 /* TransferService.swift */; };
+		19A7FE013097761A003FE7E7 /* GetNewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A7FE003097761A003FE7E7 /* GetNewObject.swift */; };
+		19A7FE03309934FF003FE7E7 /* GetMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A7FE02309934FF003FE7E7 /* GetMetaData.swift */; };
 		19AD24282CDD44CF005EF5D3 /* QuakeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD24272CDD44CF005EF5D3 /* QuakeRenderer.swift */; };
 		19AD890429CB43C000DEF729 /* ShowPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD890329CB43C000DEF729 /* ShowPlayer.swift */; };
 		19AD890929CF9E5700DEF729 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD890829CF9E5700DEF729 /* UserSettings.swift */; };
@@ -539,6 +541,8 @@
 		19A792B32D7A327F00C3CCA1 /* DetaiFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaiFileView.swift; sourceTree = "<group>"; };
 		19A792B52D7A368D00C3CCA1 /* SelectedFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFileView.swift; sourceTree = "<group>"; };
 		19A792B92D7DCF5600C3CCA1 /* TransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferService.swift; sourceTree = "<group>"; };
+		19A7FE003097761A003FE7E7 /* GetNewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewObject.swift; sourceTree = "<group>"; };
+		19A7FE02309934FF003FE7E7 /* GetMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMetaData.swift; sourceTree = "<group>"; };
 		19AD24272CDD44CF005EF5D3 /* QuakeRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeRenderer.swift; sourceTree = "<group>"; };
 		19AD890329CB43C000DEF729 /* ShowPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPlayer.swift; sourceTree = "<group>"; };
 		19AD890829CF9E5700DEF729 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
@@ -1118,15 +1122,15 @@
 			isa = PBXGroup;
 			children = (
 				19D5E1E629D83DD100443629 /* MediasPicker.swift */,
+				19E4319A2BDA681B00CDF913 /* MediasToolbar.swift */,
 				191F82032D848F0400093031 /* CameraPicker.swift */,
 				191F82072D848F7700093031 /* CapturedPhotoView.swift */,
 				1995222A2B557C5600989CB3 /* ImageService.swift */,
 				191F82052D848F0D00093031 /* PhotoSaver.swift */,
+				19A792B92D7DCF5600C3CCA1 /* TransferService.swift */,
+				191F82092D86160E00093031 /* savePhotoToLibrary.swift */,
 				196063D92CFB70E7002147DD /* MetaDataService.swift */,
 				19BA302B2DA93B0400CFBB0A /* MovieService */,
-				19A792B92D7DCF5600C3CCA1 /* TransferService.swift */,
-				19E4319A2BDA681B00CDF913 /* MediasToolbar.swift */,
-				191F82092D86160E00093031 /* savePhotoToLibrary.swift */,
 			);
 			path = "Picker+Service";
 			sourceTree = "<group>";
@@ -1161,6 +1165,8 @@
 			isa = PBXGroup;
 			children = (
 				199522352B6118CB00989CB3 /* NewMapView.swift */,
+				19A7FE003097761A003FE7E7 /* GetNewObject.swift */,
+				19A7FE02309934FF003FE7E7 /* GetMetaData.swift */,
 				19CE9BEB3094CAA700B78C0A /* TapableImage.swift */,
 				19CE9BE93093CCF800B78C0A /* PhotoAnnotation.swift */,
 				1959B72B2B72753C007E92FD /* NewMapFunc.swift */,
@@ -1468,7 +1474,6 @@
 				193AB72B29AFD6EC00187642 /* MainTabView.swift */,
 				19D82F152B35CEC600178D3B /* PlayerView */,
 				1941C9AB29B621A9006A8B01 /* Album */,
-				19C5E78E2CF20D5200406E63 /* News */,
 				19FEB41C2B192E7900F9DF6B /* Earthquakes */,
 				198CC2BF29F5DAFD0014FFA1 /* Examples */,
 			);
@@ -1502,6 +1507,7 @@
 		19FEB41C2B192E7900F9DF6B /* Earthquakes */ = {
 			isa = PBXGroup;
 			children = (
+				19C5E78E2CF20D5200406E63 /* News */,
 				19FEB4302B192E7900F9DF6B /* Quakes */,
 				19FEB4202B192E7900F9DF6B /* Models */,
 				19FEB42B2B192E7900F9DF6B /* Preview Content */,
@@ -1738,10 +1744,12 @@
 				19FEB4562B192E7900F9DF6B /* Quake+Color.swift in Sources */,
 				19D82F102B31BBCB00178D3B /* SpeechRecognizer.swift in Sources */,
 				19CE9BEA3093CCF800B78C0A /* PhotoAnnotation.swift in Sources */,
+				19A7FE03309934FF003FE7E7 /* GetMetaData.swift in Sources */,
 				198CC2D829FC58160014FFA1 /* GridView.swift in Sources */,
 				19E4319B2BDA681B00CDF913 /* MediasToolbar.swift in Sources */,
 				198CC33A29FF05D10014FFA1 /* ProfileModel.swift in Sources */,
 				191F82042D848F0400093031 /* CameraPicker.swift in Sources */,
+				19A7FE013097761A003FE7E7 /* GetNewObject.swift in Sources */,
 				19652EFB2C62D18F00120ADC /* SearchView.swift in Sources */,
 				1959B7302B74E9AF007E92FD /* ItemInfoFunc.swift in Sources */,
 				19C5E78B2CF20C9500406E63 /* CGFloat.swift in Sources */,

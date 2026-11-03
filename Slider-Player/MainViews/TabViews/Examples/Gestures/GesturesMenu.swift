@@ -49,6 +49,6 @@ struct GesturesMenu: View {
                     .foregroundColor(.secondary)
             }
         }
-        .navigationModifier("Gesture experience")
+        .titleInline("Gesture experience")
     }
 }

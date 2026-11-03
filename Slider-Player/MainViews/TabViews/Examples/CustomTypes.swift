@@ -99,7 +99,7 @@ struct CustomTypes: View {
             }
             .navigationTitle("Recipes")
         }
-        .navigationModifier("Show Recipes")
+        .titleInline("Show Recipes")
     }
 }
 

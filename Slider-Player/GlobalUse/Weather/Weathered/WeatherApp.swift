@@ -27,6 +27,6 @@ struct WeatherApp: View {
             .environmentObject(weatherVM)
             .environmentObject(locationVM)
             .modelContainer(for: FavoritePlace.self)
-            .navigationModifier("WeatherApi.com")
+            .titleInline("WeatherApi.com")
     }
 }

@@ -4,13 +4,12 @@
 //
 //  Created by Алексей Езерский on 22.12.2023.
 //
-//MARK: - Launch screen with menu
 
 import SwiftUI
 
+/// Launch screen with menu
 struct LaunchView: View {
     @Binding var start: Bool
-    @Binding var startNewMap: Bool
 
     @StateObject var settings = UserSettings()
     @StateObject var user = UserAutentification()
@@ -45,7 +44,7 @@ struct LaunchView: View {
             }
         }
         .font(.body)
-        .navigationModifier(String.homePage)///not use modifier with buttonStyle
+        .titleInline(String.homePage)
         .edgesIgnoringSafeArea(.bottom)
     }
 }

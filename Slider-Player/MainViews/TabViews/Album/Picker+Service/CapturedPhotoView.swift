@@ -47,7 +47,7 @@ struct CapturedPhotoView: View {
                 Message(message: saveToPhotoLibrary ? .saveToLibrary : .cancelToSave)
             }
         }
-        .navigationModifier(title)
+        .titleInline(title)
         .toolbar {savePhotoToLibraryIcon()}
     }
 }

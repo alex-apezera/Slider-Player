@@ -10,23 +10,23 @@ import SwiftUI
 
 struct StartAppView: View {
     @State private var startMainMenu = false
-    @State private var startSub1Menu = false
-    @State private var startNewMap = false
     @AppStorage("password") var password = ""
 
     init() {
-        UINavigationBar.applyCustomAppearance()/// Deleting system inscription on bar line
-        password = ""/// Required when starting the App again
+        
+        // Deleting system inscription on bar line
+        UINavigationBar.applyCustomAppearance()
+        
+        // Required when starting the App again
+        password = ""
     }
 
     var body: some View {
         VStack {
-            if !startMainMenu, !startNewMap, !startSub1Menu {
-                LaunchView(start: $startMainMenu, startNewMap: $startNewMap)
-            }  else if startMainMenu {
+            if !startMainMenu {
+                LaunchView(start: $startMainMenu)
+            }  else {
                 MainTabView(backToLaunchView: $startMainMenu)
-            } else if startNewMap {
-                NewMapView(startNewMap: $startNewMap)
             }
         }
     }

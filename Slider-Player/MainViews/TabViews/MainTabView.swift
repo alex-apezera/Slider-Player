@@ -18,48 +18,48 @@ struct MainTabView: View {
     @AppStorage("iTunesCount") var iTunesCount: Int = 0
     @AppStorage("galleryFilesCount") var galleryFilesCount: Int = 0
     @AppStorage("quakesCount") var quakesCount = 0
-    @AppStorage("newsCount") var newsCount: Int = 0
+    
+    @State private var startNewMap = false
 
     @ObservedObject private var manager = MusicFileManager.shared
     
     var body: some View {
         TabView(selection: $tabSelected) {
             
-            //MARK: - Player content
+            // Player content
             NavigationView {PlayerView()}
                 .badge(manager.pieces.count + audiosCount + iTunesCount + Piece().pieceNumber.count)
                 .tabItem {
                     Label(String.playerTitle, systemImage: "play.rectangle.on.rectangle.fill")
                 }.tag(0)
-            //MARK: - Album manage
+            
+            // Album manage
             NavigationView {AlbumView()}
                 .badge(lastIndex)
                 .tabItem {
                     Label(String.albumTitle, systemImage: "photo.stack.fill")
                 }
                 .tag(1)
-            //MARK: - News
-            NavigationView { NewsView() }
-                .tabItem {Label(String.news, systemImage: "newspaper")}
-                .badge(newsCount)
+            
+            // New Map
+            NewMapView(startNewMap: $startNewMap)
+                .tabItem {Label(String.newMap, systemImage: "map")}
                 .tag(2)
             
-            //MARK: - Quakes
+            // Quakes
             NavigationView { Quakes() }
             .badge(quakesCount)
             .tabItem {
                 Label(String.capQuakes, systemImage: "exclamationmark.triangle.fill")
             }.tag(3)
-            //MARK: - Useful content
+            
+            // Useful examples content
             NavigationView {ExamplesView(backToLaunchView: $backToLaunchView)}
-//                .badge(tabSelected)
                 .tabItem {
                     Label(String.more, systemImage: "ellipsis")
                 }.tag(4)
         }
-        //MARK: - Init vars
-        .onAppear {audiosCount = 0; iTunesCount = 0; newsCount = 0; quakesCount = 0}
-        //MARK: - Navigation line and button style
-        .navigationModifier(String.mainMenu)
+        .onAppear {audiosCount = 0; iTunesCount = 0; quakesCount = 0}
+        .titleInline(String.mainMenu)
     }
 }

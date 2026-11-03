@@ -96,7 +96,7 @@ struct MapView: View {
             }
         }
 //MARK: - Manage block
-        .navigationModifier(String.mapSearch)
+        .titleInline(String.mapSearch)
         .toolbar { ToolbarWeather(openWeatherView: $openWeatherView, weatherApiView: $weatherApiView).weatherButtons }
         .alert(isPresented: $isSearching) {
             Alert(

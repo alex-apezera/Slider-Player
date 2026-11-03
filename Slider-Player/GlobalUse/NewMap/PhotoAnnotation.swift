@@ -11,7 +11,9 @@ struct PhotoAnnotation: View {
     let item: Int
     let url: URL
     @Binding var isBig: Bool
-    var onLongPress: () -> Void = {}
+//    var onLongPress: () -> Void = {}
+// use in a parent call:
+// onLongPress: {...}
 
     @State private var image: Image = Image(systemName: "photo")
     

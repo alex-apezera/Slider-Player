@@ -64,7 +64,7 @@ struct QRCodeGeneratorView: View {
             }
             .underline(false)
             .padding()
-            .navigationModifier(String.qrCodeGenerator)
+            .titleInline(String.qrCodeGenerator)
         }
     }
     

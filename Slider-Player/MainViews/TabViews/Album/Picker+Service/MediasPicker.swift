@@ -5,21 +5,19 @@
 //  Created by Алексей Езерский on 01.04.2023.
 //
 
-// MARK: - Get and Manage Image Objects
-
 import SwiftUI
 import PhotosUI
-//#if canImport(Charts)
 
+/// Get and Manage photo/video Objects
 struct MediasPicker: View {
     @State var selectedItems = [PhotosPickerItem]()
-    @Binding var isLoading: Bool
-    @State var selectedItem: PhotosPickerItem?
+    @State var isLoading: Bool = false
     
     @AppStorage("initialColumns") static var initialColumns = 3
     @AppStorage("lastIndex") var lastIndex = 0
     @AppStorage("lastUpdatedObject") var lastUpdatedObject = Date.distantFuture.timeIntervalSince1970
     @AppStorage("copyFile") var copyFile: URL = URL(fileURLWithPath: "")
+    @AppStorage("tabSelected") var tabSelected = 0
     
     @EnvironmentObject var metaDataModel: MetaDataModel
     
@@ -28,21 +26,21 @@ struct MediasPicker: View {
     
     @Environment(\.displayScale) private var displayScale
     
-    private static let itemSpacing = 12.0
-    private static let itemCornerRadius = 15.0
-    private static let itemSize = CGSize(width: 90, height: 90)
+    static let itemSpacing = 12.0
+    static let itemCornerRadius = 15.0
+    static let itemSize = CGSize(width: 90, height: 90)
     
-    private var imageSize: CGSize {
+    var imageSize: CGSize {
         return CGSize(width: Self.itemSize.width * min(displayScale, 2), height: Self.itemSize.height * min(displayScale, 2))
     }
     
-    private let adaptiveColumns = [
+    let adaptiveColumns = [
         GridItem(.adaptive(minimum: itemSize.width, maximum: itemSize.height), spacing: itemSpacing)
     ]
     
-    @State private var flexibleColumns = Array(repeating: GridItem(.flexible()), count: initialColumns)
+    @State var flexibleColumns = Array(repeating: GridItem(.flexible()), count: initialColumns)
     
-    private var columnsTitle: String {
+    var columnsTitle: String {
         let count = flexibleColumns.count
         switch count {
         case 1: return "1 \(String.column)"
@@ -52,10 +50,10 @@ struct MediasPicker: View {
         }
     }
 
-    private let gridMode = UserSettings().gridMode == .gridFlexible
+    let gridMode = UserSettings().gridMode == .gridFlexible
     
     @ViewBuilder
-    private func selectedObjectView(_ metaData: MetaData) -> some View {
+    func selectedObjectView(_ metaData: MetaData) -> some View {
         if metaData.url.isImage {
             GesturedImage(image: loadImageFromDocumentDirectory(url: metaData.url)) }
         else if metaData.url.isVideo { MoviePlay(url: metaData.url)}
@@ -64,30 +62,12 @@ struct MediasPicker: View {
     
     var body: some View {
         VStack {
-            if isEditing && gridMode {
-                ColumnStepper(title: columnsTitle, range: 1...8, columns: $flexibleColumns)
-                    .padding()
-            }
-            ScrollView {
-                LazyVGrid (columns: gridMode ? flexibleColumns : adaptiveColumns, spacing: Self.itemSpacing) {
-                    ForEach(metaDataModel.metaDataObject) { metaData in
-                        GeometryReader { geo in
-                            NavigationLink {
-                                selectedObjectView(metaData)
-                            } label: {
-                                SelectedFileView(size: gridMode ? geo.size.width : Self.itemSize.width, url: metaData.url)
-                            }
-                        }
-                        .aspectRatio(1, contentMode: .fit)
-                        .overlay(alignment: .topTrailing) {removeButton(metaData)}
-                    }
-                }
-                .padding()
+            if tabSelected == 1 {
+                getNewObjectsIntoAlbum
+            } else {
+                getNewObjects
             }
         }
-        .navigationModifier(String.imagesGallery)
-        .navigationViewStyle(.stack)
-        .toolbar {toolbarImagePicker()}/// Take data & edit Album
         .onChange(of: selectedItems) { _, newItems in ///Get & store data from items
             getAndStoreMetaData(newItems)
         }

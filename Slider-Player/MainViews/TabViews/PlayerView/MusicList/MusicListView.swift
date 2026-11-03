@@ -71,7 +71,7 @@ struct MusicListView: View {
             .frame(width: 300, height: 20)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
         }///end of VStack
-        .navigationModifier(title)
+        .titleInline(title)
         .toolbar { musicToolbar() } // Include file import
         .onAppear {
             manager.getMusicFiles()

@@ -46,7 +46,7 @@ struct SelectedObjectView: View {
             .onChange(of: metaDataModel.metaDataObject) { _, newData in
                 updateMetaDataObject(newData)
             }
-            .navigationModifier(String.imageCell)
+            .titleInline(String.imageCell)
         }
     }
 }

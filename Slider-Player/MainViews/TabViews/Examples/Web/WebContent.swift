@@ -28,6 +28,6 @@ struct WebContentView: View {
         .onReceive(viewModel.isLoaderVisible.receive(on: RunLoop.main)) { value in
             isLoaderVisible = value
         }
-        .navigationModifier(webUrl)
+        .titleInline(webUrl)
     }
 }

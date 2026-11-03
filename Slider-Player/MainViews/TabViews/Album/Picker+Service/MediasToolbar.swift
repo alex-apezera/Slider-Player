@@ -18,22 +18,8 @@ extension MediasPicker {
         ToolbarItemGroup(placement: .topBarTrailing) {
             HStack {
                 
-                //MARK: - Get images from Photolibrary
-                PhotosPicker(selection: $selectedItems, matching: .images, photoLibrary: .shared()) {
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Image(systemName: "photo")
-                    }
-                }
-                //MARK: - Get movies from Photolibrary
-                PhotosPicker(selection: $selectedItems, matching: .videos, photoLibrary: .shared()) {
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Image(systemName: "video")
-                    }
-                }
+                //MARK: - Get objects from Photolibrary
+                getNewObjects
 
                 //MARK: - Capturing & save the photo
                 NavigationLink(destination: CapturedPhotoView().environmentObject(metaDataModel)) {

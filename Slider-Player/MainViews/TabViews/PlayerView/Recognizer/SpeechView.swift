@@ -68,7 +68,7 @@ struct SpeechView: View {
 //MARK: - Manage block
         .toolbar {speechToolbar()}
         .padding(20)
-        .navigationModifier(String.speechRecognizer)
+        .titleInline(String.speechRecognizer)
         .onDisappear {speechRecognizer.stopTranscribing()}
     }
 }

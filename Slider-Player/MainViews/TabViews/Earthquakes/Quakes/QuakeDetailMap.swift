@@ -19,23 +19,11 @@ struct QuakeDetailMap: View {
     }
 
     var body: some View {
-        
-        // Deprecated
-//        Map(coordinateRegion: $region, annotationItems: [place]) { place in MapMarker(coordinate: place.location, tint: tintColor)
-//        }
-//        .onAppear {
-//            withAnimation {
-//                region.center = place.location
-//                region.span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
-//            }
-//        }
-        
+                
         // Quake marker
         Map(position: $position) {
-//            ForEach([place]) { place in
                 Marker(String.quakePlace, coordinate: place.location)
                     .tint(tintColor)
-//            }
         }
         .onAppear {
             withAnimation {

@@ -73,6 +73,7 @@ extension NewMapView {
                     getQueryAndSpan()
                 }
                 MapButtons(position: $position, searchResults: $searchResults, visibleRegion: visibleRegion, newRegion: newRegion, showPhoto: $showPhoto, needGetMarker: $needGetMarker, needSearchQuery: $needSearchQuery, searchQuery: $searchQuery, startRoutePoint: $startRoutePoint, reverseRoute: $reverseRoute, startFromCL: $startFromCL, mediaURLs: $mediaURLs, photoObjectCoordinates: $photoObjectCoordinates, selectedResult: $selectedResult,selectedPhotoObject: $selectedPhotoObject, selectedTapItem: $selectedTapItem, hybridStyle: $hybridStyle, startNewMap: $startNewMap)
+                    .environmentObject(metaDataModel)
             }
             .padding([.top, .horizontal])
         }

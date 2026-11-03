@@ -12,7 +12,7 @@ extension View {
     var textModifier: some View {
         modifier(TextModifier())
     }
-    func navigationModifier(_ title: String) -> some View {
+    func titleInline(_ title: String) -> some View {
         modifier(NavigationModifier(title: title))
     }
     func hideKeyboard() {

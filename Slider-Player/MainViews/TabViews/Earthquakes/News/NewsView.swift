@@ -68,6 +68,6 @@ struct NewsView: View {
             }
         }//VStack
         
-        .navigationModifier(String.news)
+        .titleInline(String.news)
     }
 }

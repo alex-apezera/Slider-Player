@@ -64,6 +64,6 @@ struct LightView: View {
             }
         }
         .preferredColorScheme(lightsOn ? .light : .dark)
-        .navigationModifier(String.toggleLights)
+        .titleInline(String.toggleLights)
     }
 }

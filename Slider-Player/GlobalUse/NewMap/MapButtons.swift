@@ -27,6 +27,8 @@ struct MapButtons: View {
     @Binding var selectedTapItem: MKMapItem?
     @Binding var hybridStyle: Bool
     @Binding var startNewMap: Bool
+    
+    @EnvironmentObject var metaDataModel: MetaDataModel
 
     let userPoint = CurrentPoint()
     
@@ -55,10 +57,13 @@ struct MapButtons: View {
                         } label: {Image(systemName: "xmark.circle")}
                             .foregroundStyle(.pink).opacity(0.6)
                         
+                        MediasPicker()
+                            .environmentObject(metaDataModel)
+
                         Button {withAnimation {showPhoto.toggle()}
                         } label: {Image(systemName: "photo.stack")}
                             .foregroundStyle(showPhoto ? .yellow : .green)
-                            .disabled(MetaDataModel().metaDataObject.isEmpty)
+                            .disabled(metaDataModel.metaDataObject.isEmpty)
 
                         Button { withAnimation {
                             selectedResult = nil

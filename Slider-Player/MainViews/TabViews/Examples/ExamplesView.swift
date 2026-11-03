@@ -14,6 +14,7 @@ struct ExamplesView: View {
     @AppStorage("lightsOn") var lightsOn: Bool = false
     @StateObject var dataModel = DataModel()
     @State var showWeather = false
+    @AppStorage("newsCount") var newsCount: Int = 0
     @StateObject var weatherVM = WeatherViewModel()
     @AppStorage("webUrl") var webUrl: String = .webUrlExample
 
@@ -26,6 +27,12 @@ struct ExamplesView: View {
                 Label(String.homePage, systemImage: "house")
                     .underline(false, color: .clear)
             }
+            
+            //MARK: - News
+            NavigationLink(destination: NewsView()) {
+                Label(String.news, systemImage: "newspaper")
+            }.badge(newsCount)
+            
             //MARK: - Show Weather
             NavigationLink(destination: WeatherApp()) {
                 Label(String.weather, systemImage: "thermometer.variable.and.figure")
@@ -84,6 +91,6 @@ struct ExamplesView: View {
             }
         }
         .font(.system(size: 20))
-        .navigationModifier(String.more)
+        .titleInline(String.more)
     }
 }

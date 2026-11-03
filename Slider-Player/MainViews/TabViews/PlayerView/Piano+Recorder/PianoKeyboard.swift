@@ -66,7 +66,7 @@ struct PianoKeyboard: View {
         }
         .onDisappear {audioManager.stop()}
         .toolbar {pianoToolbar()}
-        .navigationModifier(iPadDevice ? String.pianoTitle : String.piano)
+        .titleInline(iPadDevice ? String.pianoTitle : String.piano)
         .alert(isPresented: $alert) {
             Alert(title: Text(String.error), message: Text(String.errorMessage), dismissButton: .cancel(Text(String.cancel)))
         }

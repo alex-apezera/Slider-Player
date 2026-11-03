@@ -19,18 +19,7 @@ extension ItemInfoView {
             lookAroundScene = try? await request.scene
         }
     }
-    
-//    func getPlacemarkInfo(mapItem: MKMapItem) {
-//        locationName = ""
-//        locationAddress = ""
-//        guard let latitude = mapItem.placemark.location?.coordinate.latitude else {return}
-//        guard let longitude = mapItem.placemark.location?.coordinate.longitude else {return}
-//        let location = CLLocation(latitude: latitude, longitude: longitude)
-//        let getInfo = GetInfo(name: $locationName, address: $locationAddress)
-//        getInfo.convertCoordinateToInfo(location)
-//        location2D = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-//    }
-    
+        
     func getPlacemarkInfo(mapItem: MKMapItem) {
         locationName = ""
         locationAddress = ""
@@ -54,11 +43,6 @@ extension ItemInfoView {
             if selectedResult.phoneNumber != "" {
                 Text(selectedResult.phoneNumber ?? "")
             }
-//            if selectedResult.placemark.title != "United States" {
-//                if selectedResult.placemark.title != "Russia" {
-//                    Text(selectedResult.placemark.title ?? "")
-//                }
-//            }
             Text(verbatim: .addressFromMarkerLocation).foregroundStyle(.tertiary)
             Text(locationAddress)
             HStack {

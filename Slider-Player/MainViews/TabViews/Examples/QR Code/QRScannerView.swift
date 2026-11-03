@@ -36,6 +36,6 @@ struct QRScannerView: View {
                     .onDisappear {withAnimation {webState = .awaitToScan}}
             }
         }
-        .navigationModifier(.qrCodeScanner)
+        .titleInline(.qrCodeScanner)
     }
 }

@@ -123,6 +123,6 @@ struct GesturedImage: View {
                     totalZoom -= 1
                 }
             }
-            .navigationModifier(String.gesture)
+            .titleInline(String.gesture)
     }
 }

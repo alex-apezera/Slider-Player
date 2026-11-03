@@ -50,7 +50,7 @@ struct ComposedGestureView: View {
             Spacer()
             
         }
-        .navigationModifier("Double tap")
+        .titleInline("Double tap")
         .padding()
     }
 }

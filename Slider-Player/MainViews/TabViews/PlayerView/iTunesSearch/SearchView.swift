@@ -92,7 +92,7 @@ struct SearchView: View {
                 }
             }
         }/// end starting VStack
-        .navigationModifier(String.itunesList + ": " + String(resultsCount))
+        .titleInline(String.itunesList + ": " + String(resultsCount))
     }///end body
 }///end SearchView
  

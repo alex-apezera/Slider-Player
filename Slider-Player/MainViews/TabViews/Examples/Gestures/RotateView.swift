@@ -29,7 +29,7 @@ struct RotateView: View {
                 .gesture(rotationGesture)
             Spacer()
         }
-        .navigationModifier("Rotate")
+        .titleInline("Rotate")
         .frame(maxWidth: .infinity)
         .overlay(alignment: .top) {
             Text("Use two fingers to rotate the box")

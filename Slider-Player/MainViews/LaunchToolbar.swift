@@ -9,7 +9,8 @@ import SwiftUI
 extension LaunchView {
     var launchToolbar: some View {
         HStack {
-            //MARK: - Settings
+            
+            // Settings
             Button {
                 goSettings.toggle()
             } label: {
@@ -31,7 +32,7 @@ extension LaunchView {
             .buttonStyle(Hovering(hoverMessage: .profileSettings))
             Spacer()
             
-            //MARK: - Localization
+            // Localization
             Button {
                 switch settings.localeItem {
                 case .russian:
@@ -58,7 +59,7 @@ extension LaunchView {
             .buttonStyle(Hovering(hoverMessage: .localeItem))
             Spacer()
 
-            //MARK: - Main menu
+            // Main menu
             Button {
                 color = Color.random()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {withAnimation {start = true}})
@@ -80,29 +81,7 @@ extension LaunchView {
             .buttonStyle(Hovering(hoverMessage: .mainMenu))
             Spacer()
 
-            //MARK: - New map
-            Button {
-                color = Color.random()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {withAnimation {startNewMap = true}})
-            } label: {
-                if iPadDevice {
-                    HStack {
-                        Image(systemName: "map")
-                        Text(String.newMap).padding(.trailing, 10)
-                        Image(systemName: "control").font(.footnote)
-                        Text("M")
-                    }
-                } else {
-                    Image(systemName: "map")
-                }
-            }
-            .opacity(isPasswordCorrect ? 1.0 : 0.3)
-            .disabled(!isPasswordCorrect)
-            .keyboardShortcut("m", modifiers: [.control])
-            .buttonStyle(Hovering(hoverMessage: .newMap + .withSearchPlaces))
-            Spacer()
-            
-            //MARK: - Autorization
+            // Autorization
             Button {
                 goAutorization.toggle()
             } label: {

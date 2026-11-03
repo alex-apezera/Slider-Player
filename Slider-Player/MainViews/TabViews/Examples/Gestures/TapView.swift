@@ -34,7 +34,7 @@ struct TapView: View {
             Text("Tap the rectangle to change its color")
                 .padding()
         }
-        .navigationModifier("Tap")
+        .titleInline("Tap")
         .toolbar {
             Button("Reset") {
                 color = Color.primary
