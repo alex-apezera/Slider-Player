@@ -14,7 +14,8 @@ struct MapView: View {
     let hideSearchButton: Bool
     
     @EnvironmentObject var metaDataModel: MetaDataModel
-    @ObservedObject var locationManager = LocationManager()
+    @StateObject var locationManager = LocationManager()
+    @StateObject private var weather = WeatherViewModel()
     @State var errorMessage: String = ""
     @State var searchQuery: String = ""
     @State var isSearching: Bool = false
@@ -83,14 +84,14 @@ struct MapView: View {
             if weatherApiView {
                 if searchedResults.isEmpty {
                     let coordinate =  userPoint.currentCoordinate
-                    WeatherApiView(coordinates: String(coordinate.latitude) + "," + String(coordinate.longitude), viewingDetails: $weatherApiView).environmentObject(WeatherViewModel())
+                    WeatherApiView(coordinates: String(coordinate.latitude) + "," + String(coordinate.longitude), viewingDetails: $weatherApiView).environmentObject(weather)
                 } else {
                     if selectedResult !== MKMapItem(){
                         let coordinate = searchByCoordinates ? destinationLocation : selectedResult.location.coordinate
-                        WeatherApiView(coordinates: String(coordinate.latitude) + "," + String(coordinate.longitude), viewingDetails: $weatherApiView).environmentObject(WeatherViewModel())
+                        WeatherApiView(coordinates: String(coordinate.latitude) + "," + String(coordinate.longitude), viewingDetails: $weatherApiView).environmentObject(weather)
                     } else {
                         let coordinate = searchByCoordinates ? destinationLocation : searchedResults.first?.location.coordinate
-                        WeatherApiView(coordinates: String((coordinate ?? destinationLocation).latitude) + "," + String((coordinate ?? destinationLocation).longitude), viewingDetails: $weatherApiView).environmentObject(WeatherViewModel())
+                        WeatherApiView(coordinates: String((coordinate ?? destinationLocation).latitude) + "," + String((coordinate ?? destinationLocation).longitude), viewingDetails: $weatherApiView).environmentObject(weather)
                     }
                 }
             }

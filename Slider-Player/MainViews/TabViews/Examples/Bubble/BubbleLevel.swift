@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct BubbleLevel: View {
-//    @EnvironmentObject var detector: MotionDetector
     @StateObject private var  detector: MotionDetector
-//    MotionDetector(updateInterval: 0.02)
 
     init(updateInterval: TimeInterval = 0.02) {
         _detector = StateObject(wrappedValue: MotionDetector(updateInterval: updateInterval))
