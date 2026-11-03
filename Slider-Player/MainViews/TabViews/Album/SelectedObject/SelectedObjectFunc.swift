@@ -11,9 +11,8 @@ import CoreLocation
 
 extension SelectedObjectView {
     
-    func updateMetaDataObject(_ metaDataObject: [MetaData]) {
-        storeMetaDataObject(metaDataObject)
-        metaDataModel.metaDataObject = retrieveMetaDataObject()
+    func updateMetaDataObject(_ objects: [MetaData]) {
+        metaDataModel.metaDataObject = refreshMetaDataObjects(objects)
     }
     
     /// Get location from Photo object and fetch Meta data

@@ -22,7 +22,6 @@ struct PlayerView: View {
     
     @ObservedObject private var piece = Piece()
     @ObservedObject var playerModel = PlayerModel()
-    @ObservedObject var manager = MusicFileManager()
 
     let timer = Timer
         .publish(every: 0.1, on: .main, in: .common)

@@ -12,7 +12,7 @@ import MapKit
 struct NewMapView: View {
     @Binding var startNewMap: Bool
     
-    @ObservedObject var metaDataModel = MetaDataModel()
+    @EnvironmentObject var metaDataModel: MetaDataModel
     @ObservedObject var locationManager = LocationManager()
     @ObservedObject var userPoint = CurrentPoint()
 

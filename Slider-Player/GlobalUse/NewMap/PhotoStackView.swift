@@ -54,6 +54,5 @@ struct PhotoStackView: View {
             SelectedObjectView(metaData: item)
                 .environmentObject(metaDataModel)
         }
-//        id(metaDataModel)
     }
 }

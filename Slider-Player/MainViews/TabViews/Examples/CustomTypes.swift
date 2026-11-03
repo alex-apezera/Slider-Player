@@ -18,28 +18,7 @@ struct Recipe: Identifiable {
 }
 
 typealias PinnedRecipes = [UUID]
-/*
-extension PinnedRecipes: @retroactive RawRepresentable {
-    public init?(rawValue: String) {
-        guard let data = rawValue.data(using: .utf8),
-              let result = try? JSONDecoder()
-                .decode(PinnedRecipes.self, from: data)
-        else {
-            return nil
-        }
-        self = result
-    }
-    
-    public var rawValue: String {
-        guard let data = try? JSONEncoder().encode(self),
-              let result = String(data: data, encoding: .utf8)
-        else {
-            return "[]"
-        }
-        return result
-    }
-}
-*/
+
 struct CustomTypes: View {
     @AppStorage("pinnedRecipes") var pinnedRecipes = PinnedRecipes()
     
@@ -75,7 +54,7 @@ struct CustomTypes: View {
     ]
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section(header: Text("Pinned Recipes")) {
                     ForEach(pinnedRecipes, id: \.self) { id in
@@ -151,7 +130,4 @@ struct RecipeRow: View {
     }
 }
 
-#Preview {
-    CustomTypes()
-}
 

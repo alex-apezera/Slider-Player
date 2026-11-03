@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WebNavigationView: View {
-    @ObservedObject var viewModel: WebViewModel
+    @StateObject var viewModel: WebViewModel
     @State var webTitle = ""
 
     let fontSize: CGFloat = 20///default 30
@@ -54,8 +54,4 @@ struct WebNavigationView: View {
             Divider()
         }
     }
-}
-
-#Preview {
-    WebNavigationView(viewModel: WebViewModel())
 }

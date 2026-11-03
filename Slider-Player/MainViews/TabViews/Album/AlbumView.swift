@@ -4,12 +4,11 @@
 //
 //  Created by Алексей Езерский on 22.04.2023.
 
-//MARK: - Album of photo objects
-
 import SwiftUI
 
+/// Album of media objects
 struct AlbumView: View {
-    @ObservedObject var metaDataModel = MetaDataModel()
+    @EnvironmentObject var metaDataModel: MetaDataModel
     @AppStorage("lastIndex") var lastIndex = 0
     @AppStorage("lastUpdatedObject") var lastUpdatedObject = Date.distantFuture.timeIntervalSince1970
     @State var editMode: EditMode = .inactive
@@ -37,11 +36,13 @@ struct AlbumView: View {
             .onDelete(perform: deleteImageObjects)
             .onMove(perform: moveImageObjects)
         }
+//        .refreshable {
+//            refreshStatus()
+//        }
         .background(.thinMaterial)
         .toolbar {albumToolbar}
         .environment(\.editMode, $editMode)
         .navigationBarTitleDisplayMode(.inline)
-        .id(title)
     }
     
 //MARK: - Show Image Object Row

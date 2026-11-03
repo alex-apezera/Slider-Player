@@ -10,7 +10,7 @@ import SwiftUI
 extension AlbumView {
     
     /// Refresh status
-    private func refreshStatus() {
+    func refreshStatus() {
         metaDataModel.metaDataObject = retrieveMetaDataObject()
         lastUpdatedObject = Date().timeIntervalSince1970
 
@@ -45,8 +45,7 @@ extension AlbumView {
     func moveImageObjects(source: IndexSet, destination: Int) {
         var imageObjects = metaDataModel.metaDataObject
         imageObjects.move(fromOffsets: source, toOffset: destination)
-        storeMetaDataObject(imageObjects)
-        metaDataModel.metaDataObject = retrieveMetaDataObject()
+        metaDataModel.metaDataObject = refreshMetaDataObjects(imageObjects)
     }
 }
 

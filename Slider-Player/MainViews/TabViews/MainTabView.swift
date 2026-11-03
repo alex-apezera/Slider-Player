@@ -21,7 +21,8 @@ struct MainTabView: View {
     
     @State private var startNewMap = false
 
-    @ObservedObject private var manager = MusicFileManager.shared
+    @StateObject private var manager = MusicFileManager.shared
+    @StateObject var album = MetaDataModel()
     
     var body: some View {
         TabView(selection: $tabSelected) {
@@ -34,7 +35,7 @@ struct MainTabView: View {
                 }.tag(0)
             
             // Album manage
-            NavigationView {AlbumView()}
+            NavigationView {AlbumView().environmentObject(album)}
                 .badge(lastIndex)
                 .tabItem {
                     Label(String.albumTitle, systemImage: "photo.stack.fill")
@@ -43,6 +44,7 @@ struct MainTabView: View {
             
             // New Map
             NewMapView(startNewMap: $startNewMap)
+                .environmentObject(album)
                 .tabItem {Label(String.newMap, systemImage: "map")}
                 .tag(2)
             

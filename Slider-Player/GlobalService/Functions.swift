@@ -209,3 +209,8 @@ func retrieveMetaDataObject() -> [MetaData] {
     }
     return metaDataObject
 }
+
+func refreshMetaDataObjects(_ objects: [MetaData]) -> [MetaData] {
+    storeMetaDataObject(objects)
+    return retrieveMetaDataObject()
+}
