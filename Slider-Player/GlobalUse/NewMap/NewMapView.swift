@@ -10,7 +10,6 @@ import SwiftUI
 import MapKit
 
 struct NewMapView: View {
-    @Binding var startNewMap: Bool
     
     @EnvironmentObject var metaDataModel: MetaDataModel
     @ObservedObject var locationManager = LocationManager()

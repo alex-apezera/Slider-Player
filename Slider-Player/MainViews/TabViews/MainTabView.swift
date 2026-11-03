@@ -19,8 +19,6 @@ struct MainTabView: View {
     @AppStorage("galleryFilesCount") var galleryFilesCount: Int = 0
     @AppStorage("quakesCount") var quakesCount = 0
     
-    @State private var startNewMap = false
-
     @StateObject private var manager = MusicFileManager.shared
     @StateObject var album = MetaDataModel()
     
@@ -43,7 +41,7 @@ struct MainTabView: View {
                 .tag(1)
             
             // New Map
-            NewMapView(startNewMap: $startNewMap)
+            NewMapView()
                 .environmentObject(album)
                 .tabItem {Label(String.newMap, systemImage: "map")}
                 .tag(2)

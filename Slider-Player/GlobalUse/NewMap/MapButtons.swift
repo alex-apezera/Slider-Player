@@ -26,7 +26,6 @@ struct MapButtons: View {
     @Binding var selectedPhotoObject: MKMapItem?
     @Binding var selectedTapItem: MKMapItem?
     @Binding var hybridStyle: Bool
-    @Binding var startNewMap: Bool
     
     @EnvironmentObject var metaDataModel: MetaDataModel
 
@@ -53,9 +52,6 @@ struct MapButtons: View {
                 HStack {
                     
                     HStack {
-                        Button {withAnimation {startNewMap = false}
-                        } label: {Image(systemName: "xmark.circle")}
-                            .foregroundStyle(.pink).opacity(0.6)
                         
                         MediasPicker()
                             .environmentObject(metaDataModel)
