@@ -20,7 +20,7 @@ struct MainTabView: View {
     @AppStorage("quakesCount") var quakesCount = 0
     
     @StateObject private var manager = MusicFileManager.shared
-    @StateObject var album = MetaDataModel()
+    @StateObject private var album = MetaDataModel()
     
     var body: some View {
         TabView(selection: $tabSelected) {

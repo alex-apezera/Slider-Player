@@ -11,18 +11,17 @@ import SwiftUI
 struct ExamplesView: View {
     @Binding var backToLaunchView: Bool
         
-    @AppStorage("lightsOn") var lightsOn: Bool = false
-    @StateObject var dataModel = DataModel()
-    @State var showWeather = false
-    @AppStorage("newsCount") var newsCount: Int = 0
-    @StateObject var weatherVM = WeatherViewModel()
-    @AppStorage("webUrl") var webUrl: String = .webUrlExample
+    @AppStorage("lightsOn") private var lightsOn: Bool = false
+    @AppStorage("newsCount") private var newsCount: Int = 0
+    @AppStorage("webUrl") private var webUrl: String = .webUrlExample
+    
+    @State private var showWeather = false
 
     var body: some View {
         List {
             
-            Button { withAnimation {
-                backToLaunchView = false }
+            // Call Home Page
+            Button { withAnimation { backToLaunchView = false }
             } label: {
                 Label(String.homePage, systemImage: "house")
                     .underline(false, color: .clear)
@@ -61,12 +60,11 @@ struct ExamplesView: View {
             }
             //MARK: - Photo gallery example
             NavigationLink(destination: GridView()
-                .environmentObject(dataModel)) {
+                .environmentObject(DataModel())) {
                     Label(String.imagesGallery, systemImage: "square.grid.3x3.square")
                 }
             //MARK: - Bubble level detector
-            NavigationLink(destination: BubbleLevel()
-                .environmentObject(MotionDetector(updateInterval: 0.02).started())) {
+            NavigationLink(destination: BubbleLevel()) {
                     Label(String.levelDetector, systemImage: "button.programmable.square")
                 }
             //MARK: - Toggle light

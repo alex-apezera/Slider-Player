@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct BubbleLevel: View {
-    @EnvironmentObject var detector: MotionDetector
+//    @EnvironmentObject var detector: MotionDetector
+    @StateObject private var  detector: MotionDetector
+//    MotionDetector(updateInterval: 0.02)
+
+    init(updateInterval: TimeInterval = 0.02) {
+        _detector = StateObject(wrappedValue: MotionDetector(updateInterval: updateInterval))
+    }
 
     let range = Double.pi
     let levelSize: CGFloat = 350
@@ -73,6 +79,8 @@ struct BubbleLevel: View {
                 Spacer()
             }
         }
+        .onAppear { detector.start() }
+        .onDisappear { detector.stop() }
         .titleInline(String.bubbleLevelMeter)
     }
 }

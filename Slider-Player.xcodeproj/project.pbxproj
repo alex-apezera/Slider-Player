@@ -975,7 +975,6 @@
 		196063D42CF5EF27002147DD /* GlobalUse */ = {
 			isa = PBXGroup;
 			children = (
-				199522342B61180E00989CB3 /* NewMap */,
 				195DECEE2A433E3700259AC3 /* Map */,
 				1976CA842C748E4D004ADAF8 /* Weather */,
 			);
@@ -1090,6 +1089,7 @@
 			isa = PBXGroup;
 			children = (
 				198CC33B2A0037B90014FFA1 /* ExamplesView.swift */,
+				19C5E78E2CF20D5200406E63 /* News */,
 				1959CA432C5E643C008DD994 /* CurrentLocation */,
 				191EE2172DFAD14C005E5DBA /* Web */,
 				198CC2C829F971730014FFA1 /* QR Code */,
@@ -1471,6 +1471,7 @@
 				193AB72B29AFD6EC00187642 /* MainTabView.swift */,
 				19D82F152B35CEC600178D3B /* PlayerView */,
 				1941C9AB29B621A9006A8B01 /* Album */,
+				199522342B61180E00989CB3 /* NewMap */,
 				19FEB41C2B192E7900F9DF6B /* Earthquakes */,
 				198CC2BF29F5DAFD0014FFA1 /* Examples */,
 			);
@@ -1504,7 +1505,6 @@
 		19FEB41C2B192E7900F9DF6B /* Earthquakes */ = {
 			isa = PBXGroup;
 			children = (
-				19C5E78E2CF20D5200406E63 /* News */,
 				19FEB4302B192E7900F9DF6B /* Quakes */,
 				19FEB4202B192E7900F9DF6B /* Models */,
 				19FEB42B2B192E7900F9DF6B /* Preview Content */,
