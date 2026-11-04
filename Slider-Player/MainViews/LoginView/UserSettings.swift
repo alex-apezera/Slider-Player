@@ -37,6 +37,9 @@ class UserSettings: ObservableObject {
     @AppStorage("guidanceSite") var guidanceSite: String = "https://developer.apple.com/tutorials/"
     @AppStorage("nameSite") var nameSite: String = "applelogo"
     @AppStorage("jpegCompression") var jpegCompression: Double  = 1.0
+    @AppStorage("openTopoDataset") var dataset: String = "srtm90m"
+    
+    let topoSets = ["srtm90m", "srtm30m", "aster30m", "eudem25m", "mapzen"]
     
     let ringtones = ["Chimes", "ding", "Waves"]
     
@@ -58,7 +61,7 @@ class UserSettings: ObservableObject {
         "https://swiftbook.org/",
         "https://openweathermap.org/",
         "https://www.weatherapi.com/",
-        "https://open-elevation.com/",
+        "https://opentopodata.org/",
         "http://www.apple.com/itunes/",
         "https://earthquake.usgs.gov/earthquakes/",
         "https://newsapi.org/"
@@ -73,7 +76,7 @@ class UserSettings: ObservableObject {
         case guideIcons[2]: Text(" Swift Book")
         case guideIcons[3]: Text(" OpenWeather")
         case guideIcons[4]: Text(" WeatherApi")
-        case guideIcons[5]: Text(" Elevation")
+        case guideIcons[5]: Text(" OpenTopoData")
         case guideIcons[6]: Text(" iTunes")
         case guideIcons[7]: Text(" Quakes")
         case guideIcons[8]: Text(" News")

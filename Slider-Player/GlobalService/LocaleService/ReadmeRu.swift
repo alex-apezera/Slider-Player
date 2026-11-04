@@ -20,7 +20,7 @@ extension String {
 Используется только бесплатная стандартная библиотека Фрэймворков для XCode (Foundation, SwiftUI, PhotosUI, MapKit, CoreLocation, AVKit, AVFoundation, Speech, Media, MediaPlayer, CoreImage, SwiftData, Combine, WebKit и др. ). 
 
 Использованы также бесплатные  Web API ресурсы, такие как:
-iTunes.com, earthquake.usgs.gov, open-elevation.com, openweathermap.org, weatherapi.com, newsapi.org.
+iTunes.com, earthquake.usgs.gov, openTopoData.org, openweathermap.org, weatherapi.com, newsapi.org.
 
 Хранение данных осуществляется в файловой системе iOS стандартными методами. 
 

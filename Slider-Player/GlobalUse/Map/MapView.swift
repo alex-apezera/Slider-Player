@@ -35,9 +35,7 @@ struct MapView: View {
     @State var openWeatherView = false
     @State var weatherApiView = false
     let userPoint = CurrentPoint()
-    
-    var hideButton: Bool { return hideSearchButton || metaDataModel.metaDataObject.isEmpty}
-    
+        
     var body: some View {
         ZStack(alignment: .topLeading) {
             //MARK: - Show Map
@@ -65,6 +63,7 @@ struct MapView: View {
             if isSearching {
                 ProgressView()
             }
+ /*
             //MARK: - Show weather from openWeatherMap.org
             if openWeatherView {
                 if searchedResults.isEmpty {
@@ -95,6 +94,18 @@ struct MapView: View {
                     }
                 }
             }
+            */
+             // MARK: - Show weather from openWeatherMap.org
+             if openWeatherView {
+                 weatherInfo(for: weatherCoordinate)
+             }
+
+             // MARK: - Show weather from weatherApi.com
+             if weatherApiView {
+                 WeatherApiView(coordinates: weatherCoordinate.weatherString, viewingDetails: $weatherApiView)
+                     .environmentObject(weather)
+             }
+            
         }
 //MARK: - Manage block
         .titleInline(String.mapSearch)
@@ -107,4 +118,28 @@ struct MapView: View {
             )
         }
     }
+}
+
+extension CLLocationCoordinate2D {
+    var weatherString: String { "\(latitude),\(longitude)" }
+}
+
+extension MapView {
+ 
+    var hideButton: Bool { return hideSearchButton || metaDataModel.metaDataObject.isEmpty}
+
+    var weatherCoordinate: CLLocationCoordinate2D {
+        let coordinate: CLLocationCoordinate2D?
+
+        if searchedResults.isEmpty {
+            coordinate = userPoint.currentCoordinate
+        } else if selectedResult !== MKMapItem() {
+            coordinate = searchByCoordinates ? destinationLocation : selectedResult.location.coordinate
+        } else {
+            coordinate = searchByCoordinates ? destinationLocation : searchedResults.first?.location.coordinate
+        }
+
+        return coordinate ?? destinationLocation
+    }
+
 }

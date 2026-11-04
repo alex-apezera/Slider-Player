@@ -12,7 +12,7 @@ import Foundation
 // A model to handle decoded JSON response from WeatherAPI.com
 // JSON response example located at the bottom of this file
 
-// MARK: WeatherData Object
+/// WeatherData Object
 struct WeatherData: Codable {
     let location: Location
     let current: Current
@@ -23,7 +23,7 @@ struct WeatherData: Codable {
     }
 }
 
-// MARK: Current
+/// Current weather
 struct Current: Codable {
     let lastUpdatedEpoch: Int
     let lastUpdated: String
@@ -66,7 +66,7 @@ struct Current: Codable {
     }
 }
 
-// MARK: Condition
+/// Weather condition
 struct Condition: Codable {
     let text: String
     let icon: String
@@ -74,13 +74,13 @@ struct Condition: Codable {
 }
 
 
-// MARK: Forecast
+/// Forecast weather
 struct Forecast: Codable {
     let forecastday: [Forecastday]
 }
 
 
-// MARK: Forecastday
+/// Forecastday data
 struct Forecastday: Identifiable, Codable {
     let id = UUID()
     let date: String
@@ -96,7 +96,7 @@ struct Forecastday: Identifiable, Codable {
     }
 }
 
-// MARK: Astro
+/// Astro data
 struct Astro: Codable {
     let sunrise, sunset, moonrise, moonset, moonPhase: String
     let moonIllumination: Int
@@ -111,7 +111,7 @@ struct Astro: Codable {
     }
 }
 
-// MARK: Day
+/// Day condition
 struct Day: Codable {
     let maxtempC, maxtempF, mintempC, mintempF: Double
     let avgtempC, avgtempF, maxwindMph, maxwindKph, totalprecipMm, totalprecipIn, totalsnowCM, avgvisKM, avgvisMiles, avghumidity: Double
@@ -143,7 +143,7 @@ struct Day: Codable {
     }
 }
 
-// MARK: Hour
+/// Hour condition
 struct Hour: Identifiable, Codable {
     let id = UUID()
     let timeEpoch: Int
@@ -200,7 +200,7 @@ struct Hour: Identifiable, Codable {
     }
 }
 
-// MARK: Location
+/// Location data
 struct Location: Codable {
     let name, region, country: String
     let lat, lon: Double

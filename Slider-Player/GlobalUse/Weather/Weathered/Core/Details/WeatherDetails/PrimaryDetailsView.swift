@@ -21,7 +21,6 @@ struct PrimaryDetailsView: View {
                 .font(.title)
                 .bold()
                 .lineLimit(1)
-                .padding(.top, 25)
 
             // Region Name
             Text("\(weatherData.location.region), \(weatherData.location.country)")
@@ -40,7 +39,7 @@ struct PrimaryDetailsView: View {
                 .opacity(0.8)
             Text("\(timeZone)")
                 .font(.footnote)
-                .fontWeight(.ultraLight)
+                .fontWeight(.light)
             
             // Location info
             let latitude = weatherData.location.lat .formatted(.number.precision(.fractionLength(3)))
@@ -50,8 +49,8 @@ struct PrimaryDetailsView: View {
                 ElevationView(coordinate: CLLocationCoordinate2D(latitude: weatherData.location.lat, longitude: weatherData.location.lon))
             }
             .font(.footnote)
-            .fontWeight(.ultraLight)
-            .padding(.bottom, 25)
+            .fontWeight(.light)
+            .padding(.bottom, 20)
         }
         .foregroundStyle(.white)
         .fontDesign(fontDesign)

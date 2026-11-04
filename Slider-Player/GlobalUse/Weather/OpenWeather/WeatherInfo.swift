@@ -7,8 +7,8 @@
 
 import SwiftUI
 import CoreLocation
-//MARK: - Weather info view
 
+/// Weather info view
 func weatherInfo(for coordinate: CLLocationCoordinate2D) -> some View {
     GeometryReader { geo in
         ScrollView {
@@ -20,6 +20,7 @@ func weatherInfo(for coordinate: CLLocationCoordinate2D) -> some View {
     }
 }
 
+/// Parent View for weatherInfo(customCoordinate:)
 struct WeatherInfo: View {
     @State var customCoordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     @ObservedObject var locationManager = LocationManager()
@@ -59,6 +60,7 @@ struct WeatherInfo: View {
                 guard let coordinate else {return}
                 let userCoordinate = customCoordinate.latitude.isZero && customCoordinate.longitude.isZero ? coordinate : customCoordinate
                 fetchApiData(from: userCoordinate)
+                print("🌐", #function, userCoordinate)
             }
         }
     }

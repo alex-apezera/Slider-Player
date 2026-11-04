@@ -10,6 +10,15 @@ import CoreLocation
 
 extension WeatherInfo {
     
+    /// Latitude, longitude, altitude info
+    @ViewBuilder private var locationInfo: some View {
+        let latitude = customCoordinate.latitude .formatted(.number.precision(.fractionLength(3)))
+        let longitude = customCoordinate.longitude .formatted(.number.precision(.fractionLength(3)))
+        Text("\(timeZone ?? .current)")
+        Text("\(.latitude): \(latitude)  \(.longitude): \(longitude)")
+        ElevationView(coordinate: customCoordinate)
+    }
+    
     //MARK: - Current weather view
     @ViewBuilder var weatherContent: some View {
         VStack{
@@ -18,7 +27,7 @@ extension WeatherInfo {
                     .font(.custom("", size: 32)).padding(.top, 20)
                 Text(weatherResponse.name).font(.title2).bold()
                 Text(convertUnixTime(weatherResponse.dt, dateFormat: .dateFormatDayDateHour, localTimeZone: timeZone ?? .current)).font(.callout).bold()
-                Text("\(timeZone ?? .current)").font(.footnote).fontWeight(.ultraLight).padding(.bottom, 5)
+                locationInfo.font(.footnote).fontWeight(.light)
                 Text(weatherResponse.weather.first?.description ?? "").font(.body).bold()
                 
                 Divider()

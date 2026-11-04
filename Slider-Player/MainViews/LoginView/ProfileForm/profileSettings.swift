@@ -25,14 +25,20 @@ extension ProfileForm {
                 if !userSettings.isPrivate { Text(verbatim: .privateAccount) } else { Text(verbatim: .privateAccount + .isActive).foregroundColor(.indigo)
                 }
             }
-            Picker(selection: $userSettings.ringtone,  label: Text(verbatim: .rington)) {
-                ForEach(userSettings.ringtones, id: \.self) { ringtone in
-                    Text(ringtone)
-                }
-                .onChange(of: userSettings.ringtone) { _, ringtone in
-                    playerModel.play(name: ringtone)
+            Picker(selection: $userSettings.dataset, label: Text("Altitude mask")) {
+                ForEach(userSettings.topoSets, id: \.self) {
+                    dataSets in Text(dataSets)
                 }
             }
+            
+            Picker(selection: $userSettings.ringtone,  label: Text(verbatim: .rington)) {
+                ForEach(userSettings.ringtones, id: \.self) { ringtone in Text(ringtone)
+                }
+            }
+            .onChange(of: userSettings.ringtone) { _, ringtone in
+                playerModel.play(name: ringtone)
+            }
+            
             Picker(selection: $userSettings.jpegCompression, label: Text(verbatim: .jpegCompression)) {
                 ForEach(userSettings.compressionQualities, id: \.self) { number in
                     Text(String(number))

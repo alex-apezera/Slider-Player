@@ -18,7 +18,7 @@ Designed for iOS devices with versions above 17. There are some examples with co
 
 Only a free standard framework library for XCode is used (Foundation, SwiftUI, PhotosUI, MapKit, CoreLocation, AVKit, AVFoundation, Speech, Media, MediaPlayer, CoreImage, SwiftData, Combine, WebKit etc. ). 
 
-Free Web API resources are also used, such as: iTunes.com, earthquake.usgs.gov, open-elevation.com, openweathermap.org, weatherapi.com, newsapi.org. 
+Free Web API resources are also used, such as: iTunes.com, earthquake.usgs.gov, openTopoData.org, openweathermap.org, weatherapi.com, newsapi.org. 
 
 Data storage is carried out in the iOS file system using standard methods. 
 
