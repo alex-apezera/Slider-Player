@@ -62,7 +62,7 @@ extension LaunchView {
             // Main menu
             Button {
                 color = Color.random()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {withAnimation {start = true}})
+                withAnimation(.easeInOut(duration: 1.5)) { start = true }
             } label: {
                 if iPadDevice {
                     HStack {
@@ -102,7 +102,7 @@ extension LaunchView {
             .keyboardShortcut("a", modifiers: [.shift, .command])
             .buttonStyle(Hovering(hoverMessage: isPasswordCorrect ? .passAutorization : .tryAutorization))
         }
-        .font(.footnote)
+//        .font(.footnote)
         .fontWeight(.semibold)
         .padding(.vertical,  iPadDevice ? 10 : 5)
         .padding(.horizontal,  iPadDevice ? 15 : 5)

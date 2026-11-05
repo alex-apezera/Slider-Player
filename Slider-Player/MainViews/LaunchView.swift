@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Launch screen with menu
+/// Launch screen with menu. See README.MD.
 struct LaunchView: View {
     @Binding var start: Bool
 
@@ -33,7 +33,7 @@ struct LaunchView: View {
                 launchToolbar
                 ZStack {
                     ScrollView {
-                        Text(verbatim: localeRu ? .readmeRu : .readmeEn) ///See Readme.swift
+                        Text(verbatim: localeRu ? .readmeRu : .readmeEn)
                             .padding()
                     }
                     if goAutorization || goSettings {

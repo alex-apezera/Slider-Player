@@ -50,7 +50,7 @@ struct PrimaryDetailsView: View {
             }
             .font(.footnote)
             .fontWeight(.light)
-            .padding(.bottom, 20)
+            .padding(.bottom, 10)
         }
         .foregroundStyle(.white)
         .fontDesign(fontDesign)

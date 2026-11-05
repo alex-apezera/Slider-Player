@@ -10,11 +10,11 @@ extension String {
 """
 This application is designed for educational purposes. Development begins in March 2023. Useful codes and techniques can be used to develop other applications. The project was developed without the use of AI.
 
-The Application uses codes borrowed from various sources, programmers' forums, textbooks. 
+The Application uses codes borrowed from various sources, programmers' forums, textbooks, and also, later, using AI. 
 
 The necessary changes have been made to the original codes to build a holistic Application. 
 
-Designed for iOS devices with versions above 17. There are some examples with codes above 18 versions. 
+Designed for iOS devices with versions above 26.0.
 
 Only a free standard framework library for XCode is used (Foundation, SwiftUI, PhotosUI, MapKit, CoreLocation, AVKit, AVFoundation, Speech, Media, MediaPlayer, CoreImage, SwiftData, Combine, WebKit etc. ). 
 
@@ -31,7 +31,6 @@ Title (initial) screen with selection:
     Profile and Application Settings. 
     Language selection (localization). 
     Entering the Main Menu of the Application. 
-    Login to the New Map application. They work in conjunction with objects from the "Album". Search, routeing, panoramic views, weather. 
     Authorization with password. 
 
 Main menu: 
@@ -48,15 +47,15 @@ Album
     Map with search and route. *** 
     Weather at the shooting location. *** 
 
-News 
-    Screen 1 with Main and All News. Search by categories and topics. 
-    Screen 2 with details. 
-
+New Map
+    Login to the New Map (Apple) application. They work in conjunction with objects from the "Album". Search, routeing, panoramic views, weather.
+ 
 Earthquakes 
     Current data from the Internet with Geomaps and weather display in this place. *** 
 
 More (useful code examples) 
-    Go to the start screen with settings. 
+    Go to the start screen with settings.
+    News. Screen 1 with Main and All News. Search by categories and topics. Screen 2 with details.
     Weather with location search (city, code, coordinates). ** 
     Current geolocation. 
     Map with search and route (available for all devices).

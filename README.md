@@ -2,11 +2,11 @@
 ### English
 This application is designed for educational purposes. Development begins in March 2023. Useful codes and techniques can be used to develop other applications. The project was developed without the use of AI.
 
-The Application uses codes borrowed from various sources, programmers' forums, textbooks. 
+The Application uses codes borrowed from various sources, programmers' forums, textbooks, and also, later, using AI. 
 
 The necessary changes have been made to the original codes to build a holistic Application. 
 
-Designed for iOS devices with versions above 17. There are some examples with codes above 18 versions. 
+Designed for iOS devices with versions above 26.0.
 
 Only a free standard framework library for XCode is used (Foundation, SwiftUI, PhotosUI, MapKit, CoreLocation, AVKit, AVFoundation, Speech, Media, MediaPlayer, CoreImage, SwiftData, Combine, WebKit etc. ). 
 
@@ -40,6 +40,9 @@ Album
     Map with search and route. (3) 
     Weather at the shooting location. (3) 
 
+New Map
+    Login to the New Map application. They work in conjunction with objects from the "Album". Search, routeing, panoramic views, weather.
+    
 News 
     Screen 1 with Main and All News. Search by categories and topics. 
     Screen 2 with details. 
@@ -48,7 +51,10 @@ Earthquakes
     Current data from the Internet with Geomaps and weather display in this place. (3) 
 
 More (useful code examples) 
-    Go to the start screen with settings. 
+    Go to the start screen with settings.
+    More (useful code examples) 
+    Go to the start screen with settings.
+    News. Screen 1 with Main and All News. Search by categories and topics. Screen 2 with details. 
     Weather (1) with location search (city, code, coordinates). (2) 
     Current geolocation. 
     Map with search and route (available for all devices).
@@ -77,11 +83,11 @@ More (useful code examples)
 Данное приложение разработано в учебных целях. Начало разработки — март 2023 года. Проект разрабатывался без использования ИИ.
 Полезные коды и приемы могут быть использованы для разработки других приложений.
  
-В Приложении использованы коды, заимствованные из различных источников, форумов программистов, учебных пособий.
+В Приложении использованы коды, заимствованные из различных источников, форумов программистов, учебных пособий, а также, познее с использованием ИИ.
                 
 Внесены необходимые изменения в оригинальные коды для построения целостного Приложения.
                 
-Предназначено для iOS устройств с версиями выше 17. Имеются отдельные примеры с кодами выше 18 версий.
+Предназначено для iOS устройств с версиями выше 26.0.
 
 Используется только бесплатная стандартная библиотека Фрэймворков для XCode (Foundation, SwiftUI, PhotosUI, MapKit, CoreLocation, AVKit, AVFoundation, Speech, Media, MediaPlayer, CoreImage, SwiftData, Combine, WebKit и др. ).
 
@@ -97,8 +103,7 @@ iTunes.com, earthquake.usgs.gov, openTopoData.org, openweathermap.org, weatherap
 Титульный (начальный) экран с выбором:
     Настройки профиля и Приложения.
     Выбор языка (локализация).
-    Вход в Основное меню Приложения.  
-    Вход в приложение Новые Карты. Работают в связке с объектами из "Альбома". Поиск, прокладка маршрута, панорамные виды, погода.
+    Вход в Основное меню Приложения.     
     Авторизация с паролем.
 
 Основное меню:
@@ -125,7 +130,8 @@ iTunes.com, earthquake.usgs.gov, openTopoData.org, openweathermap.org, weatherap
     Актуальные данные из интернета с Геокартами и показ погоды в этом месте. (3)
 
 Ещё (полезные примеры кодов)
-    Переход на стартовый экран с настройками. 
+    Переход на стартовый экран с настройками.
+    Новости: Экран 1 с Главными и Всеми новостями. Поиск по категориям и темам. Экран 2 с деталями.
     Погода с поиском места (город, код, координаты). (2)
     Текущая геопозиция. 
     Карта с поиском и прокладкой маршрута (доступно для всех устройств).
