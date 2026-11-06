@@ -48,15 +48,15 @@ class AudioEngine {
         setSessionCategory(iPadDevice ? .playAndRecord : .playback)
 
         if engine.isRunning {
-            print(#function, "Audio engine already running")
+            print("🌐", #function, "Audio engine already running")
             return
         }
 
         do {
             try engine.start()
-            print(#function, "Audio engine started, octave number = \(octaveNum)")
+            print("🌐", #function, "Audio engine started, octave number = \(octaveNum)")
         } catch {
-            print("Error: couldn't start audio engine")
+            print("🌐", "Error: couldn't start audio engine")
             return
         }
     }

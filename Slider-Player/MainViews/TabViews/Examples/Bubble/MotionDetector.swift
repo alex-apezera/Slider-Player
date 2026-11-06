@@ -45,7 +45,7 @@ class MotionDetector: ObservableObject {
                 self.updateMotionData()
             }
         } else {
-            print(#function, "Motion data isn't available on this device.")
+            print("🌐", #function, "Motion data isn't available on this device.")
         }
     }
     

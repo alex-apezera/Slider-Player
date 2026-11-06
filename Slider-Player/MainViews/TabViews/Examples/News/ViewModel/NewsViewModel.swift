@@ -30,7 +30,7 @@ final class NewsViewModel: ObservableObject {
                 topNews = data.articles
             } catch {
                 if let error = error as? NetworkError {
-                    print(#function, error)
+                    print("🌐", #function, error)
                 }
             }
         }
@@ -42,7 +42,7 @@ final class NewsViewModel: ObservableObject {
                 bottomNews = data.articles
             } catch {
                 if let error = error as? NetworkError {
-                    print(#function, error)
+                    print("🌐", #function, error)
                 }
             }
         }

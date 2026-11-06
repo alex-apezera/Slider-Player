@@ -21,36 +21,36 @@ extension WeatherInfo {
         let forecastUrlString = "https://api.openweathermap.org/data/2.5/forecast?\(place)&appid=\(apiKey)&units=metric&lang=\(locale)"
 
         guard let forecastUrl = URL(string: forecastUrlString) else {
-            print(#function, "Invalid URL")
+            print("🌐", #function, "Invalid URL")
             return
         }
         
         URLSession.shared.dataTask(with: forecastUrl) { data, _, error in
             guard let data else {
-                print(#function, "Forecast session failed: ", error as Any)
+                print("🌐", #function, "Forecast session failed: ", error as Any)
                 return
             }
             do {
                 forecastResponse = try decoder.decode(ForecastApiResponse.self, from: data)
             } catch {
-                print(#function, error.localizedDescription)
+                print("🌐", #function, error.localizedDescription)
             }
         }.resume()
 
         guard let weatherUrl = URL(string: weatherUrlString) else {
-            print(#function, "Invalid weather URL")
+            print("🌐", #function, "Invalid weather URL")
             return
         }
         
         URLSession.shared.dataTask(with: weatherUrl) { data, _, error in
             guard let data else {
-                print(#function, "Weather session failed: ", error as Any)
+                print("🌐", #function, "Weather session failed: ", error as Any)
                 return
             }
             do {
                 weatherResponse = try decoder.decode(WeatherApiResponse.self, from: data)
             } catch {
-                print(#function, error.localizedDescription)
+                print("🌐", #function, error.localizedDescription)
             }
         }.resume()
 

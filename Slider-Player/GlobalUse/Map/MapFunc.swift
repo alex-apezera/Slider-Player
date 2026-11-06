@@ -60,11 +60,11 @@ extension MapView {
         search.start { response, error in
             self.isSearching = false
             if let error = error {
-                print(#function, "Error: \(error)")
+                print("🌐", #function, "Error: \(error)")
                 return
             }
             guard let response = response else {
-                print(#function, "No response")
+                print("🌐", #function, "No response")
                 return
             }
             for mapItem in response.mapItems {

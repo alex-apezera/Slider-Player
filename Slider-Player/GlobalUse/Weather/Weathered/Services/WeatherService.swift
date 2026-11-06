@@ -36,14 +36,14 @@ class WeatherService: ObservableObject {
                 // If there's an error during the network request,
                 // call the completion handler with a failure result and return early.
                 completion(.failure(error))
-                print(error)
+                print("🌐", #function, error)
                 return
             }
             /// Check if data is received from the server.
             guard let data = data else {
                 /// If no data is received, call the completion handler with a failure result and return early.
                 completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
-                print("No data received")
+                print("🌐", #function, "No data received")
                 return
             }
             do {
@@ -52,28 +52,28 @@ class WeatherService: ObservableObject {
                 let weatherData = try decoder.decode(WeatherData.self, from: data)
                 /// If decoding is successful, call the completion handler with the WeatherData object.
                 completion(.success(weatherData))
-//                print(weatherData.forecast.forecastday) // too many info
+//                print("🌐", #function, weatherData.forecast.forecastday) // too many info
             } catch let error as DecodingError {
                 switch error {
                 case .keyNotFound(let key, let context):
                     let path = context.codingPath.map { $0.stringValue }.joined(separator: " -> ")
-                    print("Отсутствует ключ '\(key.stringValue)' по пути \(path), причина ошибки: \(context.debugDescription)")
+                    print("🌐", #function, "Отсутствует ключ '\(key.stringValue)' по пути \(path), причина ошибки: \(context.debugDescription)")
                 case .typeMismatch(let type, let context):
                     let path = context.codingPath.map { $0.stringValue }.joined(separator: " -> ")
-                    print("Тип '\(type)' не соответствует ожидаемому по пути \(path), причина ошибки: \(context.debugDescription)")
+                    print("🌐", #function, "Тип '\(type)' не соответствует ожидаемому по пути \(path), причина ошибки: \(context.debugDescription)")
                 case .valueNotFound(let type, let context):
                     let path = context.codingPath.map { $0.stringValue }.joined(separator: " -> ")
-                    print("Не найдено значение типа '\(type)' по пути \(path), причина ошибки: \(context.debugDescription)")
+                    print("🌐", #function, "Не найдено значение типа '\(type)' по пути \(path), причина ошибки: \(context.debugDescription)")
                 case .dataCorrupted(let context):
                     let path = context.codingPath.map { $0.stringValue }.joined(separator: " -> ")
-                    print("Данные повреждены по пути \(path), причина ошибки: \(context.debugDescription)")
+                    print("🌐", #function, "Данные повреждены по пути \(path), причина ошибки: \(context.debugDescription)")
                 @unknown default:
-                    print("Неизвестная ошибка декодирования: \(error.localizedDescription)")
+                    print("🌐", #function, "Неизвестная ошибка декодирования: \(error.localizedDescription)")
                 }
             } catch {
                 /// If there's an error during JSON decoding, call the completion handler with a failure result and return early.
                 completion(.failure(error))
-                print(error.localizedDescription)
+                print("🌐", #function, error.localizedDescription)
             }
         }
         /// Resume the data task to initiate the network request.

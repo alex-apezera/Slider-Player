@@ -22,7 +22,7 @@ extension HomeView {
                 do {
                     try modelContext.save()
                 } catch {
-                    print(error.localizedDescription)
+                    print("🌐", error.localizedDescription)
                 }
             }
         } label: {

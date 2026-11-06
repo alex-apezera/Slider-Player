@@ -43,7 +43,7 @@ extension FileManager {
                 try self.copyItem(at: sourceURL, to: destinationURL)
                 return destinationURL
             } catch let error {
-                print(#function, "Unable to copy file: \(error.localizedDescription)")
+                print("🌐", #function, "Unable to copy file: \(error.localizedDescription)")
             }
         }
         return nil
@@ -71,7 +71,7 @@ extension FileManager {
             do {
                 try self.removeItem(at: url)
             } catch let error {
-                print(#function, "Unable to remove file: \(error.localizedDescription)")
+                print("🌐", #function, "Unable to remove file: \(error.localizedDescription)")
             }
         }
     }
@@ -84,7 +84,7 @@ extension FileManager {
         do {
             return try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
         } catch let error {
-            print(#function, "Unable to get directory contents: \(error.localizedDescription)")
+            print("🌐", #function, "Unable to get directory contents: \(error.localizedDescription)")
         }
         return []
     }

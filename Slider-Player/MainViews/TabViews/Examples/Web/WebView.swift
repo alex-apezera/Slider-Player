@@ -64,7 +64,7 @@ struct WebView: UIViewRepresentable {
 //MARK: - optional functions webView
         
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            print("didFinish")
+            print("🌐", "didFinish")
             self.parent.viewModel.isLoaderVisible.send(false)
 
             webView.evaluateJavaScript(getHeaderTitle, in: nil, in: .defaultClient) { result in
@@ -74,7 +74,7 @@ struct WebView: UIViewRepresentable {
                             self.parent.viewModel.webTitle.send(title)
                         }
                     case .failure(let error):
-                        print(error)
+                        print("🌐", error)
                     }
                 }
 
@@ -92,17 +92,17 @@ struct WebView: UIViewRepresentable {
             webView.callAsyncJavaScript(setTimeoutFor, arguments: [ "timeout":"\(timeout)"], in: nil, in: .defaultClient) { (result) in
                 switch result {
                 case .success(let response):
-                    print("Done...");
-                    print(response);
+                    print("🌐", "Done...");
+                    print("🌐", response);
                 case .failure(let error):
                     print("Error...");
-                    print(error)
+                    print("🌐", error)
                 }
             }
         }
         
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-            print("didStartProvisionalNavigation")
+            print("🌐", "didStartProvisionalNavigation")
             self.parent.viewModel.isLoaderVisible.send(true)
             self.webViewNavigationSubscriber = self.parent.viewModel.webViewNavigationPublisher.receive(on: RunLoop.main).sink(receiveValue: { navigation in
                 switch navigation {
@@ -121,22 +121,22 @@ struct WebView: UIViewRepresentable {
         }
         
         func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-            print("didFailProvisionalNavigation")
+            print("🌐", "didFailProvisionalNavigation")
             self.parent.viewModel.isLoaderVisible.send(false)
         }
         
         func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-            print("didCommit")
+            print("🌐", "didCommit")
             self.parent.viewModel.isLoaderVisible.send(true)
         }
         
         func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-            print("didFail")
+            print("🌐", "didFail")
             self.parent.viewModel.isLoaderVisible.send(false)
         }
         
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, preferences: WKWebpagePreferences, decisionHandler: @escaping (WKNavigationActionPolicy, WKWebpagePreferences) -> Void) {
-            print("decidePolicyFor")
+            print("🌐", "decidePolicyFor")
             decisionHandler(.allow, preferences)
         }
         
@@ -145,7 +145,7 @@ struct WebView: UIViewRepresentable {
         }
         
         func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
-            print("webViewWebContentProcessDidTerminate")
+            print("🌐", "webViewWebContentProcessDidTerminate")
             self.parent.viewModel.isLoaderVisible.send(false)
         }
 //MARK: - end optionals
@@ -157,7 +157,7 @@ extension WebView.Coordinator: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "messageAppHandler" {
             if let body = message.body as? String {
-                print("Message body: \(body)")
+                print("🌐", "Message body: \(body)")
             }
         }
     }

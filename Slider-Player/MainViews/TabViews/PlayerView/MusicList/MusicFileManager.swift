@@ -24,17 +24,17 @@ final class MusicFileManager: ObservableObject {
         do {
             try FileManager.default.createDirectory(at: FileManager.musicFilesDir, withIntermediateDirectories: true, attributes: nil) ///See Utility/Extensions
         } catch {
-            print("Failed to create folder: \(FileManager.musicFilesDir)")
-            print(#function, error.localizedDescription)
+            print("🌐", "Failed to create folder: \(FileManager.musicFilesDir)")
+            print("🌐", #function, error.localizedDescription)
         }
     }
 //MARK: - Remove MusicDataObject from subdir Music Files
     func removeMusicDataObject() {
         do {
             try FileManager.default.removeItem(at: musicDataURL)
-            print(#function, "Successfully deleted \(musicDataURL.lastPathComponent)!")
+            print("🌐", #function, "Successfully deleted \(musicDataURL.lastPathComponent)!")
         } catch {
-            print(#function, "Error deleting \(musicDataURL.lastPathComponent): \(error)")
+            print("🌐", #function, "Error deleting \(musicDataURL.lastPathComponent): \(error)")
         }
     }
 //MARK: - Store MusicDataObject to subdir Music Files
@@ -44,9 +44,9 @@ final class MusicFileManager: ObservableObject {
             let jsonData = try jsonEncoder.encode(musicDataObject)
             // Save jsonData to a file
             try jsonData.write(to: musicDataURL)
-//            print(#function, musicDataURL)
+//            print("🌐", #function, musicDataURL)
         } catch {
-            print(#function, "Error encoding data: \(error)")
+            print("🌐", #function, "Error encoding data: \(error)")
         }
     }
 //MARK: - Retrieve MusicDataObject from subdir Music Files
@@ -59,9 +59,9 @@ final class MusicFileManager: ObservableObject {
             let readingData = try jsonDecoder.decode([MusicDataModel].self, from: jsonData)
             // Use the `readingData` array in your app
             musicDataModel = readingData
-//            print(#function, musicDataURL)
+//            print("🌐", #function, musicDataURL)
         } catch {
-            print(#function, "Error decoding data: \(error)")
+            print("🌐", #function, "Error decoding data: \(error)")
         }
         musicFiles = musicDataModel.map{$0.file}
         return musicDataModel
@@ -81,15 +81,15 @@ final class MusicFileManager: ObservableObject {
                 if savePath.isAudio {
                     try musicFile.write(to: savePath, options: .atomic)
                     musicFiles.append(savePath)
-                    print(#function, "Success to save/append file: \(url.lastPathComponent)")
+                    print("🌐", #function, "Success to save/append file: \(url.lastPathComponent)")
                 }
             } catch {
                 print("Failed to save the music file:")
-                print(#function, error.localizedDescription)
+                print("🌐", #function, error.localizedDescription)
             }
             url.stopAccessingSecurityScopedResource()
         } else {
-            print(#function, "Permission failed!")
+            print("🌐", #function, "Permission failed!")
         }
     }
 //MARK: - Retrieve all music files from subdirectory
@@ -105,8 +105,8 @@ final class MusicFileManager: ObservableObject {
                 }
             }
         } catch {
-            print("Failed to retrieve items:")
-            print(#function, error.localizedDescription)
+            print("🌐", "Failed to retrieve items:")
+            print("🌐", #function, error.localizedDescription)
         }
     }
 //MARK: - Remove a music file and album image file from subdirectory
@@ -119,9 +119,9 @@ final class MusicFileManager: ObservableObject {
                 let item = FileManager.musicFilesDir.appendingPathComponent(musicFile)
                 try FileManager.default.removeItem(at: item) //.m4a
                 try FileManager.default.removeItem(at: albumURL(from: item)) //.jpeg
-                print(#function, "Successfully deleted both music and album image files -> \(musicFile)")
+                print("🌐", #function, "Successfully deleted both music and album image files -> \(musicFile)")
             } catch {
-                print(#function, "Error: file \(musicFile) not exist ", error.localizedDescription)
+                print("🌐", #function, "Error: file \(musicFile) not exist ", error.localizedDescription)
             }
         }
     }
@@ -133,7 +133,7 @@ final class MusicFileManager: ObservableObject {
             let musicFile = try Data(contentsOf: musicURL)
             try musicFile.write(to: audioURL)
         } catch {
-            print(#function, "Copy \(musicURL.lastPathComponent) failed! ", error.localizedDescription)
+            print("🌐", #function, "Copy \(musicURL.lastPathComponent) failed! ", error.localizedDescription)
         }
     }
     

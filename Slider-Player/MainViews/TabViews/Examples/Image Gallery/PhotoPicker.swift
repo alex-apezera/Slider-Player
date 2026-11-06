@@ -63,7 +63,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
             // This creates a temporary file which is then copied to the app’s document directory for persistent storage.
             result.itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
                 if let error {
-                    print(#function, "Error loading file representation: \(error.localizedDescription)")
+                    print("🌐", #function, "Error loading file representation: \(error.localizedDescription)")
                 } else if let url {
                     if let savedUrl = FileManager.default.copyItemToDocumentDirectory(from: url) {
                         // Add the new item to the data model.
@@ -71,7 +71,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
                             withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
                                 let item = Item(url: savedUrl)
                                 dataModel.addItem(item)
-                                print(#function, "ITEM = ", item, "\n RESULT = ", result)
+                                print("🌐", #function, "ITEM = ", item, "\n RESULT = ", result)
                             }
                         }
                     }

@@ -36,7 +36,7 @@ class PlayerModel: ObservableObject {
     
     private func playSong(name: String) {
         guard let audioPath = Bundle.main.path(forResource: name, ofType: "mp3") else {
-            print(#function, "Resource not found: \(name)")
+            print(#function, "🌐 Resource not found: \(name)")
             return
         }
         setSessionCategory(.playback)
@@ -44,7 +44,7 @@ class PlayerModel: ObservableObject {
             try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
             maxDuration = player?.duration ?? 0.0
         } catch {
-            print(#function, error.localizedDescription)
+            print("🌐", #function, error)
         }
     }
 }

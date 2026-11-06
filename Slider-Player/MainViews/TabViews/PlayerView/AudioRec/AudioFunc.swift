@@ -32,9 +32,9 @@ extension AudioRecorder {
                 try FileManager.default.removeItem(at: item)
                 audios.remove(at: index)
                 audiosCount = audios.count
-                print(#function, "Successfully deleted file -> \(item.lastPathComponent)")
+                print("🌐", #function, "Successfully deleted file -> \(item.lastPathComponent)")
             } catch {
-                print(#function, "Error: file \(item.lastPathComponent) not exist")
+                print("🌐", #function, "Error: file \(item.lastPathComponent) not exist")
             }
         }
     }
@@ -46,13 +46,13 @@ extension AudioRecorder {
             for url in urls{
                 if url.isAudio {
                     try FileManager.default.removeItem(at: url)
-                    print(#function, "Successfully deleted file -> \(url.lastPathComponent)")
+                    print("🌐", #function, "Successfully deleted file -> \(url.lastPathComponent)")
                 }
             }
             audios.removeAll()
             audiosCount = 0
         } catch {
-            print(#function, "Error deleting file: \(error)")
+            print("🌐", #function, "Error deleting file: \(error)")
         }
     }
 }

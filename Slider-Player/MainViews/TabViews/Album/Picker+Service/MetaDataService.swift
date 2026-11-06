@@ -25,7 +25,7 @@ extension MediasPicker {
             if let localID = item.itemIdentifier {
                 let result = PHAsset.fetchAssets(withLocalIdentifiers: [localID], options: nil)
                 if let asset = result.firstObject {
-                    print(#function, "GOT ASSET: " + asset.debugDescription)
+                    print("🌐", #function, "GOT ASSET: " + asset.debugDescription)
                 }
                 // Date of captuting photo
                 if let imageDate = result.firstObject?.creationDate {
@@ -45,9 +45,9 @@ extension MediasPicker {
                         let addressRep = mapItem.address
                         metaData.address = addressRep?.fullAddress ?? ""
                         metaData.placeName = mapItem.name ?? ""
-                        print("🆕", #function, metaData.placeName, metaData.address)
+                        print("🌐", #function, metaData.placeName, metaData.address)
                     } catch {
-                        print("⭕️", #function,"Placemark not defined", error)
+                        print("🌐", #function,"Placemark not defined", error)
                     }
                 }
             }
@@ -87,7 +87,7 @@ extension MediasPicker {
                 // Refresh date of Loading
                 lastUpdatedObject = Date().timeIntervalSince1970
             } catch {
-                print("\n", #function, "Error: \(error)")
+                print("🌐", #function, "Error: \(error)")
             }
         }
     }

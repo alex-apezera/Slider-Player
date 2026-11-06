@@ -25,7 +25,7 @@ extension MusicListView {
                     manager.pieces.append(piece)
                     
                 } catch {
-                    print(#function, "Failed to retrieve music data from \(track.lastPathComponent): ", error.localizedDescription)
+                    print("🌐", #function, "Failed to retrieve music data from \(track.lastPathComponent): ", error.localizedDescription)
                 }
             }
             isLoading = false

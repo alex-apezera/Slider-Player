@@ -31,7 +31,7 @@ struct Quakes: View {
             .onDelete(perform: deleteQuakes)
         }
         .onChange(of: selection) { _, newValue in
-            print(#function, selection)
+            print("🌐", #function, selection)
         }
         .toolbar {toolbarContent}
         .environment(\.editMode, $editMode)

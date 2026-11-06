@@ -21,7 +21,7 @@ extension URL {
                 try? data.write(to: self)
             }
         } else {
-            print(#function, "UIImage is nil, so try removing file \(self)")
+            print("🌐", #function, "UIImage is nil, so try removing file \(self)")
             try? FileManager.default.removeItem(at: self)
         }
     }
@@ -31,7 +31,7 @@ extension URL {
         if let data = try? Data(contentsOf: self), let loaded = UIImage(data: data) {
             uiimage = loaded
         } else {
-            print(#function, "Couldn't load UIImage from URL: \(self)")
+            print("🌐", #function, "Couldn't load UIImage from URL: \(self)")
             uiimage = nil
         }
     }

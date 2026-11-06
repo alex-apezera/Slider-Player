@@ -37,7 +37,7 @@ struct WebNavigationView: View {
                 Divider()
                 Text(webTitle).onReceive(viewModel.webTitle.receive(on: RunLoop.main)) { value in
                     webTitle = value
-                    print("TITLE", value)
+                    print("🌐", "TITLE", value)
                 }
                 Spacer()
                 Divider()

@@ -13,7 +13,7 @@ import AVKit
 final class AudioManager: ObservableObject {
     @Published private(set) var isPlaying: Bool = false {
         didSet {
-            print("\n", #function, "=", isPlaying)
+            print("🌐", #function, "=", isPlaying)
         }
     }
     @Published private(set) var isLooping: Bool = false
@@ -21,7 +21,7 @@ final class AudioManager: ObservableObject {
     var player: AVAudioPlayer?
     
     func startPlayer(track: String, isPreview: Bool = false) {
-        guard let url = Bundle.main.url(forResource: track, withExtension: ".mp3") else { print(#function, "Resource not found: \(track)"); return }
+        guard let url = Bundle.main.url(forResource: track, withExtension: ".mp3") else { print("🌐", #function, "Resource not found: \(track)"); return }
         
         startPlayer(at: url, isPreview: isPreview)
     }
@@ -30,7 +30,7 @@ final class AudioManager: ObservableObject {
         setSessionCategory(.playback)
         do {
             player = try AVAudioPlayer(contentsOf: url)
-            print(#function, url.lastPathComponent)
+            print("🌐", #function, url.lastPathComponent)
             if isPreview {
                 player?.prepareToPlay()
             } else {
@@ -38,13 +38,13 @@ final class AudioManager: ObservableObject {
                 isPlaying = true
             }
         } catch {
-            print(#function, "Fail to initialize player", error)
+            print("🌐", #function, "Fail to initialize player", error)
         }
     }
     
     func playPause() {
         guard let player = player else {
-            print(#function, "Instance of AVPlayer not found")
+            print("🌐", #function, "Instance of AVPlayer not found")
             return
         }
         if player.isPlaying {

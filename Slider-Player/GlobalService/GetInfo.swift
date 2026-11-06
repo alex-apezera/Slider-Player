@@ -22,9 +22,9 @@ struct GetInfo {
             let addressRep = item.address
             address = addressRep?.fullAddress ?? ""
             name = item.name ?? ""
-            print("🆔", #function, name, address)
+            print("🌐", #function, name, address)
         } catch {
-            print(#function, error)
+            print("🌐", #function, error)
         }
     }
 

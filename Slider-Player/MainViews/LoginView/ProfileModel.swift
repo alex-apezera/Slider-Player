@@ -35,14 +35,14 @@ class ProfileModel: ObservableObject {
                     throw TransferError.importFailed
                 }
                 let image = Image(nsImage: nsImage)
-                print("AppKit import is active")
+                print("🌐 AppKit import is active")
                 return ProfileImage(image: image)
             #elseif canImport(UIKit)
                 guard let uiImage = UIImage(data: data) else {
                     throw TransferError.importFailed
                 }
                 let image = Image(uiImage: uiImage)
-                print("UIKit import is active")
+                print("🌐 UIKit import is active")
                 return ProfileImage(image: image)
             #else
                 throw TransferError.importFailed

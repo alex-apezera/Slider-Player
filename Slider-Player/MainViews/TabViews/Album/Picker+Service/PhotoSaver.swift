@@ -16,9 +16,9 @@ class PhotoSaver: NSObject {
 
     @objc func saveCompleted(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error {
-            print(#function, error)
+            print("🌐", #function, error)
         } else {
-            print(#function, "Save captured foto to Photo Library finished!")
+            print("🌐", #function, "Save captured foto to Photo Library finished!")
         }
 
        

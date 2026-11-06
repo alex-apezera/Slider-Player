@@ -89,7 +89,7 @@ extension NewMapView {
             center: coordinate,
             span: MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)
         )
-        print(#function, newRegion!)
+        print("🌐", #function, newRegion!)
 
         return MKMapItem(location: location, address: nil)
     }

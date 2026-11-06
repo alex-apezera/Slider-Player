@@ -18,7 +18,7 @@ func setSessionCategory(_ category: AVAudioSession.Category) {
             try session.setCategory(category, mode: .default)
             try session.setActive(true)
         } catch {
-            print(#function, error.localizedDescription)
+            print("🌐", #function, error.localizedDescription)
         }
     }
 }
@@ -31,7 +31,7 @@ func playAudio(_ track: URL, player:  inout AVAudioPlayer?) {
         try player = AVAudioPlayer(contentsOf: track)
         player?.play()
     } catch {
-        print(#function, error.localizedDescription)
+        print("🌐", #function, error.localizedDescription)
     }
 }
 
@@ -66,7 +66,7 @@ func recordAndStoreAudio(record: inout Bool, recorder: inout AVAudioRecorder!, a
         recorder.record()
         record.toggle()
     } catch {
-        print(#function, error.localizedDescription)
+        print("🌐", #function, error.localizedDescription)
     }
 }
 

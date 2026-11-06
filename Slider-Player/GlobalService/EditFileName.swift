@@ -25,7 +25,7 @@ struct EditFileName: View {
                     let destinationPath = directory.appendingPathComponent("\(newName).\(pathExt)")
                     try FileManager.default.moveItem(at: track, to: destinationPath)
                 } catch {
-                    print(#function, error.localizedDescription)
+                    print("🌐", #function, error.localizedDescription)
                 }
             }
     }

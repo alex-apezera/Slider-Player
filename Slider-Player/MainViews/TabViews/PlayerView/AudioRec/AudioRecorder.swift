@@ -43,7 +43,7 @@ struct AudioRecorder: View {
                             do {
                                 try await GetAudioAssets(url: track, albumTitle: $albumTitle, composerName: $composerName, songName: $songName).takeData()
                             } catch {
-                                print("GetAudioAssets fail", error)
+                                print("🌐 GetAudioAssets fail", error)
                             }
                         }
                     } label: {

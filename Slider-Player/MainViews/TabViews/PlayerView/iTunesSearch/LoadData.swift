@@ -11,7 +11,7 @@ import Foundation
 extension SearchView {
     func loadData() async {
         guard let url = URL(string: "https://itunes.apple.com/search?term=\(searchRequest)&entity=song") else {
-            print(#function, "Invalid URL")
+            print("🌐", #function, "Invalid URL")
             return
         }
         do {
@@ -21,7 +21,7 @@ extension SearchView {
                 resultsCount = self.results.count
             }
         } catch {
-            print(#function, "Invalid data: \(error)")
+            print("🌐", #function, "Invalid data: \(error)")
         }
     }
 }

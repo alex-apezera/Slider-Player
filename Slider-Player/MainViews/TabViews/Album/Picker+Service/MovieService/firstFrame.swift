@@ -73,7 +73,7 @@ public struct FirstFrameView: View {
                 }
                 duration = try await getVideoDuration(from: movie)
             } catch {
-                print("Ошибка извлечения первого кадра из видео",error)
+                print("🌐", "Ошибка извлечения первого кадра из видео",error)
                 uiImage = UIImage(systemName: "video.square.fill")
             }
         }

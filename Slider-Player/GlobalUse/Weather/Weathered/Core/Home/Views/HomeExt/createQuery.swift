@@ -16,7 +16,7 @@ extension HomeView {
             DispatchQueue.main.async {
                 searchResultsNeeded = true
                 weatherVM.query = searchText
-                print(searchText)
+                print("🌐", #function, searchText)
                 weatherVM.fetchWeatherData()
                 
                 if let location = weatherVM.weatherData?.location {

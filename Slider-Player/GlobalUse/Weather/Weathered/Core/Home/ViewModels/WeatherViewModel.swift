@@ -22,7 +22,7 @@ class WeatherViewModel: ObservableObject {
                     self.weatherData = data
                 }
             case .failure(let error):
-                print(error)
+                print("🌐", error)
             }
         }
     }

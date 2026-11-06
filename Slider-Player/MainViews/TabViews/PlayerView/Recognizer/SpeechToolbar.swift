@@ -16,7 +16,7 @@ extension SpeechView {
             
 //MARK: - Locale Indicator
             Button {
-                print("SpeechView, Locale: \(locale)")
+                print("🌐", "SpeechView, Locale: \(locale)")
             } label: {
                 Image(systemName: localeRu ? "r.square" : "a.square")
             }

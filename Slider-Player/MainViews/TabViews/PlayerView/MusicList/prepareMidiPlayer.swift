@@ -17,7 +17,7 @@ extension MusicListView {
                 try await GetAudioAssets(url: track, albumTitle: $albumTitle, composerName: $composerName, songName: $songName).takeData()
                 songName = songName.isEmpty ? track.lastPathComponent : songName
             } catch {
-                print("Error GetAudioAssets:", error)
+                print("🌐", "Error GetAudioAssets:", error)
             }
         }
     }

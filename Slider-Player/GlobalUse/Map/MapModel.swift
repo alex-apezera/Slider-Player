@@ -109,8 +109,8 @@ struct MapModel: UIViewRepresentable {
                 searchedDistance = distance
                 searchedTime = timeInterval
                 
-                print(#function, "Расстояние до места: \(distance) км.")
-                print(#function, "Время в пути составит: \(timeInterval) c.")
+                print("🌐", #function, "Расстояние до места: \(distance) км.")
+                print("🌐", #function, "Время в пути составит: \(timeInterval) c.")
 //                }   /// delete this if "first variant"
             }
             

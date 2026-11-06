@@ -37,7 +37,7 @@ extension MusicListView {
                     completePieces()
                     lastUpdatedMusicFiles = Date().timeIntervalSince1970
                 } catch {
-                    print("Error to save misic file: ", error)
+                    print("🌐", "Error to save misic file: ", error)
                 }
             }
         }

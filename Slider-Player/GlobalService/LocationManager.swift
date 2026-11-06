@@ -42,7 +42,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first?.coordinate else {
-            print(#function, "didnt get location!")
+            print("🌐", #function, "didnt get location!")
             return
         }
         DispatchQueue.main.async {
@@ -67,12 +67,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse: break //access granted
         case .denied, .restricted:
-            print("Location access denied.")
+            print("🌐", #function, "Location access denied.")
         case .notDetermined:
-            print("Location status not determined.")
+            print("🌐", #function, "Location status not determined.")
             manager.requestWhenInUseAuthorization()
         @unknown default:
-            fatalError("New case for CLLocationManagerDelegate?")
+            fatalError(#function, file: "New case for CLLocationManagerDelegate?")
         }
     }
     
@@ -82,11 +82,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         locationStatus = status
-        print(#function, statusString)
+        print("🌐", #function, statusString)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
+        print("🌐", #function, error.localizedDescription)
     }
 
 }

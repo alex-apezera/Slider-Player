@@ -35,7 +35,7 @@ struct WeatherApiView: View {
         .onAppear {
             weatherVM.query = coordinates
             if !coordinates.isEmpty { weatherVM.fetchWeatherData() }
-            print(#function, weatherVM.query)
+            print("🌐", #function, weatherVM.query)
         }
         .environmentObject(weatherVM)
         .titleInline(String.weather)

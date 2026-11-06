@@ -77,11 +77,11 @@ func getAudios(_ audios: inout [URL]) {
         for url in urls {
             if url.isAudio {
                 audios.append(url)
-                print(#function, "Success to append Audio:",  url.lastPathComponent)
+                print("🌐", #function, "Success to append Audio:",  url.lastPathComponent)
             }
         }
     } catch {
-        print(#function, error.localizedDescription)
+        print("🌐", #function, error.localizedDescription)
     }
 }
 
@@ -96,11 +96,11 @@ func fileImageURL(_ fileName: String) -> URL? {
 // Удаление фотообъекта из FileManager
 func removeSelectedObject(fileName: String) {
     guard let url = fileImageURL(fileName) else { return }
-    print(#function, url)
+    print("🌐", #function, url)
     FileManager.default.removeItemFromDocumentDirectory(url: url)
 }
 func removeSelectedObject(url: URL) {
-    print(#function, url)
+    print("🌐", #function, url)
     FileManager.default.removeItemFromDocumentDirectory(url: url)
 }
 
@@ -141,7 +141,7 @@ public func imageOnMap(url: URL) async -> Image {
                 return Image(uiImage: uiimage)
             }
         } catch {
-            print(error)
+            print("🌐", #function, error)
         }
     }
     return Image(systemName: "questionmark")
@@ -172,9 +172,9 @@ func removeMetaDataObject() {
     guard let metaURL = metaURL else {return}
     do {
         try FileManager.default.removeItem(at: metaURL)
-        print(#function, "Successfully deleted MetaDataObject!", metaURL)
+        print("🌐", #function, "Successfully deleted MetaDataObject!", metaURL)
     } catch {
-        print(#function, "Error deleting MetaDataObject: \(error)")
+        print("🌐", #function, "Error deleting MetaDataObject: \(error)")
     }
 }
 
@@ -186,9 +186,9 @@ func storeMetaDataObject(_ metaDataObject: [MetaData]) {
         let jsonData = try jsonEncoder.encode(metaDataObject)
         // Save jsonData to a file
         try jsonData.write(to: metaURL)
-//        print(#function, "Stored to: ", metaURL)
+//        print("🌐", #function, "Stored to: ", metaURL)
     } catch {
-        print(#function, "Error encoding data: \(error)")
+        print("🌐", #function, "Error encoding data: \(error)")
     }
 }
 
@@ -205,7 +205,7 @@ func retrieveMetaDataObject() -> [MetaData] {
         metaDataObject = readingData
 //        print(#function,  "Retrieved from: ", metaURL)
     } catch {
-        print(#function, "Error decoding data: \(error)")
+        print("🌐", #function, "Error decoding data: \(error)")
     }
     return metaDataObject
 }

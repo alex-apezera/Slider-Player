@@ -74,7 +74,7 @@ class QRScannerController: UIViewController {
 
         /// Get the back-facing camera for capturing videos
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
-            print("Failed to get the camera device")
+            print("🌐", "Failed to get the camera device")
             return
         }
 
@@ -86,7 +86,7 @@ class QRScannerController: UIViewController {
 
         } catch {
             /// If any error occurs, simply print it out and don't continue any more.
-            print(error)
+            print("🌐", error)
             return
         }
 

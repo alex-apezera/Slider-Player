@@ -16,9 +16,9 @@ public func copyTransferredFile(_ received: ReceivedTransferredFile) -> URL {
     let copy = copyFile.appendingPathExtension(pathExtension)
     if FileManager.default.fileExists(atPath: copy.path()) {
         do { try FileManager.default.removeItem(at: copy) }
-        catch { print(error.localizedDescription) }
+        catch { print("🌐", error.localizedDescription) }
     }
-    print("\n", #function, "received:", received, "\n", "copy:", copy)
+    print("🌐", #function, "received:", received, "\n", "copy:", copy)
     
     do { try FileManager.default.copyItem(at: received.file, to: copy) }
     catch { print(error.localizedDescription) }
