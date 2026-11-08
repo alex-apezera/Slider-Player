@@ -733,7 +733,6 @@
 				19652F022C677BE800120ADC /* AudioActions.swift */,
 				191F820B2D876EB600093031 /* Message.swift */,
 				19C5E7712CF2055D00406E63 /* SystemTypesExt */,
-				196894BC2CCCFF220009156C /* Elevation */,
 				196671FD2CCE643400ACE0C3 /* TextService */,
 				19BCF36E2CD8085E0006D10D /* LocaleService */,
 				19CE9BDF308FA4D600B78C0A /* ToolbarContent */,
@@ -1038,6 +1037,7 @@
 		1976CA842C748E4D004ADAF8 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				196894BC2CCCFF220009156C /* Elevation */,
 				19B78E102CA56D5100D11B2D /* OpenWeather */,
 				1928EBB12C99C9880082135D /* Weathered */,
 			);
